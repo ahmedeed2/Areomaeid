@@ -91,7 +91,7 @@
             background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px; padding: 15px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative; overflow: hidden; backdrop-filter: blur(5px);
-            text-align: center;
+            text-align: center; cursor: pointer;
         }
 
         .perfume-card:hover { transform: translateY(-10px); border-color: var(--accent); }
@@ -117,6 +117,20 @@
             font-size: 0.8rem; transition: 0.3s;
         }
         .buy-btn:hover { background: var(--accent); color: black; }
+
+        /* استايل صفحة التفاصيل */
+        #details-modal {
+            position: fixed; inset: 0; background: var(--bg); z-index: 3000;
+            display: none; padding: 40px 5%; overflow-y: auto;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        .details-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .details-img { width: 100%; max-width: 300px; border-radius: 20px; margin-bottom: 20px; border: 2px solid var(--accent); }
+        .info-card { background: var(--glass); padding: 20px; border-radius: 15px; margin: 10px 0; border: 1px solid rgba(197,160,89,0.3); }
+        .info-card h4 { color: var(--accent); margin-bottom: 10px; font-family: 'Cinzel'; }
 
         #checkout-modal {
             position: fixed; inset: 0; background: var(--bg); z-index: 2000;
@@ -172,6 +186,29 @@
     <h2 class="section-header" data-aos="fade-left">WOMAN COLLECTION</h2>
     <main class="shop-container" id="shop-woman"></main>
 
+    <div id="details-modal">
+        <div class="details-content">
+            <button onclick="closeDetails()" style="float: left; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">&times;</button>
+            <img id="det-img" class="details-img" src="" alt="">
+            <h2 id="det-name" style="color: var(--accent); font-family: 'Cinzel'; margin-bottom: 20px;"></h2>
+            
+            <div class="info-card">
+                <h4><i class="fa-solid fa-leaf"></i> النوتات العطرية</h4>
+                <p id="det-notes"></p>
+            </div>
+            <div class="info-card">
+                <h4><i class="fa-solid fa-clock"></i> أفضل وقت للارتداء</h4>
+                <p id="det-time"></p>
+            </div>
+            <div class="info-card">
+                <h4><i class="fa-solid fa-shirt"></i> التنسيق الموصى به</h4>
+                <p id="det-style"></p>
+            </div>
+            
+            <button class="buy-btn" id="det-add-btn" style="margin-top: 20px; padding: 20px;">إضافة للسلة الآن</button>
+        </div>
+    </div>
+
     <div id="checkout-modal">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h2 style="font-family: 'Cinzel'; font-size: 1.5rem; color: var(--accent);">قائمة مشترياتك</h2>
@@ -206,6 +243,21 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
+        // إضافة بيانات التفاصيل لكل عطر
+        const perfumeDetails = {
+            "BLUE DE CHANEL": { notes: "حمضيات، جريب فروت، بخور، أرز", time: "صباحي ومسائي - لجميع الفصول", style: "بدلة رسمية أو ملابس كاجوال شيك" },
+            "CLUB DE NUIT": { notes: "ليمون، تفاح، كشمش أسود، مسك", time: "المناسبات المسائية والخروجات", style: "ملابس كلاسيكية غامقة" },
+            "ليل ملكي": { notes: "هيل، خشب صندل، عود ناعم، فلفل", time: "شتاء - سهرات ليلية فخمة", style: "عباءة رجالية فاخرة أو بدلة رسمية" },
+            "Megamare": { notes: "روائح البحر، ملح، طحالب، عنبر", time: "صيف - أوقات النهار والعمل", style: "ملابس كتان أو كاجوال فاتح" },
+            "Bad Boy": { notes: "فلفل أبيض، فلفل أسود، كاكاو، تونكا", time: "خريف وشتاء - ليلي", style: "ملابس جلدية أو ملابس شتوية ثقيلة" },
+            "ARMANI CODE": { notes: "ليمون، يانسون، جلود، تبغ", time: "رسمي - مسائي", style: "بدلة كاملة (رسمي جداً)" },
+            "جوتشي فلورا": { notes: "كمثرى، توت أحمر، جاردينيا، ياسمين", time: "صباحي ربيعي", style: "فستان ناعم أو ملابس فاتحة" },
+            "Libre Le Parfum": { notes: "زعفران، لافندر، زهر البرتقال، عسل", time: "مسائي شتوي - قوي وجذاب", style: "ملابس سهرة أو معطف أنيق" },
+            "مس ديور": { notes: "سوسن، فاوانيا، ورد، مشمش", time: "خروجات نهارية رومانسية", style: "ملابس أنيقة ورقيقة" },
+            "شانيل شانس": { notes: "سفرجل، جريب فروت، ياسمين، مسك", time: "عملي - جميع الأوقات", style: "ملابس العمل الأنيقة (Semi-formal)" },
+            "جيفنشي لانترديت روج": { notes: "زنجبيل، برتقال دموي، مسك الروم، خشب الصندل", time: "سهرات ليلية خاصة", style: "ملابس حمراء أو سوداء فخمة" }
+        };
+
         const productsMen = [
             { id: 1, name: "BLUE DE CHANEL", price: 700, img: "https://i.postimg.cc/QMxjDGsQ/FB-IMG-1769683803955.jpg", tag: "الأكثر مبيعاً" },
             { id: 2, name: "CLUB DE NUIT", price: 700, img: "https://i.postimg.cc/9FVSKPcr/FB-IMG-1769683996969.jpg", tag: "فخامة فرنسية" },
@@ -229,7 +281,7 @@
             const container = document.getElementById(containerId);
             productList.forEach(p => {
                 container.innerHTML += `
-                    <div class="perfume-card" data-aos="fade-up">
+                    <div class="perfume-card" data-aos="fade-up" onclick="showDetails('${p.name}', '${p.img}')">
                         <span class="badge">${p.tag}</span>
                         <div class="img-container">
                             <img src="${p.img}" alt="${p.name}">
@@ -239,17 +291,36 @@
                             <span class="current-price">${p.price} ج</span>
                             <span class="old-price">1200 ج</span>
                         </div>
-                        <button class="buy-btn" onclick="addToCart('${p.name}')">إضافة +</button>
+                        <button class="buy-btn" onclick="event.stopPropagation(); addToCart('${p.name}')">إضافة +</button>
                     </div>
                 `;
             });
         }
 
+        function showDetails(name, img) {
+            const details = perfumeDetails[name];
+            document.getElementById('det-img').src = img;
+            document.getElementById('det-name').innerText = name;
+            document.getElementById('det-notes').innerText = details.notes;
+            document.getElementById('det-time').innerText = details.time;
+            document.getElementById('det-style').innerText = details.style;
+            
+            document.getElementById('det-add-btn').onclick = () => { addToCart(name); closeDetails(); };
+            document.getElementById('details-modal').style.display = 'block';
+        }
+
+        function closeDetails() {
+            document.getElementById('details-modal').style.display = 'none';
+        }
+
         function addToCart(name) {
             cart.push(name);
             document.getElementById('cart-count').innerText = cart.length;
-            event.target.innerText = "تم ✓";
-            setTimeout(() => { event.target.innerText = "إضافة +"; }, 1000);
+            if(event && event.target.classList.contains('buy-btn')) {
+                const oldText = event.target.innerText;
+                event.target.innerText = "تم ✓";
+                setTimeout(() => { event.target.innerText = oldText; }, 1000);
+            }
         }
 
         function toggleCart() {
