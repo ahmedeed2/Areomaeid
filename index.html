@@ -1,0 +1,284 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroma Eid | Luxury Perfumes</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #c5a059;
+            --bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text: #e0e0e0;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 15px 5%; display: flex; justify-content: space-between;
+            align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .logo-box img { height: 50px; filter: drop-shadow(0 0 5px var(--accent)); }
+
+        .cart-icon-wrapper {
+            position: relative; cursor: pointer; font-size: 1.5rem; color: var(--accent);
+        }
+
+        #cart-count {
+            position: absolute; top: -10px; right: -10px;
+            background: #ff4d4d; color: white; font-size: 12px;
+            padding: 2px 6px; border-radius: 50%;
+        }
+
+        .hero {
+            height: 60vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), var(--bg)),
+                        url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=2000');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--accent); margin-bottom: 10px; letter-spacing: 5px;
+        }
+
+        .section-header {
+            text-align: center; margin: 40px 0 20px; font-family: 'Cinzel', serif;
+            color: var(--accent); font-size: 2rem; position: relative;
+        }
+        .section-header::after {
+            content: ''; display: block; width: 50px; height: 2px; background: var(--accent);
+            margin: 10px auto;
+        }
+
+        .shop-container { 
+            padding: 20px 3% 50px; 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+        }
+
+        @media (min-width: 768px) {
+            .shop-container { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 40px; 
+                padding: 50px 15%; 
+            }
+        }
+
+        .perfume-card {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px; padding: 15px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden; backdrop-filter: blur(5px);
+            text-align: center;
+        }
+
+        .perfume-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+        .img-container { width: 100%; height: 180px; border-radius: 10px; overflow: hidden; margin-bottom: 15px; }
+        @media (min-width: 768px) { .img-container { height: 400px; } }
+
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+
+        .badge {
+            position: absolute; top: 10px; left: 10px; background: var(--accent);
+            color: black; padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 0.6rem;
+            z-index: 2;
+        }
+
+        .price-box { margin: 10px 0; }
+        .current-price { font-size: 1.2rem; color: var(--accent); font-weight: 800; }
+        .old-price { text-decoration: line-through; color: #666; font-size: 0.9rem; display: block; }
+
+        .buy-btn {
+            width: 100%; padding: 12px; background: transparent; border: 1px solid var(--accent);
+            color: var(--accent); border-radius: 10px; cursor: pointer; font-weight: bold;
+            font-size: 0.8rem; transition: 0.3s;
+        }
+        .buy-btn:hover { background: var(--accent); color: black; }
+
+        #checkout-modal {
+            position: fixed; inset: 0; background: var(--bg); z-index: 2000;
+            display: none; padding: 30px 5%; overflow-y: auto;
+        }
+
+        .checkout-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 20px; }
+        @media (min-width: 850px) { .checkout-grid { grid-template-columns: 1.5fr 1fr; } }
+
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; color: var(--accent); font-size: 0.9rem; }
+        .input-group input {
+            width: 100%; padding: 12px; background: var(--glass); border: 1px solid #333;
+            color: white; border-radius: 8px; outline: none;
+        }
+
+        .order-summary { background: var(--glass); padding: 20px; border-radius: 15px; border: 1px solid var(--accent); }
+
+        .wa-btn {
+            background: #25d366; color: white; width: 100%; padding: 15px;
+            border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold;
+            cursor: pointer; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+
+        .floating-wa {
+            position: fixed; bottom: 20px; left: 20px; background: #25d366;
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 25px; color: white;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-box">
+            <img src="https://i.postimg.cc/xd9WmK40/1769683862877.png" alt="Aroma Eid">
+        </div>
+        <div class="cart-icon-wrapper" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 data-aos="fade-up">AROMA EID</h1>
+        <p data-aos="fade-up" data-aos-delay="200" style="letter-spacing: 2px; font-weight: 300; color: var(--accent);">فخامة العطور العصرية</p>
+    </section>
+
+    <h2 class="section-header" data-aos="fade-right">MEN COLLECTION</h2>
+    <main class="shop-container" id="shop-men"></main>
+
+    <h2 class="section-header" data-aos="fade-left">WOMAN COLLECTION</h2>
+    <main class="shop-container" id="shop-woman"></main>
+
+    <div id="checkout-modal">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="font-family: 'Cinzel'; font-size: 1.5rem; color: var(--accent);">قائمة مشترياتك</h2>
+            <button onclick="toggleCart()" style="background:none; border:none; color:white; cursor:pointer; font-size: 2rem;">&times;</button>
+        </div>
+
+        <div class="checkout-grid">
+            <div class="order-form">
+                <div class="input-group"><label>الاسم الكامل</label><input type="text" id="name" placeholder="الاسم"></div>
+                <div class="input-group"><label>العنوان</label><input type="text" id="address" placeholder="المحافظة - المدينة"></div>
+                <div class="input-group"><label>رقم الهاتف</label><input type="tel" id="phone" placeholder="01xxxxxxxxx"></div>
+            </div>
+
+            <div class="order-summary">
+                <h3>ملخص الأوردر</h3>
+                <hr style="opacity: 0.1; margin: 10px 0;">
+                <div id="cart-list"></div>
+                <div style="margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between;"><span>الشحن:</span><span>50 جنيه</span></div>
+                    <div style="display: flex; justify-content: space-between; font-weight: 800; color: var(--accent); font-size: 1.2rem; margin-top: 10px;">
+                        <span>الإجمالي:</span><span id="total">0 جنيه</span>
+                    </div>
+                </div>
+                <button class="wa-btn" onclick="sendWhatsApp()">إرسال الطلب واتساب</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201025745353" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const productsMen = [
+            { id: 1, name: "BLUE DE CHANEL", price: 700, img: "https://i.postimg.cc/QMxjDGsQ/FB-IMG-1769683803955.jpg", tag: "الأكثر مبيعاً" },
+            { id: 2, name: "CLUB DE NUIT", price: 700, img: "https://i.postimg.cc/9FVSKPcr/FB-IMG-1769683996969.jpg", tag: "فخامة فرنسية" },
+            { id: 3, name: "ليل ملكي", price: 700, img: "https://i.postimg.cc/WbX9yQ9Q/FB-IMG-1769684083534.jpg", tag: "إصدار خاص" },
+            { id: 4, name: "Megamare", price: 700, img: "https://i.postimg.cc/8PP4LZ1R/FB-IMG-1769684123736.jpg", tag: "منعش" },
+            { id: 5, name: "Bad Boy", price: 700, img: "https://i.postimg.cc/VNyXZgcK/FB-IMG-1769684163812.jpg", tag: "جديد" },
+            { id: 6, name: "ARMANI CODE", price: 700, img: "https://i.postimg.cc/L4yLF2pq/FB-IMG-1769684176253.jpg", tag: "كلاسيك" }
+        ];
+
+        const productsWoman = [
+            { id: 7, name: "جوتشي فلورا", price: 700, img: "https://i.postimg.cc/65khFtrS/FB-IMG-1769684654901.jpg", tag: "نسائي فاخر" },
+            { id: 8, name: "Libre Le Parfum", price: 700, img: "https://i.postimg.cc/yYcf1DYr/FB-IMG-1769684607762.jpg", tag: "الأكثر طلباً" },
+            { id: 9, name: "مس ديور", price: 700, img: "https://i.postimg.cc/pr8BLSxZ/FB-IMG-1769684821498.jpg", tag: "رقة وأنوثة" },
+            { id: 10, name: "شانيل شانس", price: 700, img: "https://i.postimg.cc/sgK4x7dd/FB-IMG-1769684875090.jpg", tag: "كلاسيك نسائي" },
+            { id: 11, name: "جيفنشي لانترديت روج", price: 700, img: "https://i.postimg.cc/vHsrv3bk/FB-IMG-1769684936151.jpg", tag: "جذاب" }
+        ];
+
+        let cart = [];
+
+        function renderSection(containerId, productList) {
+            const container = document.getElementById(containerId);
+            productList.forEach(p => {
+                container.innerHTML += `
+                    <div class="perfume-card" data-aos="fade-up">
+                        <span class="badge">${p.tag}</span>
+                        <div class="img-container">
+                            <img src="${p.img}" alt="${p.name}">
+                        </div>
+                        <h4 style="font-size: 0.9rem;">${p.name}</h4>
+                        <div class="price-box">
+                            <span class="current-price">${p.price} ج</span>
+                            <span class="old-price">1200 ج</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart('${p.name}')">إضافة +</button>
+                    </div>
+                `;
+            });
+        }
+
+        function addToCart(name) {
+            cart.push(name);
+            document.getElementById('cart-count').innerText = cart.length;
+            event.target.innerText = "تم ✓";
+            setTimeout(() => { event.target.innerText = "إضافة +"; }, 1000);
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('checkout-modal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+            updateCartSummary();
+        }
+
+        function updateCartSummary() {
+            const list = document.getElementById('cart-list');
+            const subtotal = cart.length * 700;
+            list.innerHTML = cart.map(name => `<div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:5px;"><span>${name}</span><span>700 ج</span></div>`).join('');
+            document.getElementById('total').innerText = (subtotal + (cart.length > 0 ? 50 : 0)) + " جنيه";
+        }
+
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            if(!name || !address || !phone || cart.length === 0) { alert("أكمل البيانات والسلة"); return; }
+
+            let msg = `*طلب جديد من Aroma Eid*\n`;
+            cart.forEach((item, i) => msg += `${i+1}- ${item}\n`);
+            msg += `\n*الاسم:* ${name}\n*العنوان:* ${address}\n*الهاتف:* ${phone}\n*الإجمالي:* ${cart.length * 700 + 50} ج`;
+            window.open(`https://wa.me/201025745353?text=${encodeURIComponent(msg)}`);
+        }
+
+        renderSection('shop-men', productsMen);
+        renderSection('shop-woman', productsWoman);
+    </script>
+</body>
+</html>
