@@ -63,6 +63,30 @@
             color: var(--accent); margin-bottom: 10px; letter-spacing: 5px;
         }
 
+        .nav-shortcuts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .nav-btn {
+            padding: 12px 30px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            background: var(--glass);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: black;
+        }
+
         .section-header {
             text-align: center; margin: 40px 0 20px; font-family: 'Cinzel', serif;
             color: var(--accent); font-size: 2rem; position: relative;
@@ -118,7 +142,26 @@
         }
         .buy-btn:hover { background: var(--accent); color: black; }
 
-        /* استايل صفحة التفاصيل */
+        /* تنسيق قسم آراء العملاء */
+        .reviews-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 5%;
+            scrollbar-width: none; /* Firefox */
+        }
+        .reviews-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        .review-card {
+            min-width: 250px;
+            max-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--glass);
+            flex-shrink: 0;
+        }
+        .review-card img { width: 100%; height: auto; display: block; }
+
         #details-modal {
             position: fixed; inset: 0; background: var(--bg); z-index: 3000;
             display: none; padding: 40px 5%; overflow-y: auto;
@@ -162,7 +205,6 @@
             z-index: 999;
         }
 
-        /* ستايل زر الحذف */
         .remove-item {
             color: #ff4d4d;
             cursor: pointer;
@@ -189,11 +231,29 @@
         <p data-aos="fade-up" data-aos-delay="200" style="letter-spacing: 2px; font-weight: 300; color: var(--accent);">فخامة العطور العصرية</p>
     </section>
 
-    <h2 class="section-header" data-aos="fade-right">MEN COLLECTION</h2>
+    <div class="nav-shortcuts" data-aos="fade-up">
+        <a href="#men-sec" class="nav-btn">Men Collection</a>
+        <a href="#woman-sec" class="nav-btn">Woman Collection</a>
+        <a href="#reviews-sec" class="nav-btn">Reviews</a>
+    </div>
+
+    <h2 id="men-sec" class="section-header" data-aos="fade-right">MEN COLLECTION</h2>
     <main class="shop-container" id="shop-men"></main>
 
-    <h2 class="section-header" data-aos="fade-left">WOMAN COLLECTION</h2>
+    <h2 id="woman-sec" class="section-header" data-aos="fade-left">WOMAN COLLECTION</h2>
     <main class="shop-container" id="shop-woman"></main>
+
+    <h2 id="reviews-sec" class="section-header" data-aos="fade-up">آراء عملائنا</h2>
+    <div class="reviews-container" data-aos="zoom-in">
+        <div class="review-card"><img src="https://i.postimg.cc/Bbw4J0Hb/FB-IMG-1769788691266.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/6q1tBXn3/FB-IMG-1769788693515.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/WzfTsvgt/FB-IMG-1769788698350.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/0jHP9sDb/FB-IMG-1769788702852.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/gjBmGW86/FB-IMG-1769788713728.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/NFPBQcm9/FB-IMG-1769788718706.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/wMbg9pLR/FB-IMG-1769788727049.jpg" alt="Review"></div>
+        <div class="review-card"><img src="https://i.postimg.cc/wMbg9pLm/FB-IMG-1769788749688.jpg" alt="Review"></div>
+    </div>
 
     <div id="details-modal">
         <div class="details-content">
@@ -252,7 +312,6 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
-        // إضافة بيانات التفاصيل لكل عطر
         const perfumeDetails = {
             "BLUE DE CHANEL": { notes: "حمضيات، جريب فروت، بخور، أرز", time: "صباحي ومسائي - لجميع الفصول", style: "بدلة رسمية أو ملابس كاجوال شيك" },
             "CLUB DE NUIT": { notes: "ليمون، تفاح، كشمش أسود، مسك", time: "المناسبات المسائية والخروجات", style: "ملابس كلاسيكية غامقة" },
@@ -264,16 +323,44 @@
             "Libre Le Parfum": { notes: "زعفران، لافندر، زهر البرتقال، عسل", time: "مسائي شتوي - قوي وجذاب", style: "ملابس سهرة أو معطف أنيق" },
             "مس ديور": { notes: "سوسن، فاوانيا، ورد، مشمش", time: "خروجات نهارية رومانسية", style: "ملابس أنيقة ورقيقة" },
             "شانيل شانس": { notes: "سفرجل، جريب فروت، ياسمين، مسك", time: "عملي - جميع الأوقات", style: "ملابس العمل الأنيقة (Semi-formal)" },
-            "جيفنشي لانترديت روج": { notes: "زنجبيل، برتقال دموي، مسك الروم، خشب الصندل", time: "سهرات ليلية خاصة", style: "ملابس حمراء أو سوداء فخمة" }
+            "جيفنشي لانترديت روج": { notes: "زنجبيل، برتقال دموي، مسك الروم، خشب الصندل", time: "سهرات ليلية خاصة", style: "ملابس حمراء أو سوداء فخمة" },
+            "أمواج إنترلود مان": { notes: "بخور، زعتر، فلفل، عنبر، جلود", time: "شتاء - سهرات رسمية فخمة", style: "ملابس شتوية ثقيلة أو طابع ملوكي" },
+            "أكوا دي جيو": { notes: "ليمون، برغموت، روائح البحر، ياسمين، أرز", time: "صيف - أوقات نهارية ومنعشة", style: "ملابس كاجوال خفيفة أو قميص كتان" },
+            "ايف سان لوران واي": { notes: "تفاح، زنجبيل، برغموت، ميرمية، أخشاب", time: "جميع الفصول - صباحي ومسائي", style: "ملابس كاجوال شيك أو ملابس عمل" },
+            "توم فورد بلاك لاكر": { notes: "أخشاب داكنة، بخور، جلود، فلفل أسود", time: "خريف وشتاء - ليلي غامض", style: "ملابس رسمية سوداء أو معطف فاخر" },
+            "ون مليون": { notes: "ماندارين دموي، قرفة، نعناع، جلود، عنبر", time: "خريف وشتاء - ليلي جذاب", style: "ملابس سهرات وخروجات ليلية" },
+            "هوس": { notes: "تفاح، برغموت، قرفة، روائح مائية، أخشاب", time: "صيف وخريف - لجميع الأوقات", style: "ملابس كاجوال عصرية" },
+            "أسد": { notes: "فلفل أسود، تبغ، فانيليا، قهوة، خشب صندل", time: "شتاء وخريف - رسمي ومميز", style: "ملابس كلاسيكية أو رسمية" },
+            "بلاك افغانو": { notes: "قنب، روائح عشبية، راتينجات، بخور، عود", time: "أجواء باردة - قوي جداً وغامض", style: "ملابس غامقة وتنسيق فخم" },
+            "سوفاج": { notes: "برغموت، فلفل سيتشوان، لافندر، أمبروكسان", time: "عطر توقيع - لكل زمان ومكان", style: "يناسب جميع أنواع الملابس" },
+            "the one": { notes: "جريب فروت، زنجبيل، هيل، تبغ، عنبر", time: "مسائي دافئ", style: "ملابس كلاسيكية أنيقة" },
+            "خمرة": { notes: "قرفة، تمر، برالين، فانيليا، خشب صندل", time: "شتاء - عطر دافئ وسويتي", style: "ملابس ثقيلة وأنيقة" },
+            "جان بول غوتييه": { notes: "فانيليا، نعناع، لافندر، كمثرى", time: "مسائي جذاب جداً", style: "خروجات ليلية شبابية" },
+            "كوبان توباكو": { notes: "تبغ، بخور، جلود، توابل شرقية", time: "رسمي - شتوي فاخر", style: "زي رسمي أو عباءة فاخرة" },
+            "عطر أفنان 9 بي إم": { notes: "تفاح، لافندر، قرفة، فانيليا، تونكا", time: "ليلي - للمناسبات والسهرات", style: "ملابس كاجوال شيك" }
         };
 
         const productsMen = [
-            { id: 1, name: "BLUE DE CHANEL", price: 700, img: "https://i.postimg.cc/QMxjDGsQ/FB-IMG-1769683803955.jpg", tag: "الأكثر مبيعاً" },
+            { id: 1, name: "BLUE DE CHANEL", price: 700, img: "https://i.postimg.cc/QMxjDGsQ/FB-IMG-176968303955.jpg", tag: "الأكثر مبيعاً" },
             { id: 2, name: "CLUB DE NUIT", price: 700, img: "https://i.postimg.cc/9FVSKPcr/FB-IMG-1769683996969.jpg", tag: "فخامة فرنسية" },
             { id: 3, name: "ليل ملكي", price: 700, img: "https://i.postimg.cc/WbX9yQ9Q/FB-IMG-1769684083534.jpg", tag: "إصدار خاص" },
             { id: 4, name: "Megamare", price: 700, img: "https://i.postimg.cc/8PP4LZ1R/FB-IMG-1769684123736.jpg", tag: "منعش" },
             { id: 5, name: "Bad Boy", price: 700, img: "https://i.postimg.cc/VNyXZgcK/FB-IMG-1769684163812.jpg", tag: "جديد" },
-            { id: 6, name: "ARMANI CODE", price: 700, img: "https://i.postimg.cc/L4yLF2pq/FB-IMG-1769684176253.jpg", tag: "كلاسيك" }
+            { id: 6, name: "ARMANI CODE", price: 700, img: "https://i.postimg.cc/L4yLF2pq/FB-IMG-1769684176253.jpg", tag: "كلاسيك" },
+            { id: 12, name: "أمواج إنترلود مان", price: 700, img: "https://i.postimg.cc/Prq4CjsQ/FB-IMG-1769787402979.jpg", tag: "قوي وفواح" },
+            { id: 13, name: "أكوا دي جيو", price: 700, img: "https://i.postimg.cc/5t85h9LH/FB-IMG-1769787494799.jpg", tag: "منعش جداً" },
+            { id: 14, name: "ايف سان لوران واي", price: 700, img: "https://i.postimg.cc/GhBD0hnJ/FB-IMG-1769787557120.jpg", tag: "جذاب" },
+            { id: 15, name: "توم فورد بلاك لاكر", price: 700, img: "https://i.postimg.cc/507XGDPh/FB-IMG-1769787622242.jpg", tag: "إصدار حديث" },
+            { id: 16, name: "ون مليون", price: 700, img: "https://i.postimg.cc/7Z9J0C3f/FB-IMG-1769787843856.jpg", tag: "جذاب" },
+            { id: 17, name: "هوس", price: 700, img: "https://i.postimg.cc/7YmqNSRH/FB-IMG-1769788040883.jpg", tag: "فواح" },
+            { id: 18, name: "أسد", price: 700, img: "https://i.postimg.cc/Y0tw6Sfm/FB-IMG-1769788076996.jpg", tag: "فخامة" },
+            { id: 19, name: "بلاك افغانو", price: 700, img: "https://i.postimg.cc/XNxMM4ky/FB-IMG-1769788115102.jpg", tag: "غامض" },
+            { id: 20, name: "سوفاج", price: 700, img: "https://i.postimg.cc/zB5QMcb5/FB-IMG-1769788174556.jpg", tag: "عصري" },
+            { id: 21, name: "the one", price: 700, img: "https://i.postimg.cc/x1Mt2PVt/FB-IMG-1769788236273.jpg", tag: "دافئ" },
+            { id: 22, name: "خمرة", price: 700, img: "https://i.postimg.cc/Jn6Qq6jk/FB-IMG-1769788246072.jpg", tag: "مميز" },
+            { id: 23, name: "جان بول غوتييه", price: 700, img: "https://i.postimg.cc/FKFWVJwZ/FB-IMG-1769788317308.jpg", tag: "شبابي" },
+            { id: 24, name: "كوبان توباكو", price: 700, img: "https://i.postimg.cc/cJJhnGnS/FB-IMG-1769788407384.jpg", tag: "رسمي" },
+            { id: 25, name: "عطر أفنان 9 بي إم", price: 700, img: "https://i.postimg.cc/GtnvzWHr/FB-IMG-1769788504327.jpg", tag: "سهرات" }
         ];
 
         const productsWoman = [
@@ -332,7 +419,6 @@
             }
         }
 
-        // دالة الحذف الجديدة
         function removeFromCart(index) {
             cart.splice(index, 1);
             document.getElementById('cart-count').innerText = cart.length;
@@ -349,7 +435,6 @@
             const list = document.getElementById('cart-list');
             const subtotal = cart.length * 700;
             
-            // تعديل العرض ليشمل زر الحذف
             list.innerHTML = cart.map((name, index) => `
                 <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; margin-bottom:8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
                     <div>
