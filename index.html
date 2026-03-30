@@ -586,6 +586,60 @@
             font-weight: 300;
         }
 
+        /* --- LUCKY WHEEL CSS --- */
+        #wheel-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 5000;
+            justify-content: center; align-items: center;
+            flex-direction: column;
+        }
+        .wheel-container {
+            position: relative;
+            width: 320px; height: 320px;
+            border: 8px solid var(--gold-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--gold-accent);
+        }
+        #wheel-canvas {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1);
+        }
+        .wheel-pointer {
+            position: absolute;
+            top: -20px; left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid var(--gold-accent);
+            z-index: 5001;
+        }
+        .spin-btn {
+            margin-top: 30px;
+            background: var(--gold-accent);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 1.1rem;
+        }
+        .spin-btn:disabled { background: #444; color: #777; cursor: not-allowed; }
+        .wheel-close {
+            position: absolute; top: 20px; right: 20px;
+            color: #fff; font-size: 30px; cursor: pointer;
+        }
+        .discount-banner {
+            background: var(--discount-red);
+            color: white; padding: 5px 15px; font-size: 0.8rem; border-radius: 3px;
+            margin-bottom: 10px; display: none; text-align: center;
+        }
+
         @media (max-width: 768px) {
             .detail-content { flex-direction: column; max-width: 95%; }
             .detail-img-container, .detail-text { width: 100%; }
@@ -608,6 +662,7 @@
         <img src="https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png" class="sidebar-logo" loading="lazy" style="width:100px; border-radius:50%; margin: 20px auto; display:block;">
         <ul class="nav-links" style="list-style:none; margin-top:40px; text-align:center;">
             <li style="margin:25px 0;"><a href="#" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الرئيسية</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:var(--gold-accent); text-decoration:none; font-size:1.4rem; letter-spacing:2px; font-weight:bold;">جرب حظك 🎡</a></li>
             <li style="margin:25px 0;"><a href="#men-section" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
             <li style="margin:25px 0;"><a href="#reviews-section" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الآراء</a></li>
         </ul>
@@ -939,6 +994,17 @@
         </footer>
     </div>
 
+    <div id="wheel-overlay" onclick="closeWheel(event)">
+        <span class="wheel-close" onclick="closeWheelManual()">&times;</span>
+        <h2 style="color:var(--gold-accent); margin-bottom:20px; font-weight:300;">جرب حظك مع أروما عيد</h2>
+        <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <canvas id="wheel-canvas" width="320" height="320"></canvas>
+        </div>
+        <button class="spin-btn" id="spin-button" onclick="spinWheel()">اضغط للفوز!</button>
+        <p id="wheel-msg" style="margin-top:20px; color:#fff; font-size:0.9rem; text-align:center;"></p>
+    </div>
+
     <div id="detail-modal" class="detail-modal" onclick="closeDetail(event)">
         <div class="detail-content" onclick="event.stopPropagation()">
             <div class="detail-img-container">
@@ -992,6 +1058,8 @@
             <button class="close-btn" id="closeCartBtn" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
         </div>
         
+        <div id="cart-discount-banner" class="discount-banner"></div>
+
         <div id="cart-items-list" style="padding:20px; border-bottom:1px solid #222;"></div>
         
         <div class="cart-footer">
@@ -1139,6 +1207,7 @@
             detailModal.style.display = 'none';
             cartModal.classList.remove('active');
             sidebar.classList.remove('active');
+            document.getElementById('wheel-overlay').style.display = 'none';
         };
 
         function showDetail(index) {
@@ -1184,8 +1253,22 @@
                     <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#555; cursor:pointer; font-size:0.7rem;">REMOVE</button>
                 </div>`).join('');
             
-            const total = cart.reduce((a, b) => a + b.price, 0);
-            document.getElementById('total-price').innerText = 'الإجمالي: ' + total + ' EGP';
+            const subtotal = cart.reduce((a, b) => a + b.price, 0);
+            const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
+            const discountAmount = Math.round(subtotal * (discountValue / 100));
+            const finalTotal = subtotal - discountAmount;
+
+            const banner = document.getElementById('cart-discount-banner');
+            if(discountValue > 0) {
+                banner.innerText = `تم تطبيق خصم ${discountValue}% (وفرت ${discountAmount}ج)`;
+                banner.style.display = 'block';
+                document.getElementById('total-price').innerHTML = `
+                    <span style="text-decoration:line-through; font-size:0.9rem; color:#777; margin-right:10px;">${subtotal}ج</span>
+                    الإجمالي: ${finalTotal} EGP`;
+            } else {
+                banner.style.display = 'none';
+                document.getElementById('total-price').innerText = 'الإجمالي: ' + subtotal + ' EGP';
+            }
         }
 
         function removeFromCart(index) {
@@ -1208,11 +1291,127 @@
             const phoneRegex = /^01[0125][0-9]{8}$/;
             if(!phoneRegex.test(phone)) return alert('رقم هاتف غير صحيح');
 
+            const subtotal = cart.reduce((a, b) => a + b.price, 0);
+            const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
+            const discountAmount = Math.round(subtotal * (discountValue / 100));
+            const finalTotal = subtotal - discountAmount;
+
             const itemsTxt = cart.map(i => "- " + i.name).join('%0A');
-            const total = cart.reduce((a, b) => a + b.price, 0);
-            const msg = `طلب جديد من أروما عيد%0A----------------%0Aالمنتجات:%0A${itemsTxt}%0A----------------%0Aالإجمالي: ${total} ج%0A----------------%0Aالعميل: ${name}%0Aالموبايل: ${phone}%0Aالمحافظة: ${gov}%0Aالمدينة: ${city}%0Aالعنوان: ${address}`;
+            const msg = `طلب جديد من أروما عيد%0A----------------%0Aالمنتجات:%0A${itemsTxt}%0A----------------%0Aقيمة الخصم: ${discountValue}% (${discountAmount}ج)%0Aالإجمالي النهائي: ${finalTotal} ج%0A----------------%0Aالعميل: ${name}%0Aالموبايل: ${phone}%0Aالمحافظة: ${gov}%0Aالمدينة: ${city}%0Aالعنوان: ${address}`;
             window.open(`https://wa.me/201551557931?text=${msg}`, '_blank');
         };
+
+        // --- LUCKY WHEEL LOGIC ---
+        const options = ["خصم 10%", "خصم 20%", "حظ أوفر", "خصم 5%"];
+        const colors = ["#d4af37", "#000", "#d4af37", "#000"];
+        let startAngle = 0;
+        const arc = Math.PI / (options.length / 2);
+        let spinTimeout = null;
+        let spinAngleStart = 10;
+        let spinTime = 0;
+        let spinTimeTotal = 0;
+        let ctx;
+
+        function drawWheel() {
+            const canvas = document.getElementById("wheel-canvas");
+            if (canvas.getContext) {
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0,0,320,320);
+                ctx.strokeStyle = "#d4af37";
+                ctx.lineWidth = 2;
+                ctx.font = 'bold 16px Cairo';
+
+                for(let i = 0; i < options.length; i++) {
+                    let angle = startAngle + i * arc;
+                    ctx.fillStyle = colors[i];
+                    ctx.beginPath();
+                    ctx.arc(160, 160, 150, angle, angle + arc, false);
+                    ctx.lineTo(160, 160);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.save();
+                    ctx.fillStyle = colors[i] === "#000" ? "#d4af37" : "#000";
+                    ctx.translate(160 + Math.cos(angle + arc / 2) * 100, 160 + Math.sin(angle + arc / 2) * 100);
+                    ctx.rotate(angle + arc / 2 + Math.PI / 2);
+                    ctx.fillText(options[i], -ctx.measureText(options[i]).width / 2, 0);
+                    ctx.restore();
+                }
+            }
+        }
+
+        function spinWheel() {
+            const lastSpin = localStorage.getItem('aroma_last_spin');
+            const now = new Date().getTime();
+            if (lastSpin && (now - lastSpin < 24 * 60 * 60 * 1000)) {
+                const hoursLeft = Math.ceil((24 * 60 * 60 * 1000 - (now - lastSpin)) / (1000 * 60 * 60));
+                document.getElementById('wheel-msg').innerText = `لقد جربت حظك بالفعل. عد بعد ${hoursLeft} ساعة!`;
+                return;
+            }
+
+            document.getElementById('spin-button').disabled = true;
+            spinAngleStart = Math.random() * 10 + 10;
+            spinTime = 0;
+            spinTimeTotal = Math.random() * 3 + 4 * 1000;
+            rotateWheel();
+        }
+
+        function rotateWheel() {
+            spinTime += 30;
+            if(spinTime >= spinTimeTotal) {
+                stopRotateWheel();
+                return;
+            }
+            let spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+            startAngle += (spinAngle * Math.PI / 180);
+            drawWheel();
+            spinTimeout = setTimeout(rotateWheel, 30);
+        }
+
+        function stopRotateWheel() {
+            clearTimeout(spinTimeout);
+            let degrees = startAngle * 180 / Math.PI + 90;
+            let arcd = arc * 180 / Math.PI;
+            let index = Math.floor((360 - degrees % 360) / arcd);
+            ctx.save();
+            const result = options[index];
+            document.getElementById('wheel-msg').innerHTML = `مبروك! حصلت على: <br><strong style="font-size:1.5rem; color:var(--gold-accent);">${result}</strong>`;
+            
+            // Logic for discount
+            if(result.includes("خصم")) {
+                const val = result.replace(/\D/g,'');
+                localStorage.setItem('aroma_discount', val);
+            } else {
+                localStorage.setItem('aroma_discount', "0");
+            }
+
+            localStorage.setItem('aroma_last_spin', new Date().getTime());
+            updateCartUI();
+            
+            setTimeout(() => {
+                closeWheelManual();
+            }, 3000);
+        }
+
+        function easeOut(t, b, c, d) {
+            let ts = (t /= d) * t;
+            let tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+        }
+
+        function openWheel() {
+            document.getElementById('wheel-overlay').style.display = 'flex';
+            drawWheel();
+            sidebar.classList.remove('active');
+            history.pushState({modal: "wheel"}, "");
+        }
+
+        function closeWheelManual() {
+            document.getElementById('wheel-overlay').style.display = 'none';
+            if (window.history.state?.modal === "wheel") history.back();
+        }
+
+        function closeWheel(e) { if(e.target.id === 'wheel-overlay') closeWheelManual(); }
 
         window.onload = () => { 
             updateCartUI(); 
@@ -1228,6 +1427,15 @@
                 citySelect.innerHTML = '<option value="" disabled selected>اختر المدينة</option>' + 
                     egyptData[this.value].map(c => `<option value="${c}">${c}</option>`).join('');
             };
+
+            // Intent Pop-up after 3 seconds
+            setTimeout(() => {
+                const lastSpin = localStorage.getItem('aroma_last_spin');
+                const now = new Date().getTime();
+                if (!lastSpin || (now - lastSpin >= 24 * 60 * 60 * 1000)) {
+                    openWheel();
+                }
+            }, 3000);
         };
     </script>
 </body>
