@@ -78,6 +78,7 @@
             padding: 40px 30px;
             border-left: 1px solid rgba(212, 175, 55, 0.3);
             will-change: transform;
+            overflow-y: auto;
         }
 
         #sidebar.active { transform: translateX(0); }
@@ -112,13 +113,21 @@
             flex-shrink: 0;
         }
 
+        /* التعديل: جعل الفوتر يحتوي على سكرول داخلي مع الحفاظ على الزر ثابتاً */
         .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #222;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             background: #0a0a0a;
-            flex-shrink: 0;
-            max-height: 70vh;
             overflow-y: auto;
+            position: relative;
+        }
+
+        .order-form {
+            padding: 20px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .order-form input, .order-form select, .order-form textarea {
@@ -144,11 +153,34 @@
             display: none;
         }
 
+        /* التعديل: جعل زر الواتساب Sticky في أسفل الكارت */
+        .whatsapp-submit-btn {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px;
+            background: #25d366;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 2200;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            margin-top: auto;
+        }
+
+        /* إضافة مساحة أسفل الفورم لمنع التداخل */
+        .form-fields-wrapper {
+            margin-bottom: 20px;
+        }
+
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 15px 5%;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             position: sticky;
             top: 0;
@@ -157,7 +189,7 @@
             z-index: 1000;
         }
 
-        .menu-toggle, .cart-icon-btn {
+        .menu-toggle {
             background: transparent;
             border: 1px solid var(--gold-accent);
             padding: 8px 18px;
@@ -170,12 +202,46 @@
             font-size: 0.8rem;
         }
 
-        .menu-toggle:hover, .cart-icon-btn:hover {
+        .menu-toggle:hover {
             background: var(--gold-accent);
             color: #000;
         }
 
-        .cart-count { background: var(--discount-red); color: white; padding: 2px 7px; border-radius: 50%; font-size: 10px; margin-right: 5px; }
+        /* تنسيق أيقونة عربة التسوق الجديدة */
+        .cart-icon-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        
+        .cart-icon-btn:hover { transform: scale(1.05); }
+
+        .cart-svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--gold-accent);
+        }
+
+        .cart-count {
+            background: var(--white);
+            color: var(--deep-black);
+            font-size: 11px;
+            font-weight: 700;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 6px; /* التباعد الأفقي حسب الصورة */
+            padding: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
 
         .hero {
             height: 70vh;
@@ -500,6 +566,7 @@
             .detail-img-container { height: 300px; }
             .products-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .card-slider { height: 220px; }
+            #cart-modal { width: 100%; } /* ملء الشاشة في الموبايل */
         }
     </style>
 </head>
@@ -523,9 +590,12 @@
         <header>
             <button class="menu-toggle" id="openMenu">Menu</button>
             <div style="color: var(--gold-accent); font-weight: 300; font-size: 1.5rem; letter-spacing: 5px;">AROMA EID</div>
+            
             <button class="cart-icon-btn" id="openCartBtn">
                 <span id="cart-count-val" class="cart-count">0</span>
-                <span>Cart</span>
+                <svg class="cart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
             </button>
         </header>
 
@@ -810,30 +880,33 @@
             <h2 style="color: var(--gold-accent); font-weight: 300;">YOUR SELECTION</h2>
             <button class="close-btn" id="closeCartBtn" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
         </div>
-        <div id="cart-items-list" style="flex:1; overflow-y:auto; padding:20px;"></div>
+        
+        <div id="cart-items-list" style="padding:20px; border-bottom:1px solid #222;"></div>
         
         <div class="cart-footer">
-            <p id="total-price" style="color:var(--gold-accent); font-size:1.3rem; text-align:center; margin-bottom:15px; font-weight:bold;"></p>
+            <p id="total-price" style="color:var(--gold-accent); font-size:1.3rem; text-align:center; margin:15px 0; font-weight:bold;"></p>
             
             <form class="order-form" id="orderForm">
-                <input type="text" id="custName" placeholder="الاسم بالكامل" required>
-                <span class="error-msg" id="nameError">يرجى إدخال الاسم</span>
-                
-                <input type="tel" id="custPhone" placeholder="رقم الموبايل (01xxxxxxxxx)" required>
-                <span class="error-msg" id="phoneError">يرجى إدخال رقم موبايل مصري صحيح</span>
+                <div class="form-fields-wrapper">
+                    <input type="text" id="custName" placeholder="الاسم بالكامل" required>
+                    <span class="error-msg" id="nameError">يرجى إدخال الاسم</span>
+                    
+                    <input type="tel" id="custPhone" placeholder="رقم الموبايل (01xxxxxxxxx)" required>
+                    <span class="error-msg" id="phoneError">يرجى إدخال رقم موبايل مصري صحيح</span>
 
-                <select id="custGov" required>
-                    <option value="" disabled selected>اختر المحافظة</option>
-                </select>
+                    <select id="custGov" required>
+                        <option value="" disabled selected>اختر المحافظة</option>
+                    </select>
 
-                <select id="custCity" required disabled>
-                    <option value="" disabled selected>اختر المدينة / المركز</option>
-                </select>
+                    <select id="custCity" required disabled>
+                        <option value="" disabled selected>اختر المدينة / المركز</option>
+                    </select>
 
-                <textarea id="custAddress" placeholder="العنوان بالتفصيل (اسم الشارع، رقم المنزل...)" rows="3" required></textarea>
-                <span class="error-msg" id="addressError">يرجى إدخال العنوان</span>
+                    <textarea id="custAddress" placeholder="العنوان بالتفصيل (اسم الشارع، رقم المنزل...)" rows="3" required></textarea>
+                    <span class="error-msg" id="addressError">يرجى إدخال العنوان</span>
+                </div>
 
-                <button type="submit" style="width:100%; padding:14px; background:#25d366; border:none; color:white; font-weight:bold; cursor:pointer; border-radius:4px; font-size: 1rem;">
+                <button type="submit" class="whatsapp-submit-btn">
                     إتمام الطلب عبر واتساب
                 </button>
             </form>
