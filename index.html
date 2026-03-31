@@ -207,23 +207,29 @@
             color: #000;
         }
 
-        /* تنسيق أيقونة عربة التسوق الجديدة */
-        .cart-icon-btn {
+        /* تنسيق أيقونات الهيدر */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .fb-icon-btn, .cart-icon-btn {
             background: transparent;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
-            padding: 5px;
             position: relative;
             transition: transform 0.2s;
+            text-decoration: none;
         }
         
-        .cart-icon-btn:hover { transform: scale(1.05); }
+        .fb-icon-btn:hover, .cart-icon-btn:hover { transform: scale(1.1); }
 
-        .cart-svg {
-            width: 26px;
-            height: 26px;
+        .fb-svg, .cart-svg {
+            width: 24px;
+            height: 24px;
             fill: var(--gold-accent);
         }
 
@@ -574,7 +580,8 @@
         .footer-content {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+            align-items: center;
         }
 
         .footer-rights {
@@ -643,6 +650,48 @@
             margin-bottom: 10px; display: none; text-align: center;
         }
 
+        /* --- Floating Facebook Icon --- */
+        .fb-float-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 55px;
+            height: 55px;
+            background: #1877F2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 4000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        .fb-float-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: #1565C0;
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+        }
+        
+        .fb-float-svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* Animation for the float button */
+        @keyframes pulse-fb {
+            0% { box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(24, 119, 242, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(24, 119, 242, 0); }
+        }
+        
+        .fb-float-btn {
+            animation: pulse-fb 2s infinite;
+        }
+
         @media (max-width: 768px) {
             .detail-content { flex-direction: column; max-width: 95%; }
             .detail-img-container, .detail-text { width: 100%; }
@@ -651,10 +700,17 @@
             .products-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .card-slider { height: 220px; }
             #cart-modal { width: 100%; } /* ملء الشاشة في الموبايل */
+            .fb-float-btn { bottom: 20px; left: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
+
+    <a href="https://www.facebook.com/share/1DqTwP7iPx/" target="_blank" class="fb-float-btn" title="تواصل معنا عبر فيسبوك">
+        <svg class="fb-float-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54V9.82c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+        </svg>
+    </a>
 
     <div class="announcement-bar">
         شحن مجاني لأي مكان في مصر لفترة محدودة
@@ -677,12 +733,19 @@
             <button class="menu-toggle" id="openMenu">Menu</button>
             <div style="color: var(--gold-accent); font-weight: 300; font-size: 1.5rem; letter-spacing: 5px;">AROMA EID</div>
             
-            <button class="cart-icon-btn" id="openCartBtn">
-                <span id="cart-count-val" class="cart-count">0</span>
-                <svg class="cart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                </svg>
-            </button>
+            <div class="header-actions">
+                <a href="https://www.facebook.com/share/1DqTwP7iPx/" target="_blank" class="fb-icon-btn">
+                    <svg class="fb-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54V9.82c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+                    </svg>
+                </a>
+                <button class="cart-icon-btn" id="openCartBtn">
+                    <span id="cart-count-val" class="cart-count">0</span>
+                    <svg class="cart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                </button>
+            </div>
         </header>
 
         <section class="hero reveal">
@@ -1034,6 +1097,11 @@
 
         <footer class="site-footer reveal">
             <div class="footer-content">
+                <a href="https://www.facebook.com/share/1DqTwP7iPx/" target="_blank" class="fb-icon-btn">
+                    <svg class="fb-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:30px; height:30px;">
+                        <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54V9.82c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+                    </svg>
+                </a>
                 <p class="footer-rights">جميع الحقوق محفوظة لـ أروما عيد © 2026</p>
                 <p class="footer-info">صناعة مصرية بزيوت فرنسية</p>
                 <p class="footer-info">العنوان: مدينة نصر - الحي السابع</p>
