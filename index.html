@@ -302,6 +302,9 @@
             margin: 0 auto;
         }
 
+        /* إخفاء قسم النساء افتراضياً */
+        #women-section { display: none; }
+
         .card {
             background: var(--card-bg);
             border: none;
@@ -663,7 +666,8 @@
         <ul class="nav-links" style="list-style:none; margin-top:40px; text-align:center;">
             <li style="margin:25px 0;"><a href="#" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الرئيسية</a></li>
             <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:var(--gold-accent); text-decoration:none; font-size:1.4rem; letter-spacing:2px; font-weight:bold;">جرب حظك 🎡</a></li>
-            <li style="margin:25px 0;"><a href="#men-section" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('men')" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('women')" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">WOMEN</a></li>
             <li style="margin:25px 0;"><a href="#reviews-section" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الآراء</a></li>
         </ul>
     </nav>
@@ -687,8 +691,8 @@
         </section>
 
         <div class="category-tabs reveal">
-            <button class="tab-btn active" onclick="location.href='#men-section'">MEN</button>
-            <button class="tab-btn" onclick="alert('Soon...')">WOMEN</button>
+            <button class="tab-btn active" id="tab-men" onclick="switchTab('men')">MEN</button>
+            <button class="tab-btn" id="tab-women" onclick="switchTab('women')">WOMEN</button>
         </div>
 
         <section id="men-section">
@@ -964,6 +968,49 @@
             </div>
         </section>
 
+        <section id="women-section">
+            <div class="products-container">
+                <div class="card reveal">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg" loading="lazy" onclick="showDetail(20)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(20)" style="cursor:pointer;">LOST CHERRY</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Lost Cherry', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg" loading="lazy" onclick="showDetail(21)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(21)" style="cursor:pointer;">BACCARAT ROUGE 540</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Baccarat Rouge 540', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg" loading="lazy" onclick="showDetail(22)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(22)" style="cursor:pointer;">EILISH</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Eilish', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="reviews-section" class="reviews-section reveal">
             <h2>CLIENT REVIEWS</h2>
             <div class="reviews-slider">
@@ -1127,7 +1174,11 @@
             { name: "XERJOFF ALEXANDRIA II", img: "https://i.postimg.cc/N0KGBXc7/IMG-20260330-231115-598.jpg", intro: "الخزامى، القرفة، الورد، خشب الأرز", heart: "الورد، زنابق الوادي، خشب الصندل", base: "العود، الفانيليا، العنبر، المسك", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "ملكي"] },
             { name: "DIOR HOMME", img: "https://i.postimg.cc/PqVy9PbV/IMG-20260330-232825-829.jpg", intro: "الخزامى، البرغموت، الميرمية", heart: "السوسن، الكاكاو، العنبر", base: "الجلود، الباتشولي، نجيل الهند", performance: {long: 85, sill: 80}, tags: ["رسمي", "خريف", "جذاب"] },
             { name: "BLACK XS", img: "https://i.postimg.cc/RZXLJNYv/IMG-20260330-232806-719.jpg", intro: "الليمون، المريمية", heart: "البرالين، القرفة، الهيل الأسود، بلسم تولو", base: "الخشب البرازيلي، الباتشولي، العنبر الأسود", performance: {long: 80, sill: 85}, tags: ["شبابي", "شتاء", "جريء"] },
-            { name: "LE MALE LE PARFUM", img: "https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg", intro: "الهيل", heart: "الخزامى، السوسن", base: "الفانيليا، الملاحظات الشرقية، الأخشاب", performance: {long: 90, sill: 90}, tags: ["شتاء", "فخم", "مسائي"] }
+            { name: "LE MALE LE PARFUM", img: "https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg", intro: "الهيل", heart: "الخزامى، السوسن", base: "الفانيليا، الملاحظات الشرقية، الأخشاب", performance: {long: 90, sill: 90}, tags: ["شتاء", "فخم", "مسائي"] },
+            // العطور النسائية الجديدة
+            { name: "LOST CHERRY", img: "https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg", intro: "الكرز الحامض، اللوز المر، اليكير", heart: "الكرز الحامض، البرقوق، الورد التركي، الياسمين", base: "التونكا، الفانيليا، بلسم بيرو، القرفة، خشب الصندل", performance: {long: 85, sill: 80}, tags: ["شتاء", "جذاب", "مسائي"] },
+            { name: "BACCARAT ROUGE 540", img: "https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg", intro: "الزعفران، الياسمين", heart: "خشب العنبر، العنبر", base: "صمغ الصنوبر، خشب الأرز", performance: {long: 95, sill: 95}, tags: ["فخم", "رسمي", "كل الفصول"] },
+            { name: "EILISH", img: "https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg", intro: "السكر، التوت الأحمر، الماندرين", heart: "الفانيليا، الكاكاو، الورد، التوابل", base: "العنبر، المسك، الأخشاب، التونكا", performance: {long: 80, sill: 75}, tags: ["دافئ", "يومي", "شتاء"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
@@ -1136,6 +1187,28 @@
         const detailModal = document.getElementById('detail-modal');
         const govSelect = document.getElementById('custGov');
         const citySelect = document.getElementById('custCity');
+
+        // التبديل بين الأقسام
+        function switchTab(tab) {
+            const menSec = document.getElementById('men-section');
+            const womenSec = document.getElementById('women-section');
+            const tabMen = document.getElementById('tab-men');
+            const tabWomen = document.getElementById('tab-women');
+
+            if(tab === 'men') {
+                menSec.style.display = 'block';
+                womenSec.style.display = 'none';
+                tabMen.classList.add('active');
+                tabWomen.classList.remove('active');
+            } else {
+                menSec.style.display = 'none';
+                womenSec.style.display = 'block';
+                tabWomen.classList.add('active');
+                tabMen.classList.remove('active');
+            }
+            // إغلاق السايدبار إذا كان مفتوحاً
+            sidebar.classList.remove('active');
+        }
 
         // Efficiency: Unified Event Listener for scrolling
         let throttleTimer;
