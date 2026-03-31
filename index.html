@@ -702,6 +702,262 @@
             #cart-modal { width: 100%; } /* ملء الشاشة في الموبايل */
             .fb-float-btn { bottom: 20px; left: 20px; width: 50px; height: 50px; }
         }
+
+        /* =========================================
+           Fragrance Finder (DIOR Style) - New Additions
+           ========================================= */
+        
+        .quiz-float-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 100px; /* بجانب فيسبوك */
+            width: 55px;
+            height: 55px;
+            background: var(--matte-black);
+            border: 2px solid var(--gold-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            z-index: 4000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .quiz-float-btn:hover {
+            transform: scale(1.1);
+            background: var(--gold-accent);
+        }
+
+        .quiz-float-btn:hover .quiz-svg {
+            fill: #000;
+        }
+
+        .quiz-svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--gold-accent);
+            transition: 0.3s;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .quiz-float-btn { animation: pulse-gold 5s infinite; }
+
+        /* Quiz Modal Shell */
+        #quiz-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            z-index: 6000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-card {
+            background: var(--matte-black);
+            width: 500px;
+            max-width: 90%;
+            min-height: 520px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .quiz-progress-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--gold-accent);
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        .quiz-step {
+            display: none;
+            animation: quizFadeIn 0.5s forwards;
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+
+        .quiz-step.active { display: flex; }
+
+        @keyframes quizFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-title {
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .quiz-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .quiz-opt-btn {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid #222;
+            color: #ccc;
+            padding: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .quiz-opt-btn:hover {
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Skeleton Loader Effect */
+        .skeleton-text {
+            height: 20px;
+            background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
+            background-size: 200% 100%;
+            animation: skeleton-pulse 1.5s infinite;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        @keyframes skeleton-pulse {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .quiz-result-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            animation: quizFadeIn 0.8s forwards;
+            width: 100%;
+        }
+
+        .quiz-result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .quiz-result-item {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .quiz-result-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid var(--gold-accent);
+            padding: 3px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .quiz-float-btn { left: 80px; bottom: 20px; }
+            .quiz-card { padding: 30px 20px; width: 95%; min-height: 480px; }
+        }
+
+        /* =========================================
+           New Quiz Popup Notification Style
+           ========================================= */
+        #quiz-popup {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: var(--matte-black);
+            border: 1px solid var(--gold-accent);
+            padding: 15px 20px;
+            z-index: 4500;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            max-width: 250px;
+            animation: slideUpPopup 0.5s ease forwards;
+        }
+
+        @keyframes slideUpPopup {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-popup-title {
+            color: var(--gold-accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .quiz-popup-text {
+            color: #ccc;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .quiz-popup-btn {
+            background: var(--gold-accent);
+            color: #000;
+            border: none;
+            padding: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .quiz-popup-btn:hover {
+            background: var(--white);
+        }
+
+        .quiz-popup-close {
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            color: #555;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
@@ -711,6 +967,19 @@
             <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54V9.82c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
         </svg>
     </a>
+
+    <div class="quiz-float-btn" onclick="openQuiz()" title="مستشار العطور الذكي">
+        <svg class="quiz-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+        </svg>
+    </div>
+
+    <div id="quiz-popup">
+        <span class="quiz-popup-close" onclick="this.parentElement.style.display='none'">&times;</span>
+        <div class="quiz-popup-title">محتار في اختيار عطرك؟ 🤔</div>
+        <div class="quiz-popup-text">مش عارف ذوقك؟ عملنا لك مستشار ذكي يساعدك تختار عطرك المثالي في ثواني!</div>
+        <button class="quiz-popup-btn" onclick="this.parentElement.style.display='none'; openQuiz();">جرب المستشار الآن</button>
+    </div>
 
     <div class="announcement-bar">
         شحن مجاني لأي مكان في مصر لفترة محدودة
@@ -1120,6 +1389,70 @@
         <p id="wheel-msg" style="margin-top:20px; color:#fff; font-size:0.9rem; text-align:center;"></p>
     </div>
 
+    <div id="quiz-modal" onclick="closeQuizOverlay(event)">
+        <div class="quiz-card" onclick="event.stopPropagation()">
+            <div class="quiz-progress-container">
+                <div class="quiz-progress-bar" id="quiz-bar"></div>
+            </div>
+            
+            <button onclick="closeQuizManual()" style="position:absolute; top:15px; right:15px; background:none; border:none; color:#555; font-size:25px; cursor:pointer;">&times;</button>
+
+            <div id="quiz-skeleton" style="display:flex; flex-direction:column; gap:20px;">
+                <div class="skeleton-text" style="width:60%;"></div>
+                <div class="skeleton-text" style="width:100%; height:40px;"></div>
+                <div class="skeleton-text" style="width:100%; height:40px;"></div>
+                <div class="skeleton-text" style="width:100%; height:40px;"></div>
+            </div>
+
+            <div id="quiz-content" style="display:none;">
+                <div class="quiz-step active" id="step-1">
+                    <h2 class="quiz-title">مرحباً بك في مستشار أروما الذكي</h2>
+                    <p class="quiz-subtitle">دعنا نساعدك في العثور على توقيعك العطري الخاص</p>
+                    <div class="quiz-options">
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(2, 'men')">إصدارات رجالية</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(2, 'women')">إصدارات نسائية</button>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="step-2">
+                    <h2 class="quiz-title">ما هي المناسبة؟</h2>
+                    <p class="quiz-subtitle">متى تخطط لارتداء هذا العطر؟</p>
+                    <div class="quiz-options">
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(3, 'daily')">استخدام يومي / عمل</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(3, 'formal')">رسمي / مناسبات خاصة</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(3, 'night')">سهرات / خروج ليلي</button>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="step-3">
+                    <h2 class="quiz-title">ما هو الانطباع المطلوب؟</h2>
+                    <p class="quiz-subtitle">كيف تحب أن يراك الآخرون؟</p>
+                    <div class="quiz-options">
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(4, 'fresh')">منعش، نظيف وطاقة</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(4, 'bold')">قوي، غامض ومسيطر</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(4, 'sweet')">دافئ، جذاب وسكري</button>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="step-4">
+                    <h2 class="quiz-title">ما هي الروائح التي تجذبك؟</h2>
+                    <div class="quiz-options">
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(5, 'woody')">الأخشاب والجلود</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(5, 'citrus')">الحمضيات والفواكه</button>
+                        <button class="quiz-opt-btn" onclick="nextQuizStep(5, 'oriental')">العنبر، الفانيليا والتوابل</button>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="step-result">
+                    <h2 class="quiz-title">لقد اخترنا لك أفضل عطرين!</h2>
+                    <div id="quiz-result-area" class="quiz-result-card">
+                        </div>
+                    <button onclick="resetQuiz()" style="background:none; border:none; color:var(--text-gray); font-size:0.7rem; cursor:pointer; margin-top:10px;">إعادة البحث ↺</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="detail-modal" class="detail-modal" onclick="closeDetail(event)">
         <div class="detail-content" onclick="event.stopPropagation()">
             <div class="detail-img-container">
@@ -1223,30 +1556,29 @@
         };
 
         const productsData = [
-            { name: "STRONGER WITH YOU", img: "https://i.postimg.cc/D0Tt9P8H/375x500-100895.jpg", intro: "الهيل، الفلفل الوردي، النعناع", heart: "الأناناس، الميرمية، البطيخ", base: "الفانيليا، الكستناء، خشب الأرز", performance: {long: 85, sill: 80}, tags: ["شتاء", "خريف", "مسائي"] },
-            { name: "SAUVAGE", img: "https://i.postimg.cc/kMZHNDhX/FB-IMG-1774883910137.jpg", intro: "برغموت كالابريا، الفلفل", heart: "فلفل سيتشوان، الخزامى، الباتشولي", base: "الأمبروكسان، الأرز، اللابدانوم", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "يومي", "جذاب"] },
-            { name: "أسد الكسير", img: "https://i.postimg.cc/2SmNvVVg/FB-IMG-1774883985402.jpg", intro: "القرفة، الهيل، جوزة الطيب، الجريب فروت", heart: "عرق السوس، الخزامى", base: "الفانيليا، العنبر، الباتشولي، نجيل الهند", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "فخم"] },
-            { name: "BLUE DE CHANEL", img: "https://i.postimg.cc/brb4Sh8y/FB-IMG-1774883989978.jpg", intro: "الجريب فروت، الليمون، النعناع، الفلفل الوردي", heart: "الزنجبيل، الياسمين، جوزة الطيب", base: "البخور، خشب الصندل، المسك، الأرز", performance: {long: 75, sill: 70}, tags: ["صيف", "صباحي", "عمل"] },
-            { name: "AMOUAGE LYRIC", img: "https://i.postimg.cc/Hs9Pq3kb/FB-IMG-1774883975224.jpg", intro: "الورد، البرغموت، الليمون، الجير", heart: "الزعفران، جوزة الطيب، الزنجبيل، القرفة", base: "البخور، الصنوبر، خشب الصندل، المسك", performance: {long: 90, sill: 85}, tags: ["كلاسيك", "ربيع", "شتاء"] },
-            { name: "HACIVAT X", img: "https://i.postimg.cc/jSWPHdmn/FB-IMG-1774883981832.jpg", intro: "الأناناس، البرغموت، الفلفل الوردي", heart: "الجير، الياسمين، زهور البرتقال", base: "نجيل الهند، الباتشولي، الأرز", performance: {long: 95, sill: 95}, tags: ["صيف", "قوي", "منعش"] },
-            { name: "STRONGER WITH YOU FREEZE", img: "https://i.postimg.cc/htJj2Kx3/FB-IMG-1774893865555.jpg", intro: "الليمون، الزنجبيل، التفاح، اليوسفي", heart: "الخزامى، الميرمية، إبرة الراعي، الهيل", base: "مارون جليسيه، خشب الأرز، أخشاب الغاياك", performance: {long: 80, sill: 75}, tags: ["صيف", "ربيع", "منعش"] },
-            { name: "STRONGER WITH YOU ABSOLUTELY", img: "https://i.postimg.cc/Kv3SVjqD/FB-IMG-1774893871779.jpg", intro: "الروم، الإيليمي، البرغموت", heart: "الخزامى، الشيح", base: "الكستناء، فانيليا مدغشقر، الأرز، الباتشولي", performance: {long: 95, sill: 90}, tags: ["شتاء", "قوي جداً", "دافئ"] },
-            { name: "BLACK AFGANO", img: "https://i.postimg.cc/mgWq5w1J/FB-IMG-1774893845756.jpg", intro: "القنب، الملاحظات الخضراء", heart: "الراتينجات، الأخشاب، القهوة، التبغ", base: "البخور، العود", performance: {long: 100, sill: 100}, tags: ["غامض", "شتاء", "نادر"] },
-            { name: "THE ONE", img: "https://i.postimg.cc/9fgHK9hr/FB-IMG-1774893849868.jpg", intro: "الجريب فروت، الكزبرة، الريحان", heart: "الزنجبيل، الهيل، زهر البرتقال", base: "العنبر، التبغ، خشب الأرز", performance: {long: 70, sill: 70}, tags: ["رومانسي", "خريف", "مسائي"] },
-            { name: "CREED ABSOLU AVENTUS", img: "https://i.postimg.cc/P5F6kQCP/FB-IMG-1774894293952.jpg", intro: "الجريب فروت، البرغموت، الكشمش الأسود", heart: "الزنجبيل، القرفة، الهيل، القشرة", base: "الفلفل الوردي، الباتشولي، نجيل الهند", performance: {long: 90, sill: 90}, tags: ["فخم", "كل الفصول", "ملكي"] },
-            { name: "عطر هوس", img: "https://i.postimg.cc/d0VLGG61/FB-IMG-1774894495826.jpg", intro: "التفاح، البرغموت، الليمون، القرفة", heart: "ملاحظات مائية، البرقوق، الهيل", base: "العنبر، المسك، الباتشولي", performance: {long: 85, sill: 90}, tags: ["صيف", "يومي", "شبابي"] },
-            { name: "عطر هوس ايس", img: "https://i.postimg.cc/90ZMcbm8/FB-IMG-1774894490647.jpg", intro: "الماندرين المجمد، التفاح الأخضر، الليمون", heart: "الخزامى الجليدي، البرقوق، الهيل", base: "العنبر، المسك، الباتشولي", performance: {long: 85, sill: 90}, tags: ["صيف", "منعش جداً", "صباحي"] },
-            { name: "عطر هوس بلاك", img: "https://i.postimg.cc/pdrLmRXb/FB-IMG-1774894492795.jpg", intro: "البرغموت، الأناناس، الفلفل الوردي", heart: "الياسمين، خشب الأرز، الباتشولي", base: "المسك، العنبر، الأخشاب الداكنة", performance: {long: 90, sill: 85}, tags: ["مسائي", "قوي", "خريف"] },
-            { name: "LOUIS VUITTON IMAGINATION", img: "https://i.postimg.cc/gcNtDpGL/FB-IMG-1774894599355.jpg", intro: "السيترون، برغموت كالابريا، البرتقال الصقلي", heart: "الزنجبيل النيجيري، القرفة، زهر البرتقال", base: "الأمبروكسان، الشاي الأسود الصيني", performance: {long: 85, sill: 80}, tags: ["صيف", "نظافة", "فخامة"] },
-            { name: "XERJOFF 40 KNOTS", img: "https://i.postimg.cc/NMr07HCM/IMG-20260330-231127-113.jpg", intro: "الملاحظات الملحية، الأخشاب، مياه البحر", heart: "الأرنب الوردي، الملاحظات الخضراء", base: "الأرز، العنبر", performance: {long: 90, sill: 85}, tags: ["صيف", "فخم", "بحر"] },
-            { name: "XERJOFF ALEXANDRIA II", img: "https://i.postimg.cc/N0KGBXc7/IMG-20260330-231115-598.jpg", intro: "الخزامى، القرفة، الورد، خشب الأرز", heart: "الورد، زنابق الوادي، خشب الصندل", base: "العود، الفانيليا، العنبر، المسك", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "ملكي"] },
-            { name: "DIOR HOMME", img: "https://i.postimg.cc/PqVy9PbV/IMG-20260330-232825-829.jpg", intro: "الخزامى، البرغموت، الميرمية", heart: "السوسن، الكاكاو، العنبر", base: "الجلود، الباتشولي، نجيل الهند", performance: {long: 85, sill: 80}, tags: ["رسمي", "خريف", "جذاب"] },
-            { name: "BLACK XS", img: "https://i.postimg.cc/RZXLJNYv/IMG-20260330-232806-719.jpg", intro: "الليمون، المريمية", heart: "البرالين، القرفة، الهيل الأسود، بلسم تولو", base: "الخشب البرازيلي، الباتشولي، العنبر الأسود", performance: {long: 80, sill: 85}, tags: ["شبابي", "شتاء", "جريء"] },
-            { name: "LE MALE LE PARFUM", img: "https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg", intro: "الهيل", heart: "الخزامى، السوسن", base: "الفانيليا، الملاحظات الشرقية، الأخشاب", performance: {long: 90, sill: 90}, tags: ["شتاء", "فخم", "مسائي"] },
-            // العطور النسائية الجديدة
-            { name: "LOST CHERRY", img: "https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg", intro: "الكرز الحامض، اللوز المر، اليكير", heart: "الكرز الحامض، البرقوق، الورد التركي، الياسمين", base: "التونكا، الفانيليا، بلسم بيرو، القرفة، خشب الصندل", performance: {long: 85, sill: 80}, tags: ["شتاء", "جذاب", "مسائي"] },
-            { name: "BACCARAT ROUGE 540", img: "https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg", intro: "الزعفران، الياسمين", heart: "خشب العنبر، العنبر", base: "صمغ الصنوبر، خشب الأرز", performance: {long: 95, sill: 95}, tags: ["فخم", "رسمي", "كل الفصول"] },
-            { name: "EILISH", img: "https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg", intro: "السكر، التوت الأحمر، الماندرين", heart: "الفانيليا، الكاكاو، الورد، التوابل", base: "العنبر، المسك، الأخشاب، التونكا", performance: {long: 80, sill: 75}, tags: ["دافئ", "يومي", "شتاء"] }
+            { name: "STRONGER WITH YOU", price: 850, img: "https://i.postimg.cc/D0Tt9P8H/375x500-100895.jpg", intro: "الهيل، الفلفل الوردي، النعناع", heart: "الأناناس، الميرمية، البطيخ", base: "الفانيليا، الكستناء، خشب الأرز", performance: {long: 85, sill: 80}, tags: ["شتاء", "خريف", "مسائي"] },
+            { name: "SAUVAGE", price: 850, img: "https://i.postimg.cc/kMZHNDhX/FB-IMG-1774883910137.jpg", intro: "برغموت كالابريا، الفلفل", heart: "فلفل سيتشوان، الخزامى، الباتشولي", base: "الأمبروكسان، الأرز، اللابدانوم", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "يومي", "جذاب"] },
+            { name: "أسد الكسير", price: 850, img: "https://i.postimg.cc/2SmNvVVg/FB-IMG-1774883985402.jpg", intro: "القرفة، الهيل، جوزة الطيب، الجريب فروت", heart: "عرق السوس، الخزامى", base: "الفانيليا، العنبر، الباتشولي، نجيل الهند", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "فخم"] },
+            { name: "BLUE DE CHANEL", price: 850, img: "https://i.postimg.cc/brb4Sh8y/FB-IMG-1774883989978.jpg", intro: "الجريب فروت، الليمون، النعناع، الفلفل الوردي", heart: "الزنجبيل، الياسمين، جوزة الطيب", base: "البخور، خشب الصندل، المسك، الأرز", performance: {long: 75, sill: 70}, tags: ["صيف", "صباحي", "عمل"] },
+            { name: "AMOUAGE LYRIC", price: 850, img: "https://i.postimg.cc/Hs9Pq3kb/FB-IMG-1774883975224.jpg", intro: "الورد، البرغموت، الليمون، الجير", heart: "الزعفران، جوزة الطيب، الزنجبيل، القرفة", base: "البخور، الصنوبر، خشب الصندل، المسك", performance: {long: 90, sill: 85}, tags: ["كلاسيك", "ربيع", "شتاء"] },
+            { name: "HACIVAT X", price: 850, img: "https://i.postimg.cc/jSWPHdmn/FB-IMG-1774883981832.jpg", intro: "الأناناس، البرغموت، الفلفل الوردي", heart: "الجير، الياسمين، زهور البرتقال", base: "نجيل الهند، الباتشولي، الأرز", performance: {long: 95, sill: 95}, tags: ["صيف", "قوي", "منعش"] },
+            { name: "STRONGER WITH YOU FREEZE", price: 850, img: "https://i.postimg.cc/htJj2Kx3/FB-IMG-1774893865555.jpg", intro: "الليمون، الزنجبيل، التفاح، اليوسفي", heart: "الخزامى، الميرمية، إبرة الراعي، الهيل", base: "مارون جليسيه، خشب الأرز، أخشاب الغاياك", performance: {long: 80, sill: 75}, tags: ["صيف", "ربيع", "منعش"] },
+            { name: "STRONGER WITH YOU ABSOLUTELY", price: 850, img: "https://i.postimg.cc/Kv3SVjqD/FB-IMG-1774893871779.jpg", intro: "الروم، الإيليمي، البرغموت", heart: "الخزامى، الشيح", base: "الكستناء، فانيليا مدغشقر، الأرز، الباتشولي", performance: {long: 95, sill: 90}, tags: ["شتاء", "قوي جداً", "دافئ"] },
+            { name: "BLACK AFGANO", price: 850, img: "https://i.postimg.cc/mgWq5w1J/FB-IMG-1774893845756.jpg", intro: "القنب، الملاحظات الخضراء", heart: "الراتينجات، الأخشاب، القهوة، التبغ", base: "البخور، العود", performance: {long: 100, sill: 100}, tags: ["غامض", "شتاء", "نادر"] },
+            { name: "THE ONE", price: 850, img: "https://i.postimg.cc/9fgHK9hr/FB-IMG-1774893849868.jpg", intro: "الجريب فروت، الكزبرة، الريحان", heart: "الزنجبيل، الهيل، زهر البرتقال", base: "العنبر، التبغ، خشب الأرز", performance: {long: 70, sill: 70}, tags: ["رومانسي", "خريف", "مسائي"] },
+            { name: "CREED ABSOLU AVENTUS", price: 850, img: "https://i.postimg.cc/P5F6kQCP/FB-IMG-1774894293952.jpg", intro: "الجريب فروت، البرغموت، الكشمش الأسود", heart: "الزنجبيل، القرفة، الهيل، القشرة", base: "الفلفل الوردي، الباتشولي، نجيل الهند", performance: {long: 90, sill: 90}, tags: ["فخم", "كل الفصول", "ملكي"] },
+            { name: "عطر هوس", price: 600, img: "https://i.postimg.cc/d0VLGG61/FB-IMG-1774894495826.jpg", intro: "التفاح، البرغموت، الليمون، القرفة", heart: "ملاحظات مائية، البرقوق، الهيل", base: "العنبر، المسك، الباتشولي", performance: {long: 85, sill: 90}, tags: ["صيف", "يومي", "شبابي"] },
+            { name: "عطر هوس ايس", price: 600, img: "https://i.postimg.cc/90ZMcbm8/FB-IMG-1774894490647.jpg", intro: "الماندرين المجمد، التفاح الأخضر، الليمون", heart: "الخزامى الجليدي، البرقوق، الهيل", base: "العنبر، المسك، الباتشولي", performance: {long: 85, sill: 90}, tags: ["صيف", "منعش جداً", "صباحي"] },
+            { name: "عطر هوس بلاك", price: 600, img: "https://i.postimg.cc/pdrLmRXb/FB-IMG-1774894492795.jpg", intro: "البرغموت، الأناناس، الفلفل الوردي", heart: "الياسمين، خشب الأرز، الباتشولي", base: "المسك، العنبر، الأخشاب الداكنة", performance: {long: 90, sill: 85}, tags: ["مسائي", "قوي", "خريف"] },
+            { name: "Louis Vuitton Imagination", price: 1000, img: "https://i.postimg.cc/gcNtDpGL/FB-IMG-1774894599355.jpg", intro: "السيترون، برغموت كالابريا، البرتقال الصقلي", heart: "الزنجبيل النيجيري، القرفة، زهر البرتقال", base: "الأمبروكسان، الشاي الأسود الصيني", performance: {long: 85, sill: 80}, tags: ["صيف", "نظافة", "فخامة"] },
+            { name: "Xerjoff 40 Knots", price: 850, img: "https://i.postimg.cc/NMr07HCM/IMG-20260330-231127-113.jpg", intro: "الملاحظات الملحية، الأخشاب، مياه البحر", heart: "الأرنب الوردي، الملاحظات الخضراء", base: "الأرز، العنبر", performance: {long: 90, sill: 85}, tags: ["صيف", "فخم", "بحر"] },
+            { name: "Xerjoff Alexandria II", price: 850, img: "https://i.postimg.cc/N0KGBXc7/IMG-20260330-231115-598.jpg", intro: "الخزامى، القرفة، الورد، خشب الأرز", heart: "الورد، زنابق الوادي، خشب الصندل", base: "العود، الفانيليا، العنبر، المسك", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "ملكي"] },
+            { name: "Dior Homme", price: 850, img: "https://i.postimg.cc/PqVy9PbV/IMG-20260330-232825-829.jpg", intro: "الخزامى، البرغموت، الميرمية", heart: "السوسن، الكاكاو، العنبر", base: "الجلود، الباتشولي، نجيل الهند", performance: {long: 85, sill: 80}, tags: ["رسمي", "خريف", "جذاب"] },
+            { name: "Black Xs", price: 850, img: "https://i.postimg.cc/RZXLJNYv/IMG-20260330-232806-719.jpg", intro: "الليمون، المريمية", heart: "البرالين، القرفة، الهيل الأسود، بلسم تولو", base: "الخشب البرازيلي، الباتشولي، العنبر الأسود", performance: {long: 80, sill: 85}, tags: ["شبابي", "شتاء", "جريء"] },
+            { name: "Le Male Le Parfum", price: 850, img: "https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg", intro: "الهيل", heart: "الخزامى، السوسن", base: "الفانيليا، الملاحظات الشرقية، الأخشاب", performance: {long: 90, sill: 90}, tags: ["شتاء", "فخم", "مسائي"] },
+            { name: "Lost Cherry", price: 850, img: "https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg", intro: "الكرز الحامض، اللوز المر، اليكير", heart: "الكرز الحامض، البرقوق، الورد تركيا، ياسمين", base: "التونكا، الفانيليا، بلسم بيرو، القرفة، خشب الصندل", performance: {long: 85, sill: 80}, tags: ["شتاء", "جذاب", "مسائي"] },
+            { name: "Baccarat Rouge 540", price: 850, img: "https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg", intro: "الزعفران، الياسمين", heart: "خشب العنبر، العنبر", base: "صمغ الصنوبر، خشب الأرز", performance: {long: 95, sill: 95}, tags: ["فخم", "رسمي", "كل الفصول"] },
+            { name: "Eilish", price: 850, img: "https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg", intro: "السكر، التوت الأحمر، الماندرين", heart: "الفانيليا، الكاكاو، الورد، التوابل", base: "العنبر، المسك، الأخشاب، التونكا", performance: {long: 80, sill: 75}, tags: ["دافئ", "يومي", "شتاء"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
@@ -1274,11 +1606,10 @@
                 tabWomen.classList.add('active');
                 tabMen.classList.remove('active');
             }
-            // إغلاق السايدبار إذا كان مفتوحاً
             sidebar.classList.remove('active');
         }
 
-        // Efficiency: Unified Event Listener for scrolling
+        // Scrolling Reveals
         let throttleTimer;
         window.addEventListener("scroll", () => {
             if (throttleTimer) return;
@@ -1316,28 +1647,11 @@
             window.addEventListener('touchmove', (e) => isDragging && move(e.touches[0].pageX));
         }
 
-        /* --- HISTORY API INTEGRATION FOR MOBILE BACK BUTTON --- */
-        
-        function openSidebar() {
-            history.pushState({modal: "sidebar"}, "");
-            sidebar.classList.add('active');
-        }
-
-        function closeSidebar() {
-            sidebar.classList.remove('active');
-            if (window.history.state?.modal === "sidebar") history.back();
-        }
-
-        function openCart() {
-            history.pushState({modal: "cart"}, "");
-            cartModal.classList.add('active');
-            sidebar.classList.remove('active');
-        }
-
-        function closeCart() {
-            cartModal.classList.remove('active');
-            if (window.history.state?.modal === "cart") history.back();
-        }
+        /* --- HISTORY API --- */
+        function openSidebar() { history.pushState({modal: "sidebar"}, ""); sidebar.classList.add('active'); }
+        function closeSidebar() { sidebar.classList.remove('active'); if (window.history.state?.modal === "sidebar") history.back(); }
+        function openCart() { history.pushState({modal: "cart"}, ""); cartModal.classList.add('active'); sidebar.classList.remove('active'); }
+        function closeCart() { cartModal.classList.remove('active'); if (window.history.state?.modal === "cart") history.back(); }
 
         function showDetail(index) {
             const p = productsData[index];
@@ -1348,43 +1662,24 @@
             document.getElementById('detBase').innerText = p.base;
             document.getElementById('barLong').style.width = p.performance.long + "%";
             document.getElementById('barSill').style.width = p.performance.sill + "%";
-            
             const tagsCont = document.getElementById('detTags');
             tagsCont.innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
-
             history.pushState({modal: "detail"}, "");
             detailModal.style.display = 'flex';
         }
 
-        function closeDetailManual() { 
-            detailModal.style.display = 'none';
-            if (window.history.state?.modal === "detail") history.back();
-        }
+        function closeDetailManual() { detailModal.style.display = 'none'; if (window.history.state?.modal === "detail") history.back(); }
+        function openWheel() { history.pushState({modal: "wheel"}, ""); document.getElementById('wheel-overlay').style.display = 'flex'; drawWheel(); sidebar.classList.remove('active'); }
+        function closeWheelManual() { document.getElementById('wheel-overlay').style.display = 'none'; if (window.history.state?.modal === "wheel") history.back(); }
 
-        function openWheel() {
-            history.pushState({modal: "wheel"}, "");
-            document.getElementById('wheel-overlay').style.display = 'flex';
-            drawWheel();
-            sidebar.classList.remove('active');
-        }
-
-        function closeWheelManual() {
-            document.getElementById('wheel-overlay').style.display = 'none';
-            if (window.history.state?.modal === "wheel") history.back();
-        }
-
-        // Handle the physical back button
         window.onpopstate = function(event) {
-            // Close all modals without calling history.back() to avoid infinite loops
             detailModal.style.display = 'none';
             cartModal.classList.remove('active');
             sidebar.classList.remove('active');
             document.getElementById('wheel-overlay').style.display = 'none';
+            document.getElementById('quiz-modal').style.display = 'none';
         };
 
-        /* --- END OF HISTORY API LOGIC --- */
-
-        // Button Listeners
         document.getElementById('openMenu').onclick = openSidebar;
         document.getElementById('closeMenu').onclick = closeSidebar;
         document.getElementById('openCartBtn').onclick = openCart;
@@ -1415,7 +1710,6 @@
             const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
             const discountAmount = Math.round(subtotal * (discountValue / 100));
             const finalTotal = subtotal - discountAmount;
-
             const banner = document.getElementById('cart-discount-banner');
             if(discountValue > 0) {
                 banner.innerText = `تم تطبيق خصم ${discountValue}% (وفرت ${discountAmount}ج)`;
@@ -1435,7 +1729,6 @@
             updateCartUI();
         }
 
-        // Form Logic
         document.getElementById('orderForm').onsubmit = function(e) {
             e.preventDefault();
             const name = document.getElementById('custName').value.trim();
@@ -1443,23 +1736,19 @@
             const address = document.getElementById('custAddress').value.trim();
             const gov = document.getElementById('custGov').value;
             const city = document.getElementById('custCity').value;
-
             if(cart.length === 0) return alert('سلة المشتريات فارغة');
-            
             const phoneRegex = /^01[0125][0-9]{8}$/;
             if(!phoneRegex.test(phone)) return alert('رقم هاتف غير صحيح');
-
             const subtotal = cart.reduce((a, b) => a + b.price, 0);
             const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
             const discountAmount = Math.round(subtotal * (discountValue / 100));
             const finalTotal = subtotal - discountAmount;
-
             const itemsTxt = cart.map(i => "- " + i.name).join('%0A');
             const msg = `طلب جديد من أروما عيد%0A----------------%0Aالمنتجات:%0A${itemsTxt}%0A----------------%0Aقيمة الخصم: ${discountValue}% (${discountAmount}ج)%0Aالإجمالي النهائي: ${finalTotal} ج%0A----------------%0Aالعميل: ${name}%0Aالموبايل: ${phone}%0Aالمحافظة: ${gov}%0Aالمدينة: ${city}%0Aالعنوان: ${address}`;
             window.open(`https://wa.me/201551557931?text=${msg}`, '_blank');
         };
 
-        // --- LUCKY WHEEL LOGIC ---
+        // Lucky Wheel Logic
         const options = ["خصم 10%", "خصم 20%", "حظ أوفر", "خصم 5%"];
         const colors = ["#d4af37", "#000", "#d4af37", "#000"];
         let startAngle = 0;
@@ -1478,7 +1767,6 @@
                 ctx.strokeStyle = "#d4af37";
                 ctx.lineWidth = 2;
                 ctx.font = 'bold 16px Cairo';
-
                 for(let i = 0; i < options.length; i++) {
                     let angle = startAngle + i * arc;
                     ctx.fillStyle = colors[i];
@@ -1487,7 +1775,6 @@
                     ctx.lineTo(160, 160);
                     ctx.fill();
                     ctx.stroke();
-
                     ctx.save();
                     ctx.fillStyle = colors[i] === "#000" ? "#d4af37" : "#000";
                     ctx.translate(160 + Math.cos(angle + arc / 2) * 100, 160 + Math.sin(angle + arc / 2) * 100);
@@ -1506,7 +1793,6 @@
                 document.getElementById('wheel-msg').innerText = `لقد جربت حظك بالفعل. عد بعد ${hoursLeft} ساعة!`;
                 return;
             }
-
             document.getElementById('spin-button').disabled = true;
             spinAngleStart = Math.random() * 10 + 10;
             spinTime = 0;
@@ -1516,10 +1802,7 @@
 
         function rotateWheel() {
             spinTime += 30;
-            if(spinTime >= spinTimeTotal) {
-                stopRotateWheel();
-                return;
-            }
+            if(spinTime >= spinTimeTotal) { stopRotateWheel(); return; }
             let spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
             startAngle += (spinAngle * Math.PI / 180);
             drawWheel();
@@ -1531,38 +1814,120 @@
             let degrees = startAngle * 180 / Math.PI + 90;
             let arcd = arc * 180 / Math.PI;
             let index = Math.floor((360 - degrees % 360) / arcd);
-            ctx.save();
             const result = options[index];
             document.getElementById('wheel-msg').innerHTML = `مبروك! حصلت على: <br><strong style="font-size:1.5rem; color:var(--gold-accent);">${result}</strong>`;
-            
-            // Logic for discount
             if(result.includes("خصم")) {
                 const val = result.replace(/\D/g,'');
                 localStorage.setItem('aroma_discount', val);
             } else {
                 localStorage.setItem('aroma_discount', "0");
             }
-
             localStorage.setItem('aroma_last_spin', new Date().getTime());
             updateCartUI();
-            
-            setTimeout(() => {
-                closeWheelManual();
-            }, 3000);
+            setTimeout(() => { closeWheelManual(); }, 3000);
         }
 
-        function easeOut(t, b, c, d) {
-            let ts = (t /= d) * t;
-            let tc = ts * t;
-            return b + c * (tc + -3 * ts + 3 * t);
-        }
-
+        function easeOut(t, b, c, d) { let ts = (t /= d) * t; let tc = ts * t; return b + c * (tc + -3 * ts + 3 * t); }
         function closeWheel(e) { if(e.target.id === 'wheel-overlay') closeWheelManual(); }
+
+        /* =========================================
+           Fragrance Finder (DIOR Style) Logic
+           ========================================= */
+        
+        let quizAnswers = { gender: '', occasion: '', vibe: '', notes: '' };
+
+        function openQuiz() {
+            history.pushState({modal: "quiz"}, "");
+            const modal = document.getElementById('quiz-modal');
+            const skeleton = document.getElementById('quiz-skeleton');
+            const content = document.getElementById('quiz-content');
+            modal.style.display = 'flex';
+            skeleton.style.display = 'flex';
+            content.style.display = 'none';
+            setTimeout(() => {
+                skeleton.style.display = 'none';
+                content.style.display = 'block';
+                resetQuiz();
+            }, 1200);
+        }
+
+        function resetQuiz() {
+            quizAnswers = { gender: '', occasion: '', vibe: '', notes: '' };
+            document.getElementById('quiz-bar').style.width = '10%';
+            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step-1').classList.add('active');
+        }
+
+        function nextQuizStep(step, val) {
+            // Mapping answers
+            if (step === 2) quizAnswers.gender = val;
+            if (step === 3) quizAnswers.occasion = val;
+            if (step === 4) quizAnswers.vibe = val;
+            if (step === 5) quizAnswers.notes = val;
+
+            const progress = (step-1) * 25;
+            document.getElementById('quiz-bar').style.width = progress + '%';
+
+            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            
+            if (step <= 4) {
+                document.getElementById('step-' + step).classList.add('active');
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const area = document.getElementById('quiz-result-area');
+            const stepResult = document.getElementById('step-result');
+            stepResult.classList.add('active');
+            document.getElementById('quiz-bar').style.width = '100%';
+            
+            let recs = [];
+
+            if (quizAnswers.gender === 'men') {
+                if (quizAnswers.vibe === 'fresh') {
+                    recs = (quizAnswers.notes === 'citrus') ? 
+                        [productsData.find(p => p.name === 'عطر هوس ايس'), productsData.find(p => p.name === 'BLUE DE CHANEL')] : 
+                        [productsData.find(p => p.name === 'Louis Vuitton Imagination'), productsData.find(p => p.name === 'HACIVAT X')];
+                } else if (quizAnswers.vibe === 'bold') {
+                    recs = (quizAnswers.notes === 'woody') ? 
+                        [productsData.find(p => p.name === 'أسد الكسير'), productsData.find(p => p.name === 'BLACK AFGANO')] : 
+                        [productsData.find(p => p.name === 'Xerjoff Alexandria II'), productsData.find(p => p.name === 'CREED ABSOLU AVENTUS')];
+                } else {
+                    recs = [productsData.find(p => p.name === 'STRONGER WITH YOU ABSOLUTELY'), productsData.find(p => p.name === 'Le Male Le Parfum')];
+                }
+            } else {
+                if (quizAnswers.vibe === 'sweet') {
+                    recs = [productsData.find(p => p.name === 'Lost Cherry'), productsData.find(p => p.name === 'Eilish')];
+                } else if (quizAnswers.vibe === 'bold' || quizAnswers.occasion === 'formal') {
+                    recs = [productsData.find(p => p.name === 'Baccarat Rouge 540'), productsData.find(p => p.name === 'Lost Cherry')];
+                } else {
+                    recs = [productsData.find(p => p.name === 'Eilish'), productsData.find(p => p.name === 'Baccarat Rouge 540')];
+                }
+            }
+
+            area.innerHTML = `
+                <div class="quiz-result-grid">
+                    ${recs.map(rec => `
+                        <div class="quiz-result-item">
+                            <img src="${rec.img}" class="quiz-result-img" alt="Result">
+                            <h3 style="color:#fff; font-size:0.75rem; letter-spacing:1px; margin-top:5px; height:35px; overflow:hidden;">${rec.name}</h3>
+                            <p style="color:var(--gold-accent); font-weight:bold; font-size:0.8rem;">${rec.price} ج.م</p>
+                            <button class="btn-add-cart" onclick="addToCart('${rec.name}', ${rec.price}); closeQuizManual();" style="margin-top:10px; font-size:0.6rem; padding:8px;">ADD TO CART</button>
+                        </div>
+                    `).join('')}
+                </div>
+                <p style="color:var(--text-gray); font-size:0.7rem; max-width:90%; line-height:1.4; margin-top:15px; text-align:center;">بناءً على تفضيلاتك، هذه العطور هي الأكثر تطابقاً مع ذوقك الشخصي.</p>
+            `;
+        }
+
+        function closeQuizManual() { document.getElementById('quiz-modal').style.display = 'none'; if (window.history.state?.modal === "quiz") history.back(); }
+        function closeQuizOverlay(e) { if (e.target.id === 'quiz-modal') closeQuizManual(); }
 
         window.onload = () => { 
             updateCartUI(); 
             initComparisonSlider();
-            // Setup Governors
             Object.keys(egyptData).forEach(gov => {
                 let opt = document.createElement('option');
                 opt.value = gov; opt.textContent = gov;
@@ -1574,14 +1939,17 @@
                     egyptData[this.value].map(c => `<option value="${c}">${c}</option>`).join('');
             };
 
-            // Intent Pop-up after 3 seconds
+            // إظهار عجلة الحظ بعد 3 ثوانٍ
             setTimeout(() => {
                 const lastSpin = localStorage.getItem('aroma_last_spin');
                 const now = new Date().getTime();
-                if (!lastSpin || (now - lastSpin >= 24 * 60 * 60 * 1000)) {
-                    openWheel();
-                }
+                if (!lastSpin || (now - lastSpin >= 24 * 60 * 60 * 1000)) { openWheel(); }
             }, 3000);
+
+            // إظهار إشعار المستشار الذكي بعد 5 ثوانٍ
+            setTimeout(() => {
+                document.getElementById('quiz-popup').style.display = 'flex';
+            }, 5000);
         };
     </script>
 </body>
