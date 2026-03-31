@@ -273,11 +273,54 @@
 
         .hero p { font-size: 1.1rem; letter-spacing: 2px; color: var(--text-gray); }
 
+        /* --- New Elegant Search Bar CSS --- */
+        .search-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 30px 5% 10px 5%;
+            background: var(--deep-black);
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #productSearch {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 12px 40px 12px 15px;
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+            transition: border-bottom 0.4s ease;
+            text-align: right;
+        }
+
+        #productSearch:focus {
+            border-bottom: 1px solid var(--gold-accent);
+        }
+
+        .search-icon-svg {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: var(--gold-accent);
+            opacity: 0.6;
+        }
+
         .category-tabs {
             display: flex;
             justify-content: center;
             gap: 20px;
-            padding: 40px 0;
+            padding: 20px 0 40px 0;
             background: var(--deep-black);
         }
 
@@ -1022,14 +1065,23 @@
             <p>ELEVATING YOUR SENSES</p>
         </section>
 
+        <section class="search-section reveal">
+            <div class="search-container">
+                <svg class="search-icon-svg" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" id="productSearch" placeholder="ابحث عن عطرك المفضل..." onkeyup="filterProducts()">
+            </div>
+        </section>
+
         <div class="category-tabs reveal">
             <button class="tab-btn active" id="tab-men" onclick="switchTab('men')">MEN</button>
             <button class="tab-btn" id="tab-women" onclick="switchTab('women')">WOMEN</button>
         </div>
 
         <section id="men-section">
-            <div class="products-container">
-                <div class="card reveal">
+            <div class="products-container" id="men-container">
+                <div class="card reveal" data-name="STRONGER WITH YOU">
                     <div class="card-slider">
                         <div class="comparison-container" id="swy-comparison">
                             <img src="https://i.postimg.cc/y8SshwPN/FB-IMG-1774883967790.jpg" class="comparison-img" loading="lazy" alt="واقعي">
@@ -1050,7 +1102,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="SWY FREEZE">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/htJj2Kx3/FB-IMG-1774893865555.jpg" loading="lazy" onclick="showDetail(6)">
                     </div>
@@ -1063,7 +1115,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="SWY ABSOLUTELY">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/Kv3SVjqD/FB-IMG-1774893871779.jpg" loading="lazy" onclick="showDetail(7)">
                     </div>
@@ -1076,7 +1128,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="BLACK AFGANO">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/mgWq5w1J/FB-IMG-1774893845756.jpg" loading="lazy" onclick="showDetail(8)">
                     </div>
@@ -1089,7 +1141,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="THE ONE">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/9fgHK9hr/FB-IMG-1774893849868.jpg" loading="lazy" onclick="showDetail(9)">
                     </div>
@@ -1102,7 +1154,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="CREED ABSOLU AVENTUS">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/P5F6kQCP/FB-IMG-1774894293952.jpg" loading="lazy" onclick="showDetail(10)">
                     </div>
@@ -1115,7 +1167,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="HAWAS">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/d0VLGG61/FB-IMG-1774894495826.jpg" loading="lazy" onclick="showDetail(11)">
                     </div>
@@ -1128,7 +1180,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="HAWAS ICE">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/90ZMcbm8/FB-IMG-1774894490647.jpg" loading="lazy" onclick="showDetail(12)">
                     </div>
@@ -1141,7 +1193,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="HAWAS BLACK">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/pdrLmRXb/FB-IMG-1774894492795.jpg" loading="lazy" onclick="showDetail(13)">
                     </div>
@@ -1154,7 +1206,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="LV IMAGINATION">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/gcNtDpGL/FB-IMG-1774894599355.jpg" loading="lazy" onclick="showDetail(14)">
                     </div>
@@ -1167,7 +1219,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="SAUVAGE">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/kMZHNDhX/FB-IMG-1774890100941.jpg" loading="lazy" onclick="showDetail(1)">
                     </div>
@@ -1180,7 +1232,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="أسد الكسير">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/2SmNvVVg/FB-IMG-1774883985402.jpg" loading="lazy" onclick="showDetail(2)">
                     </div>
@@ -1193,7 +1245,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="BLUE DE CHANEL">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/brb4Sh8y/FB-IMG-1774883989978.jpg" loading="lazy" onclick="showDetail(3)">
                     </div>
@@ -1206,7 +1258,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="AMOUAGE LYRIC">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/Hs9Pq3kb/FB-IMG-1774883975224.jpg" loading="lazy" onclick="showDetail(4)">
                     </div>
@@ -1219,7 +1271,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="HACIVAT X">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/jSWPHdmn/FB-IMG-1774883981832.jpg" loading="lazy" onclick="showDetail(5)">
                     </div>
@@ -1232,7 +1284,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="XERJOFF 40 KNOTS">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/NMr07HCM/IMG-20260330-231127-113.jpg" loading="lazy" onclick="showDetail(15)">
                     </div>
@@ -1245,7 +1297,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="XERJOFF ALEXANDRIA II">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/N0KGBXc7/IMG-20260330-231115-598.jpg" loading="lazy" onclick="showDetail(16)">
                     </div>
@@ -1258,7 +1310,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="DIOR HOMME">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/PqVy9PbV/IMG-20260330-232825-829.jpg" loading="lazy" onclick="showDetail(17)">
                     </div>
@@ -1271,7 +1323,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="BLACK XS">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/RZXLJNYv/IMG-20260330-232806-719.jpg" loading="lazy" onclick="showDetail(18)">
                     </div>
@@ -1284,7 +1336,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="LE MALE LE PARFUM">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg" loading="lazy" onclick="showDetail(19)">
                     </div>
@@ -1297,7 +1349,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="NOIR EXTREME">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/dVRK3j4Z/FB-IMG-1774986843148.jpg" loading="lazy" onclick="showDetail(23)">
                     </div>
@@ -1310,7 +1362,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="خمرة دخان">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg" loading="lazy" onclick="showDetail(24)">
                     </div>
@@ -1323,7 +1375,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="BVLGARI MAN IN BLACK">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/W3VMwTv5/FB-IMG-1774988721408.jpg" loading="lazy" onclick="showDetail(25)">
                     </div>
@@ -1336,7 +1388,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="HUGO BOSS">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg" loading="lazy" onclick="showDetail(26)">
                     </div>
@@ -1349,12 +1401,25 @@
                     </div>
                 </div>
 
+                <div class="card reveal" data-name="CUBAN TOBACCO">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg" loading="lazy" onclick="showDetail(27)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(27)" style="cursor:pointer;">CUBAN TOBACCO</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1000ج</span><span class="new-p">750ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Cuban Tobacco', 750)">ADD TO CART</button>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <section id="women-section">
-            <div class="products-container">
-                <div class="card reveal">
+            <div class="products-container" id="women-container">
+                <div class="card reveal" data-name="LOST CHERRY">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg" loading="lazy" onclick="showDetail(20)">
                     </div>
@@ -1367,7 +1432,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="BACCARAT ROUGE 540">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg" loading="lazy" onclick="showDetail(21)">
                     </div>
@@ -1380,7 +1445,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal">
+                <div class="card reveal" data-name="EILISH">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg" loading="lazy" onclick="showDetail(22)">
                     </div>
@@ -1634,7 +1699,8 @@
             { name: "NOIR EXTREME", price: 870, img: "https://i.postimg.cc/dVRK3j4Z/FB-IMG-1774986843148.jpg", intro: "الزعفران، الحبهان، جوزة الطيب، البرتقال المر", heart: "الكلفي، المصطكي، زهر البرتقال، الياسمين، الورد", base: "الفانيليا، العنبر، خشب الصندل، الأخشاب", performance: {long: 88, sill: 82}, tags: ["فخم", "شتاء", "مسائي"] },
             { name: "خمرة دخان", price: 850, img: "https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg", intro: "القرفة، البرغموت، المريمية", heart: "التمر، البرالين، مسك الروم، الزهور", base: "الفانيليا، التونكا، العنبر، البنزوين، المر، خشب الصندل", performance: {long: 95, sill: 90}, tags: ["فخم", "شتاء", "دافئ"] },
             { name: "Bvlgari Men In Black", price: 850, img: "https://i.postimg.cc/W3VMwTv5/FB-IMG-1774988721408.jpg", intro: "التبغ، الرم، التوابل", heart: "الجلود، مسك الروم، السوسن", base: "خشب الجاياك، البنزوين، التونكا", performance: {long: 85, sill: 80}, tags: ["فخم", "شتاء", "رسمي"] },
-            { name: "Hugo Boss", price: 850, img: "https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg", intro: "التفاح، البرقوق، الليمون، البرغموت", heart: "القرفة، الماهوجني، القرنفل", base: "الفانيليا، خشب الصندل، الأرز، الزيتون", performance: {long: 80, sill: 75}, tags: ["عمل", "صباحي", "كلاسيك"] }
+            { name: "Hugo Boss", price: 850, img: "https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg", intro: "التفاح، البرقوق، الليمون، البرغموت", heart: "القرفة، الماهوجني، القرنفل", base: "الفانيليا، خشب الصندل، الأرز، الزيتون", performance: {long: 80, sill: 75}, tags: ["عمل", "صباحي", "كلاسيك"] },
+            { name: "CUBAN TOBACCO", price: 750, img: "https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg", intro: "أوراق التبغ، التوابل الحارة", heart: "الفانيليا، الكاكاو، زهر التبغ", base: "الأخشاب، الفواكه المجففة", performance: {long: 90, sill: 85}, tags: ["شتاء", "فخم", "ثقيل"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
@@ -1643,6 +1709,21 @@
         const detailModal = document.getElementById('detail-modal');
         const govSelect = document.getElementById('custGov');
         const citySelect = document.getElementById('custCity');
+
+        // البحث عن المنتجات
+        function filterProducts() {
+            const input = document.getElementById('productSearch').value.toUpperCase();
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name') || card.querySelector('h3').innerText;
+                if (name.toUpperCase().indexOf(input) > -1) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
 
         // التبديل بين الأقسام
         function switchTab(tab) {
@@ -1663,6 +1744,9 @@
                 tabMen.classList.remove('active');
             }
             sidebar.classList.remove('active');
+            // Reset search when switching tabs
+            document.getElementById('productSearch').value = "";
+            filterProducts();
         }
 
         // Scrolling Reveals
