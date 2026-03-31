@@ -1316,7 +1316,8 @@
             window.addEventListener('touchmove', (e) => isDragging && move(e.touches[0].pageX));
         }
 
-        // Sidebar & Cart Controls using History API
+        /* --- HISTORY API INTEGRATION FOR MOBILE BACK BUTTON --- */
+        
         function openSidebar() {
             history.pushState({modal: "sidebar"}, "");
             sidebar.classList.add('active');
@@ -1337,19 +1338,6 @@
             cartModal.classList.remove('active');
             if (window.history.state?.modal === "cart") history.back();
         }
-
-        // Button Listeners
-        document.getElementById('openMenu').onclick = openSidebar;
-        document.getElementById('closeMenu').onclick = closeSidebar;
-        document.getElementById('openCartBtn').onclick = openCart;
-        document.getElementById('closeCartBtn').onclick = closeCart;
-
-        window.onpopstate = () => {
-            detailModal.style.display = 'none';
-            cartModal.classList.remove('active');
-            sidebar.classList.remove('active');
-            document.getElementById('wheel-overlay').style.display = 'none';
-        };
 
         function showDetail(index) {
             const p = productsData[index];
@@ -1372,6 +1360,35 @@
             detailModal.style.display = 'none';
             if (window.history.state?.modal === "detail") history.back();
         }
+
+        function openWheel() {
+            history.pushState({modal: "wheel"}, "");
+            document.getElementById('wheel-overlay').style.display = 'flex';
+            drawWheel();
+            sidebar.classList.remove('active');
+        }
+
+        function closeWheelManual() {
+            document.getElementById('wheel-overlay').style.display = 'none';
+            if (window.history.state?.modal === "wheel") history.back();
+        }
+
+        // Handle the physical back button
+        window.onpopstate = function(event) {
+            // Close all modals without calling history.back() to avoid infinite loops
+            detailModal.style.display = 'none';
+            cartModal.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.getElementById('wheel-overlay').style.display = 'none';
+        };
+
+        /* --- END OF HISTORY API LOGIC --- */
+
+        // Button Listeners
+        document.getElementById('openMenu').onclick = openSidebar;
+        document.getElementById('closeMenu').onclick = closeSidebar;
+        document.getElementById('openCartBtn').onclick = openCart;
+        document.getElementById('closeCartBtn').onclick = closeCart;
 
         function closeDetail(e) { if(e.target.id === 'detail-modal') closeDetailManual(); }
 
@@ -1538,18 +1555,6 @@
             let ts = (t /= d) * t;
             let tc = ts * t;
             return b + c * (tc + -3 * ts + 3 * t);
-        }
-
-        function openWheel() {
-            document.getElementById('wheel-overlay').style.display = 'flex';
-            drawWheel();
-            sidebar.classList.remove('active');
-            history.pushState({modal: "wheel"}, "");
-        }
-
-        function closeWheelManual() {
-            document.getElementById('wheel-overlay').style.display = 'none';
-            if (window.history.state?.modal === "wheel") history.back();
         }
 
         function closeWheel(e) { if(e.target.id === 'wheel-overlay') closeWheelManual(); }
