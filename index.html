@@ -113,7 +113,6 @@
             flex-shrink: 0;
         }
 
-        /* التعديل: جعل الفوتر يحتوي على سكرول داخلي مع الحفاظ على الزر ثابتاً */
         .cart-footer {
             flex: 1;
             display: flex;
@@ -153,7 +152,6 @@
             display: none;
         }
 
-        /* التعديل: جعل زر الواتساب Sticky في أسفل الكارت */
         .whatsapp-submit-btn {
             position: sticky;
             bottom: 0;
@@ -171,7 +169,6 @@
             margin-top: auto;
         }
 
-        /* إضافة مساحة أسفل الفورم لمنع التداخل */
         .form-fields-wrapper {
             margin-bottom: 20px;
         }
@@ -207,7 +204,6 @@
             color: #000;
         }
 
-        /* تنسيق أيقونات الهيدر */
         .header-actions {
             display: flex;
             align-items: center;
@@ -244,7 +240,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 6px; /* التباعد الأفقي حسب الصورة */
+            margin-left: 6px;
             padding: 2px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
@@ -273,7 +269,6 @@
 
         .hero p { font-size: 1.1rem; letter-spacing: 2px; color: var(--text-gray); }
 
-        /* --- New Elegant Search Bar CSS --- */
         .search-section {
             width: 100%;
             display: flex;
@@ -351,7 +346,6 @@
             margin: 0 auto;
         }
 
-        /* إخفاء قسم النساء افتراضياً */
         #women-section { display: none; }
 
         .card {
@@ -611,7 +605,6 @@
             color: #000;
         }
 
-        /* تنسيق الفوتر الجديد */
         .site-footer {
             background: #080808;
             padding: 40px 5%;
@@ -639,7 +632,6 @@
             font-weight: 300;
         }
 
-        /* --- LUCKY WHEEL CSS --- */
         #wheel-overlay {
             display: none;
             position: fixed;
@@ -693,7 +685,6 @@
             margin-bottom: 10px; display: none; text-align: center;
         }
 
-        /* --- Floating Facebook Icon --- */
         .fb-float-btn {
             position: fixed;
             bottom: 30px;
@@ -724,7 +715,6 @@
             fill: white;
         }
 
-        /* Animation for the float button */
         @keyframes pulse-fb {
             0% { box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(24, 119, 242, 0); }
@@ -742,18 +732,14 @@
             .detail-img-container { height: 300px; }
             .products-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .card-slider { height: 220px; }
-            #cart-modal { width: 100%; } /* ملء الشاشة في الموبايل */
+            #cart-modal { width: 100%; }
             .fb-float-btn { bottom: 20px; left: 20px; width: 50px; height: 50px; }
         }
 
-        /* =========================================
-           Fragrance Finder (DIOR Style) - New Additions
-           ========================================= */
-        
         .quiz-float-btn {
             position: fixed;
             bottom: 30px;
-            left: 100px; /* بجانب فيسبوك */
+            left: 100px;
             width: 55px;
             height: 55px;
             background: var(--matte-black);
@@ -791,7 +777,6 @@
         }
         .quiz-float-btn { animation: pulse-gold 5s infinite; }
 
-        /* Quiz Modal Shell */
         #quiz-modal {
             display: none;
             position: fixed;
@@ -884,7 +869,6 @@
             background: rgba(212, 175, 55, 0.05);
         }
 
-        /* Skeleton Loader Effect */
         .skeleton-text {
             height: 20px;
             background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
@@ -940,9 +924,6 @@
             .quiz-card { padding: 30px 20px; width: 95%; min-height: 480px; }
         }
 
-        /* =========================================
-           New Quiz Popup Notification Style
-           ========================================= */
         #quiz-popup {
             position: fixed;
             bottom: 100px;
@@ -1658,18 +1639,35 @@
     </div>
 
     <script>
+        // القائمة الشاملة والكاملة لتقسيمات جمهورية مصر العربية الإدارية (27 محافظة)
         const egyptData = {
-            "القاهرة": ["مصر الجديدة", "المعادي", "مدينة نصر", "وسط البلد", "حلوان", "التجمع الخامس"],
-            "الجيزة": ["الدقي", "المهندسين", "الهرم", "فيصل", "6 أكتوبر", "الشيخ زايد"],
-            "الإسكندرية": ["سموحة", "محرم بك", "سيدي جابر", "المنتزه", "العجمي"],
-            "دمياط": ["دمياط الجديدة", "دمياط القديمة", "فارسكور", "كفر سعد", "الزرقا", "رأس البر"],
-            "الدقهلية": ["المنصورة", "طلخا", "ميت غمر", "السنبلاوين"],
-            "الغربية": ["طنطا", "المحلة الكبرى", "كفر الزيات"],
-            "المنوفية": ["شبين الكوم", "قويسنا", "أشمون"],
-            "البحيرة": ["دمنهور", "كفر الدوار", "إيتاي البارود"],
-            "الشرقية": ["الزقازيق", "العاشر من رمضان", "بلبيس"],
-            "بورسعيد": ["حي الشرق", "حي العرب", "حي الزهور"],
-            "السويس": ["حي السويس", "حي الأربعين", "حي فيصل"]
+            "القاهرة": ["مدينة نصر", "مصر الجديدة", "المعادي", "وسط البلد", "حلوان", "التجمع الخامس", "شبرا", "عين شمس", "المرج", "الزيتون", "البساتين", "السيدة زينب", "الجمالية", "المطرية"],
+            "الجيزة": ["الدقي", "المهندسين", "الهرم", "فيصل", "6 أكتوبر", "الشيخ زايد", "العجوزة", "العمرانية", "البدرشين", "العياط", "أطفيح", "الصف", "أوسيم", "كرداسة"],
+            "الإسكندرية": ["سموحة", "محرم بك", "سيدي جابر", "المنتزه", "العجمي", "الرمل", "كرموز", "العامرية", "برج العرب", "المنشية", "مينا البصل"],
+            "دمياط": ["دمياط الجديدة", "دمياط القديمة", "فارسكور", "كفر سعد", "الزرقا", "رأس البر", "كفر البطيخ", "السرو", "ميت أبو غالب", "عزبة البرج"],
+            "الدقهلية": ["المنصورة", "طلخا", "ميت غمر", "السنبلاوين", "جمصة", "دكرنس", "منية النصر", "شربين", "تمي الأمديد", "بني عبيد", "أجا", "نبروه", "الجمالية", "المطرية", "بلقاس"],
+            "القليوبية": ["بنها", "شبرا الخيمة", "قليوب", "القناطر الخيرية", "الخانكة", "كفر شكر", "طوخ", "شبين القناطر", "العبور", "قليوب المحطة"],
+            "الشرقية": ["الزقازيق", "العاشر من رمضان", "بلبيس", "منيا القمح", "فاقوس", "أبو حماد", "أبو كبير", "الحسينية", "كفر صقر", "أولاد صقر", "ديرب نجم", "مشتول السوق"],
+            "المنوفية": ["شبين الكوم", "قويسنا", "أشمون", "باجور", "منوف", "مدينة السادات", "تلا", "بركة السبع", "الشهداء"],
+            "الغربية": ["طنطا", "المحلة الكبرى", "كفر الزيات", "زفتى", "السنطة", "بسيون", "قطور", "سمنود"],
+            "البحيرة": ["دمنهور", "كفر الدوار", "إيتاي البارود", "أبو حمص", "كوم حمادة", "حوش عيسى", "رشيد", "إدكو", "أبو المطامير", "الدلنجات", "المحمودية", "وادي النطرون"],
+            "كفر الشيخ": ["كفر الشيخ", "دسوق", "فوه", "مطوبس", "قلين", "سيدي سالم", "الرياض", "بيلا", "الحامول", "بلطيم", "برج البرلس"],
+            "الفيوم": ["الفيوم", "إطسا", "سنورس", "طامية", "يوسف الصديق", "أبشواي"],
+            "بني سويف": ["بني سويف", "الواسطى", "ناصر", "ببا", "الفشن", "إهناسيا", "سمسطا"],
+            "المنيا": ["المنيا", "بني مزار", "مغاغة", "سمالوط", "أبو قرقاص", "ملوي", "دير مواس", "مطاي", "العدوة"],
+            "أسيوط": ["أسيوط", "ديروط", "القوصية", "أبنوب", "منفلوط", "أبو تيج", "الغنايم", "ساحل سليم", "البداري", "صدفا", "الفتح"],
+            "سوهاج": ["سوهاج", "أخميم", "البلينا", "جرجا", "المنشاة", "طهطا", "طما", "جهينة", "ساقلتة", "المراغة", "دار السلام"],
+            "قنا": ["قنا", "نجع حمادي", "دشنا", "قوص", "أبو تشت", "الوقف", "قفط", "نقادة", "فرشوط"],
+            "الأقصر": ["الأقصر", "إسنا", "أرمنت", "القرنة", "البياضية", "الطود"],
+            "أسوان": ["أسوان", "إدفو", "كوم أمبو", "نصر النوبة", "درو"],
+            "بورسعيد": ["حي الشرق", "حي العرب", "حي المناخ", "حي الضواحي", "حي الزهور", "حي الغرب", "مدينة بورفؤاد"],
+            "السويس": ["حي السويس", "حي الأربعين", "حي فيصل", "حي عتاقة", "حي الجناين"],
+            "الإسماعيلية": ["الإسماعيلية", "التل الكبير", "فايد", "القنطرة شرق", "القنطرة غرب", "أبو صوير", "القصاصين"],
+            "مطروح": ["مرسى مطروح", "العلمين", "الضبعة", "سيدي براني", "السلوم", "سيوة", "الحمام"],
+            "البحر الأحمر": ["الغردقة", "سفاجا", "القصير", "مرسى علم", "رأس غارب", "شلاتين", "حلايب"],
+            "الوادي الجديد": ["الخارجة", "الداخلة", "الفرافرة", "باريس", "بلاط"],
+            "شمال سيناء": ["العريش", "بئر العبد", "الشيخ زويد", "رفح", "الحسنة", "نخل"],
+            "جنوب سيناء": ["شرم الشيخ", "طور سيناء", "دهب", "نويبع", "طابا", "سانت كاترين", "رأس سدر", "أبو رديس", "أبو زنيمة"]
         };
 
         const productsData = [
@@ -1699,7 +1697,7 @@
             { name: "NOIR EXTREME", price: 870, img: "https://i.postimg.cc/dVRK3j4Z/FB-IMG-1774986843148.jpg", intro: "الزعفران، الحبهان، جوزة الطيب، البرتقال المر", heart: "الكلفي، المصطكي، زهر البرتقال، الياسمين، الورد", base: "الفانيليا، العنبر، خشب الصندل، الأخشاب", performance: {long: 88, sill: 82}, tags: ["فخم", "شتاء", "مسائي"] },
             { name: "خمرة دخان", price: 850, img: "https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg", intro: "القرفة، البرغموت، المريمية", heart: "التمر، البرالين، مسك الروم، الزهور", base: "الفانيليا، التونكا، العنبر، البنزوين، المر، خشب الصندل", performance: {long: 95, sill: 90}, tags: ["فخم", "شتاء", "دافئ"] },
             { name: "Bvlgari Men In Black", price: 850, img: "https://i.postimg.cc/W3VMwTv5/FB-IMG-1774988721408.jpg", intro: "التبغ، الرم، التوابل", heart: "الجلود، مسك الروم، السوسن", base: "خشب الجاياك، البنزوين، التونكا", performance: {long: 85, sill: 80}, tags: ["فخم", "شتاء", "رسمي"] },
-            { name: "Hugo Boss", price: 850, img: "https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg", intro: "التفاح، البرقوق، الليمون، البرغموت", heart: "القرفة، الماهوجني، القرنفل", base: "الفانيليا، خشب الصندل، الأرز، الزيتون", performance: {long: 80, sill: 75}, tags: ["عمل", "صباحي", "كلاسيك"] },
+            { name: "Hugo Boss", price: 850, img: "https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg", intro: "التفاف، البرقوق، الليمون، البرغموت", heart: "القرفة، الماهوجني، القرنفل", base: "الفانيليا، خشب الصندل، الأرز، الزيتون", performance: {long: 80, sill: 75}, tags: ["عمل", "صباحي", "كلاسيك"] },
             { name: "CUBAN TOBACCO", price: 750, img: "https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg", intro: "أوراق التبغ، التوابل الحارة", heart: "الفانيليا، الكاكاو، زهر التبغ", base: "الأخشاب، الفواكه المجففة", performance: {long: 90, sill: 85}, tags: ["شتاء", "فخم", "ثقيل"] }
         ];
 
@@ -1710,11 +1708,9 @@
         const govSelect = document.getElementById('custGov');
         const citySelect = document.getElementById('custCity');
 
-        // البحث عن المنتجات
         function filterProducts() {
             const input = document.getElementById('productSearch').value.toUpperCase();
             const cards = document.querySelectorAll('.card');
-            
             cards.forEach(card => {
                 const name = card.getAttribute('data-name') || card.querySelector('h3').innerText;
                 if (name.toUpperCase().indexOf(input) > -1) {
@@ -1725,13 +1721,11 @@
             });
         }
 
-        // التبديل بين الأقسام
         function switchTab(tab) {
             const menSec = document.getElementById('men-section');
             const womenSec = document.getElementById('women-section');
             const tabMen = document.getElementById('tab-men');
             const tabWomen = document.getElementById('tab-women');
-
             if(tab === 'men') {
                 menSec.style.display = 'block';
                 womenSec.style.display = 'none';
@@ -1744,12 +1738,10 @@
                 tabMen.classList.remove('active');
             }
             sidebar.classList.remove('active');
-            // Reset search when switching tabs
             document.getElementById('productSearch').value = "";
             filterProducts();
         }
 
-        // Scrolling Reveals
         let throttleTimer;
         window.addEventListener("scroll", () => {
             if (throttleTimer) return;
@@ -1763,14 +1755,12 @@
             }, 50);
         });
 
-        // Initialize Comparison Slider
         function initComparisonSlider() {
             const container = document.getElementById('swy-comparison');
             if(!container) return;
             const slider = container.querySelector('.comparison-slider');
             const overlay = container.querySelector('.img-overlay');
             let isDragging = false;
-
             const move = (x) => {
                 let rect = container.getBoundingClientRect();
                 let pos = ((x - rect.left) / rect.width) * 100;
@@ -1778,7 +1768,6 @@
                 slider.style.left = pos + "%";
                 overlay.style.width = pos + "%";
             };
-
             slider.addEventListener('mousedown', () => isDragging = true);
             window.addEventListener('mouseup', () => isDragging = false);
             window.addEventListener('mousemove', (e) => isDragging && move(e.pageX));
@@ -1787,7 +1776,6 @@
             window.addEventListener('touchmove', (e) => isDragging && move(e.touches[0].pageX));
         }
 
-        /* --- HISTORY API --- */
         function openSidebar() { history.pushState({modal: "sidebar"}, ""); sidebar.classList.add('active'); }
         function closeSidebar() { sidebar.classList.remove('active'); if (window.history.state?.modal === "sidebar") history.back(); }
         function openCart() { history.pushState({modal: "cart"}, ""); cartModal.classList.add('active'); sidebar.classList.remove('active'); }
@@ -1845,7 +1833,6 @@
                     </div>
                     <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#555; cursor:pointer; font-size:0.7rem;">REMOVE</button>
                 </div>`).join('');
-            
             const subtotal = cart.reduce((a, b) => a + b.price, 0);
             const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
             const discountAmount = Math.round(subtotal * (discountValue / 100));
@@ -1888,7 +1875,6 @@
             window.open(`https://wa.me/201551557931?text=${msg}`, '_blank');
         };
 
-        // Lucky Wheel Logic
         const options = ["خصم 10%", "خصم 20%", "حظ أوفر", "خصم 5%"];
         const colors = ["#d4af37", "#000", "#d4af37", "#000"];
         let startAngle = 0;
@@ -1970,10 +1956,6 @@
         function easeOut(t, b, c, d) { let ts = (t /= d) * t; let tc = ts * t; return b + c * (tc + -3 * ts + 3 * t); }
         function closeWheel(e) { if(e.target.id === 'wheel-overlay') closeWheelManual(); }
 
-        /* =========================================
-           Fragrance Finder (DIOR Style) Logic
-           ========================================= */
-        
         let quizAnswers = { gender: '', occasion: '', vibe: '', notes: '' };
 
         function openQuiz() {
@@ -1999,17 +1981,13 @@
         }
 
         function nextQuizStep(step, val) {
-            // Mapping answers
             if (step === 2) quizAnswers.gender = val;
             if (step === 3) quizAnswers.occasion = val;
             if (step === 4) quizAnswers.vibe = val;
             if (step === 5) quizAnswers.notes = val;
-
             const progress = (step-1) * 25;
             document.getElementById('quiz-bar').style.width = progress + '%';
-
             document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-            
             if (step <= 4) {
                 document.getElementById('step-' + step).classList.add('active');
             } else {
@@ -2022,9 +2000,7 @@
             const stepResult = document.getElementById('step-result');
             stepResult.classList.add('active');
             document.getElementById('quiz-bar').style.width = '100%';
-            
             let recs = [];
-
             if (quizAnswers.gender === 'men') {
                 if (quizAnswers.vibe === 'fresh') {
                     recs = (quizAnswers.notes === 'citrus') ? 
@@ -2046,7 +2022,6 @@
                     recs = [productsData.find(p => p.name === 'Eilish'), productsData.find(p => p.name === 'Baccarat Rouge 540')];
                 }
             }
-
             area.innerHTML = `
                 <div class="quiz-result-grid">
                     ${recs.map(rec => `
@@ -2068,25 +2043,36 @@
         window.onload = () => { 
             updateCartUI(); 
             initComparisonSlider();
-            Object.keys(egyptData).forEach(gov => {
+            
+            // تعبئة قائمة المحافظات ديناميكياً
+            const sortedGovs = Object.keys(egyptData).sort((a, b) => a.localeCompare(b, 'ar'));
+            sortedGovs.forEach(gov => {
                 let opt = document.createElement('option');
-                opt.value = gov; opt.textContent = gov;
+                opt.value = gov; 
+                opt.textContent = gov;
                 govSelect.appendChild(opt);
             });
+
+            // تحديث قائمة المدن عند اختيار المحافظة
             govSelect.onchange = function() {
                 citySelect.disabled = false;
-                citySelect.innerHTML = '<option value="" disabled selected>اختر المدينة</option>' + 
-                    egyptData[this.value].map(c => `<option value="${c}">${c}</option>`).join('');
+                citySelect.innerHTML = '<option value="" disabled selected>اختر المدينة / المركز</option>';
+                const selectedGov = this.value;
+                const cities = egyptData[selectedGov].sort((a, b) => a.localeCompare(b, 'ar'));
+                cities.forEach(city => {
+                    let opt = document.createElement('option');
+                    opt.value = city;
+                    opt.textContent = city;
+                    citySelect.appendChild(opt);
+                });
             };
 
-            // إظهار عجلة الحظ بعد 3 ثوانٍ
             setTimeout(() => {
                 const lastSpin = localStorage.getItem('aroma_last_spin');
                 const now = new Date().getTime();
                 if (!lastSpin || (now - lastSpin >= 24 * 60 * 60 * 1000)) { openWheel(); }
             }, 3000);
 
-            // إظهار إشعار المستشار الذكي بعد 5 ثوانٍ
             setTimeout(() => {
                 document.getElementById('quiz-popup').style.display = 'flex';
             }, 5000);
