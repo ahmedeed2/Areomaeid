@@ -1083,6 +1083,19 @@
                     </div>
                 </div>
 
+                <div class="card reveal" data-name="INVICTUS VICTORY">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/ZRq3hNNd/IMG-20260401-125756-213.jpg" loading="lazy" onclick="showDetail(28)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(28)" style="cursor:pointer;">INVICTUS VICTORY</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Invictus Victory', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
                 <div class="card reveal" data-name="SWY FREEZE">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/htJj2Kx3/FB-IMG-1774893865555.jpg" loading="lazy" onclick="showDetail(6)">
@@ -1698,7 +1711,8 @@
             { name: "خمرة دخان", price: 850, img: "https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg", intro: "القرفة، البرغموت، المريمية", heart: "التمر، البرالين، مسك الروم، الزهور", base: "الفانيليا، التونكا، العنبر، البنزوين، المر، خشب الصندل", performance: {long: 95, sill: 90}, tags: ["فخم", "شتاء", "دافئ"] },
             { name: "Bvlgari Men In Black", price: 850, img: "https://i.postimg.cc/W3VMwTv5/FB-IMG-1774988721408.jpg", intro: "التبغ، الرم، التوابل", heart: "الجلود، مسك الروم، السوسن", base: "خشب الجاياك، البنزوين، التونكا", performance: {long: 85, sill: 80}, tags: ["فخم", "شتاء", "رسمي"] },
             { name: "Hugo Boss", price: 850, img: "https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg", intro: "التفاف، البرقوق، الليمون، البرغموت", heart: "القرفة، الماهوجني، القرنفل", base: "الفانيليا، خشب الصندل، الأرز، الزيتون", performance: {long: 80, sill: 75}, tags: ["عمل", "صباحي", "كلاسيك"] },
-            { name: "CUBAN TOBACCO", price: 750, img: "https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg", intro: "أوراق التبغ، التوابل الحارة", heart: "الفانيليا، الكاكاو، زهر التبغ", base: "الأخشاب، الفواكه المجففة", performance: {long: 90, sill: 85}, tags: ["شتاء", "فخم", "ثقيل"] }
+            { name: "CUBAN TOBACCO", price: 750, img: "https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg", intro: "أوراق التبغ، التوابل الحارة", heart: "الفانيليا، الكاكاو، زهر التبغ", base: "الأخشاب، الفواكه المجففة", performance: {long: 90, sill: 85}, tags: ["شتاء", "فخم", "ثقيل"] },
+            { name: "Invictus Victory", price: 850, img: "https://i.postimg.cc/ZRq3hNNd/IMG-20260401-125756-213.jpg", intro: "الفلفل الوردي، الليمون", heart: "الخزامى، اللبان", base: "الفانيليا، التونكا، العنبر", performance: {long: 90, sill: 85}, tags: ["مسائي", "شتاء", "جذاب"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
