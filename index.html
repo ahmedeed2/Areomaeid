@@ -57,8 +57,7 @@
             padding: 8px 0;
             font-weight: 700;
             font-size: 0.8rem;
-            position: relative;
-            z-index: 1100;
+            position: relative; z-index: 1100;
             letter-spacing: 2px;
             text-align: center;
             text-transform: uppercase;
@@ -439,7 +438,6 @@
         }
 
         .new-p { color: var(--gold-accent); font-weight: 700; font-size: 1.1rem; }
-        .new-p { color: var(--gold-accent); font-weight: 700; font-size: 1.1rem; }
         .old-p { color: #555; text-decoration: line-through; margin-right: 10px; font-size: 0.8rem; }
 
         .btn-add-cart {
@@ -467,6 +465,7 @@
             gap: 20px;
             padding: 0 5%;
             scrollbar-width: none;
+            align-items: center;
         }
 
         .review-card {
@@ -476,6 +475,14 @@
         }
 
         .review-card:hover { border-color: var(--gold-accent); }
+
+        /* Estilo para el contenedor del video */
+        .video-review-container {
+            min-width: 280px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.5s;
+        }
+        .video-review-container:hover { border-color: var(--gold-accent); }
 
         .detail-modal {
             display: none;
@@ -1409,6 +1416,71 @@
                     </div>
                 </div>
 
+                <div class="card reveal" data-name="عطر خمرة">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/T2sN2z6B/IMG_20260401_145812_387.jpg" loading="lazy" onclick="showDetail(34)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(34)" style="cursor:pointer;">عطر خمرة</h3>
+                        <div class="price-tag">
+                            <span class="old-p">650ج</span><span class="new-p">450ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('عطر خمرة', 450)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal" data-name="ARMANI CODE">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/gc7tcCpF/IMG_20260401_145906_711.jpg" loading="lazy" onclick="showDetail(35)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(35)" style="cursor:pointer;">ARMANI CODE</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Armani Code', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal" data-name="AZZARO WANTED">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/fWPqWGNG/IMG_20260401_145917_590.jpg" loading="lazy" onclick="showDetail(36)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(36)" style="cursor:pointer;">AZZARO WANTED</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Azzaro Wanted', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal" data-name="NISHANE ANI">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/zDQ2DsNm/IMG_20260401_145932_705.jpg" loading="lazy" onclick="showDetail(37)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(37)" style="cursor:pointer;">NISHANE ANI</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Nishane Ani', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal" data-name="Y EAU DE PARFUM">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg" loading="lazy" onclick="showDetail(38)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(38)" style="cursor:pointer;">Y EAU DE PARFUM</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('yEau de Parfum', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -1524,6 +1596,9 @@
         <section id="reviews-section" class="reviews-section reveal">
             <h2>CLIENT REVIEWS</h2>
             <div class="reviews-slider">
+                <div class="video-review-container">
+                    <div style="position:relative; width:100%; height:0px; padding-bottom:179.310%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/1l0faw?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+                </div>
                 <div class="review-card"><img src="https://i.postimg.cc/L6wLcv21/IMG-20260401-134704-198.jpg" loading="lazy" style="width:100%;"></div>
                 <div class="review-card"><img src="https://i.postimg.cc/qMSyPQ4h/IMG-20260401-134706-390.jpg" loading="lazy" style="width:100%;"></div>
                 <div class="review-card"><img src="https://i.postimg.cc/0y1rG485/IMG-20260401-134841-704.jpg" loading="lazy" style="width:100%;"></div>
@@ -1722,7 +1797,6 @@
     </div>
 
     <script>
-        // القائمة الشاملة والكاملة لتقسيمات جمهورية مصر العربية الإدارية (27 محافظة)
         const egyptData = {
             "القاهرة": ["مدينة نصر", "مصر الجديدة", "المعادي", "وسط البلد", "حلوان", "التجمع الخامس", "شبرا", "عين شمس", "المرج", "الزيتون", "البساتين", "السيدة زينب", "الجمالية", "المطرية"],
             "الجيزة": ["الدقي", "المهندسين", "الهرم", "فيصل", "6 أكتوبر", "الشيخ زايد", "العجوزة", "العمرانية", "البدرشين", "العياط", "أطفيح", "الصف", "أوسيم", "كرداسة"],
@@ -1787,7 +1861,13 @@
             { name: "Coco Mademoiselle Chanel", price: 850, img: "https://i.postimg.cc/cCBV86TG/IMG_20260401_131507_607.jpg", intro: "البرتقال، الماندرين، زهر البرتقال، البرغموت", heart: "الميموزا، الياسمين، الورد التركي، الإيلنغ", base: "التونكا، الباتشولي، الجاوي، الفانيليا، نجيل الهند، المسك", performance: {long: 90, sill: 85}, tags: ["كلاسيك", "فخم", "كل الفصول"] },
             { name: "Narciso Rodriguez For Her Musc Nude", price: 850, img: "https://i.postimg.cc/v87RKSyn/IMG_20260401_131556_783.jpg", intro: "الفلفل الوردي، الياسمين، الزهور البيضاء", heart: "المسك، الورد، زهر البرتقال", base: "الكشمير، الباتشولي، التونكا", performance: {long: 80, sill: 75}, tags: ["يومي", "ناعم", "جذاب"] },
             { name: "Prada Paradoxe", price: 850, img: "https://i.postimg.cc/MHmhjXtS/IMG_20260401_131548_365.jpg", intro: "الكمثرى، الماندرين، البرغموت", heart: "زهر البرتقال، الياسمين، زيت زهر البرتقال", base: "المسك الأبيض، العنبر، الفانيليا، البنزوين", performance: {long: 85, sill: 80}, tags: ["فخم", "عصري", "ثابت"] },
-            { name: "Elie Saab Le Parfum", price: 850, img: "https://i.postimg.cc/CMCy260Z/IMG_20260401_131526_398.jpg", intro: "زهر البرتقال الأفريقي", heart: "الياسمين", base: "عسل الأبيض، الباتشولي، الورد، خشب الأرز", performance: {long: 85, sill: 85}, tags: ["رسمي", "عروس", "زهري"] }
+            { name: "Elie Saab Le Parfum", price: 850, img: "https://i.postimg.cc/CMCy260Z/IMG_20260401_131526_398.jpg", intro: "زهر البرتقال الأفريقي", heart: "الياسمين", base: "عسل الأبيض، الباتشولي، الورد، خشب الأرز", performance: {long: 85, sill: 85}, tags: ["رسمي", "عروس", "زهري"] },
+            // مصفوفة بيانات العطور الجديدة
+            { name: "عطر خمرة", price: 450, img: "https://i.postimg.cc/T2sN2z6B/IMG_20260401_145812_387.jpg", intro: "القرفة، جوزة الطيب، البرغموت", heart: "التمر، البرالين، مسك الروم", base: "الفانيليا، التونكا، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "مسائي"] },
+            { name: "Armani Code", price: 850, img: "https://i.postimg.cc/gc7tcCpF/IMG_20260401_145906_711.jpg", intro: "الليمون، البرغموت", heart: "زهر الزيتون، اليانسون النجمي، خشب الغاياك", base: "الجلود، التبغ، التونكا", performance: {long: 85, sill: 80}, tags: ["رسمي", "شتاء", "جذاب"] },
+            { name: "Azzaro Wanted", price: 850, img: "https://i.postimg.cc/fWPqWGNG/IMG_20260401_145917_590.jpg", intro: "الليمون، الزنجبيل، الخزامى، النعناع", heart: "التفاح، الهيل، إبرة الراعي", base: "التونكا، خشب العنبر، نجيل الهند", performance: {long: 88, sill: 85}, tags: ["شبابي", "كل الفصول", "جذاب"] },
+            { name: "Nishane Ani", price: 850, img: "https://i.postimg.cc/zDQ2DsNm/IMG_20260401_145932_705.jpg", intro: "الزنجبيل، البرغموت، الفلفل الوردي", heart: "الهيل، الورد التركي، الكشمش الأسود", base: "الفانيليا، الجاوي، خشب الصندل، المسك", performance: {long: 95, sill: 95}, tags: ["فخم", "شتاء", "ثابت جداً"] },
+            { name: "yEau de Parfum", price: 850, img: "https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg", intro: "التفاح، الزنجبيل، البرغموت", heart: "المريمية، التوت، إبرة الراعي", base: "العنبر، التونكا، الأرز، اللبان", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "عصري", "قوي"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
@@ -2132,8 +2212,6 @@
         window.onload = () => { 
             updateCartUI(); 
             initComparisonSlider();
-            
-            // تعبئة قائمة المحافظات ديناميكياً
             const sortedGovs = Object.keys(egyptData).sort((a, b) => a.localeCompare(b, 'ar'));
             sortedGovs.forEach(gov => {
                 let opt = document.createElement('option');
@@ -2141,8 +2219,6 @@
                 opt.textContent = gov;
                 govSelect.appendChild(opt);
             });
-
-            // تحديث قائمة المدن عند اختيار المحافظة
             govSelect.onchange = function() {
                 citySelect.disabled = false;
                 citySelect.innerHTML = '<option value="" disabled selected>اختر المدينة / المركز</option>';
@@ -2155,13 +2231,11 @@
                     citySelect.appendChild(opt);
                 });
             };
-
             setTimeout(() => {
                 const lastSpin = localStorage.getItem('aroma_last_spin');
                 const now = new Date().getTime();
                 if (!lastSpin || (now - lastSpin >= 24 * 60 * 60 * 1000)) { openWheel(); }
             }, 3000);
-
             setTimeout(() => {
                 document.getElementById('quiz-popup').style.display = 'flex';
             }, 5000);
