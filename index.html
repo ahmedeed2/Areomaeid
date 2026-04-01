@@ -1009,7 +1009,7 @@
     <div id="quiz-popup">
         <span class="quiz-popup-close" onclick="this.parentElement.style.display='none'">&times;</span>
         <div class="quiz-popup-title">محتار في اختيار عطرك؟ 🤔</div>
-        <div class="quiz-popup-text">مش عارف ذوقك؟ عملنا لك مستشار ذكي يساعدك تختار عطرك المثالي في ثواني!</div>
+        <div class="quiz-popup-text">مش عارف ذوقك? عملنا لك مستشار ذكي يساعدك تختار عطرك المثالي في ثواني!</div>
         <button class="quiz-popup-btn" onclick="this.parentElement.style.display='none'; openQuiz();">جرب المستشار الآن</button>
     </div>
 
@@ -1072,15 +1072,7 @@
             <div class="products-container" id="men-container">
                 <div class="card reveal" data-name="STRONGER WITH YOU">
                     <div class="card-slider">
-                        <div class="comparison-container" id="swy-comparison">
-                            <img src="https://i.postimg.cc/y8SshwPN/FB-IMG-1774883967790.jpg" class="comparison-img" loading="lazy" alt="واقعي">
-                            <div class="img-overlay" style="position: absolute; top: 0; left: 0; height: 100%; overflow: hidden; width: 50%; border-left: 1px solid var(--gold-accent);">
-                                <img src="https://i.postimg.cc/D0Tt9P8H/375x500-100895.jpg" loading="lazy" style="position: absolute; top: 0; left: 0; height: 100%; width: auto; min-width: 100%; object-fit: cover;" alt="احترافي">
-                            </div>
-                            <div class="comparison-slider" style="left: 50%;">
-                                <div class="slider-handle"></div>
-                            </div>
-                        </div>
+                        <img src="https://i.postimg.cc/sxT0S4TV/FB-IMG-1774883967790.jpg" loading="lazy" onclick="showDetail(0)">
                     </div>
                     <div class="card-content">
                         <h3 onclick="showDetail(0)" style="cursor:pointer;">STRONGER WITH YOU</h3>
@@ -1481,6 +1473,45 @@
                     </div>
                 </div>
 
+                <div class="card reveal" data-name="DOMINICAN TOBACCO">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg" loading="lazy" onclick="showDetail(39)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(39)" style="cursor:pointer;">DOMINICAN TOBACCO</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Dominican Tobacco', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal" data-name="MEXICAN TOBACCO">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/nLSsybj1/IMG_20260401_170209_633.jpg" loading="lazy" onclick="showDetail(40)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(40)" style="cursor:pointer;">MEXICAN TOBACCO</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Mexican Tobacco', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="card reveal" data-name="ARABIAN TOBACCO">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/hGZJkWz8/IMG_20260401_170240_182.jpg" loading="lazy" onclick="showDetail(41)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(41)" style="cursor:pointer;">ARABIAN TOBACCO</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Arabian Tobacco', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -1514,7 +1545,7 @@
 
                 <div class="card reveal" data-name="EILISH">
                     <div class="card-slider">
-                        <img src="https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg" loading="lazy" onclick="showDetail(22)">
+                        <img src="https://i.postimg.cc/Df52BVDb/IMG-20260331-111141-315.jpg" loading="lazy" onclick="showDetail(22)">
                     </div>
                     <div class="card-content">
                         <h3 onclick="showDetail(22)" style="cursor:pointer;">EILISH</h3>
@@ -1828,7 +1859,7 @@
         };
 
         const productsData = [
-            { name: "STRONGER WITH YOU", price: 850, img: "https://i.postimg.cc/D0Tt9P8H/375x500-100895.jpg", intro: "الهيل، الفلفل الوردي، النعناع", heart: "الأناناس، الميرمية، البطيخ", base: "الفانيليا، الكستناء، خشب الأرز", performance: {long: 85, sill: 80}, tags: ["شتاء", "خريف", "مسائي"] },
+            { name: "STRONGER WITH YOU", price: 850, img: "https://i.postimg.cc/sxT0S4TV/FB-IMG-1774883967790.jpg", intro: "الهيل، الفلفل الوردي، النعناع", heart: "الأناناس، الميرمية، البطيخ", base: "الفانيليا، الكستناء، خشب الأرز", performance: {long: 85, sill: 80}, tags: ["شتاء", "خريف", "مسائي"] },
             { name: "SAUVAGE", price: 850, img: "https://i.postimg.cc/kMZHNDhX/FB-IMG-1774883910137.jpg", intro: "برغموت كالابريا، الفلفل", heart: "فلفل سيتشوان، الخزامى، الباتشولي", base: "الأمبروكسان، الأرز، اللابدانوم", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "يومي", "جذاب"] },
             { name: "أسد الكسير", price: 850, img: "https://i.postimg.cc/2SmNvVVg/FB-IMG-1774883985402.jpg", intro: "القرفة، الهيل، جوزة الطيب، الجريب فروت", heart: "عرق السوس، الخزامى", base: "الفانيليا، العنبر، الباتشولي، نجيل الهند", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "فخم"] },
             { name: "BLUE DE CHANEL", price: 850, img: "https://i.postimg.cc/brb4Sh8y/FB-IMG-1774883989978.jpg", intro: "الجريب فروت، الليمون، النعناع، الفلفل الوردي", heart: "الزنجبيل، الياسمين، جوزة الطيب", base: "البخور، خشب الصندل، المسك، الأرز", performance: {long: 75, sill: 70}, tags: ["صيف", "صباحي", "عمل"] },
@@ -1850,7 +1881,7 @@
             { name: "Le Male Le Parfum", price: 850, img: "https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg", intro: "الهيل", heart: "الخزامى، السوسن", base: "الفانيليا، الملاحظات الشرقية، الأخشاب", performance: {long: 90, sill: 90}, tags: ["شتاء", "فخم", "مسائي"] },
             { name: "Lost Cherry", price: 850, img: "https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg", intro: "الكرز الحامض، اللوز المر، اليكير", heart: "الكرز الحامض، البرقوق، الورد تركيا، ياسمين", base: "التونكا، الفانيليا، بلسم بيرو، القرفة، خشب الصندل", performance: {long: 85, sill: 80}, tags: ["شتاء", "جذاب", "مسائي"] },
             { name: "Baccarat Rouge 540", price: 850, img: "https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg", intro: "الزعفران، الياسمين", heart: "خشب العنبر، العنبر", base: "صمغ الصنوبر، خشب الأرز", performance: {long: 95, sill: 95}, tags: ["فخم", "رسمي", "كل الفصول"] },
-            { name: "Eilish", price: 850, img: "https://i.postimg.cc/59mFqX3t/IMG-20260331-111141-315.jpg", intro: "السكر، التوت الأحمر، الماندرين", heart: "الفانيليا، الكاكاو، الورد، التوابل", base: "العنبر، المسك، الأخشاب، التونكا", performance: {long: 80, sill: 75}, tags: ["دافئ", "يومي", "شتاء"] },
+            { name: "Eilish", price: 850, img: "https://i.postimg.cc/Df52BVDb/IMG-20260331-111141-315.jpg", intro: "السكر، التوت الأحمر، الماندرين", heart: "الفانيليا، الكاكاو، الورد، التوابل", base: "العنبر، المسك، الأخشاب، التونكا", performance: {long: 80, sill: 75}, tags: ["دافئ", "يومي", "شتاء"] },
             { name: "NOIR EXTREME", price: 870, img: "https://i.postimg.cc/dVRK3j4Z/FB-IMG-1774986843148.jpg", intro: "الزعفران، الحبهان، جوزة الطيب، البرتقال المر", heart: "الكلفي، المصطكي، زهر البرتقال، الياسمين، الورد", base: "الفانيليا، العنبر، خشب الصندل، الأخشاب", performance: {long: 88, sill: 82}, tags: ["فخم", "شتاء", "مسائي"] },
             { name: "خمرة دخان", price: 850, img: "https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg", intro: "القرفة، البرغموت، المريمية", heart: "التمر، البرالين، مسك الروم، الزهور", base: "الفانيليا، التونكا، العنبر، البنزوين، المر، خشب الصندل", performance: {long: 95, sill: 90}, tags: ["فخم", "شتاء", "دافئ"] },
             { name: "Bvlgari Men In Black", price: 850, img: "https://i.postimg.cc/W3VMwTv5/FB-IMG-1774988721408.jpg", intro: "التبغ، الرم، التوابل", heart: "الجلود، مسك الروم، السوسن", base: "خشب الجاياك، البنزوين، التونكا", performance: {long: 85, sill: 80}, tags: ["فخم", "شتاء", "رسمي"] },
@@ -1862,12 +1893,14 @@
             { name: "Narciso Rodriguez For Her Musc Nude", price: 850, img: "https://i.postimg.cc/v87RKSyn/IMG_20260401_131556_783.jpg", intro: "الفلفل الوردي، الياسمين، الزهور البيضاء", heart: "المسك، الورد، زهر البرتقال", base: "الكشمير، الباتشولي، التونكا", performance: {long: 80, sill: 75}, tags: ["يومي", "ناعم", "جذاب"] },
             { name: "Prada Paradoxe", price: 850, img: "https://i.postimg.cc/MHmhjXtS/IMG_20260401_131548_365.jpg", intro: "الكمثرى، الماندرين، البرغموت", heart: "زهر البرتقال، الياسمين، زيت زهر البرتقال", base: "المسك الأبيض، العنبر، الفانيليا، البنزوين", performance: {long: 85, sill: 80}, tags: ["فخم", "عصري", "ثابت"] },
             { name: "Elie Saab Le Parfum", price: 850, img: "https://i.postimg.cc/CMCy260Z/IMG_20260401_131526_398.jpg", intro: "زهر البرتقال الأفريقي", heart: "الياسمين", base: "عسل الأبيض، الباتشولي، الورد، خشب الأرز", performance: {long: 85, sill: 85}, tags: ["رسمي", "عروس", "زهري"] },
-            // مصفوفة بيانات العطور الجديدة
             { name: "عطر خمرة", price: 450, img: "https://i.postimg.cc/T2sN2z6B/IMG_20260401_145812_387.jpg", intro: "القرفة، جوزة الطيب، البرغموت", heart: "التمر، البرالين، مسك الروم", base: "الفانيليا، التونكا، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "مسائي"] },
             { name: "Armani Code", price: 850, img: "https://i.postimg.cc/gc7tcCpF/IMG_20260401_145906_711.jpg", intro: "الليمون، البرغموت", heart: "زهر الزيتون، اليانسون النجمي، خشب الغاياك", base: "الجلود، التبغ، التونكا", performance: {long: 85, sill: 80}, tags: ["رسمي", "شتاء", "جذاب"] },
             { name: "Azzaro Wanted", price: 850, img: "https://i.postimg.cc/fWPqWGNG/IMG_20260401_145917_590.jpg", intro: "الليمون، الزنجبيل، الخزامى، النعناع", heart: "التفاح، الهيل، إبرة الراعي", base: "التونكا، خشب العنبر، نجيل الهند", performance: {long: 88, sill: 85}, tags: ["شبابي", "كل الفصول", "جذاب"] },
             { name: "Nishane Ani", price: 850, img: "https://i.postimg.cc/zDQ2DsNm/IMG_20260401_145932_705.jpg", intro: "الزنجبيل، البرغموت، الفلفل الوردي", heart: "الهيل، الورد التركي، الكشمش الأسود", base: "الفانيليا، الجاوي، خشب الصندل، المسك", performance: {long: 95, sill: 95}, tags: ["فخم", "شتاء", "ثابت جداً"] },
-            { name: "yEau de Parfum", price: 850, img: "https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg", intro: "التفاح، الزنجبيل، البرغموت", heart: "المريمية، التوت، إبرة الراعي", base: "العنبر، التونكا، الأرز، اللبان", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "عصري", "قوي"] }
+            { name: "yEau de Parfum", price: 850, img: "https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg", intro: "التفاح، الزنجبيل، البرغموت", heart: "المريمية، التوت، إبرة الراعي", base: "العنبر، التونكا، الأرز، اللبان", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "عصري", "قوي"] },
+            { name: "Dominican Tobacco", price: 850, img: "https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg", intro: "أوراق التبغ الفاخرة، التوابل", heart: "الكاكاو، زهر الفانيليا", base: "الأخشاب، الفواكه المجففة", performance: {long: 92, sill: 88}, tags: ["شتاء", "فخم", "مسائي"] },
+            { name: "Mexican Tobacco", price: 850, img: "https://i.postimg.cc/nLSsybj1/IMG_20260401_170209_633.jpg", intro: "التبغ المكسيكي، القرفة", heart: "البرالين، بلسم تولو", base: "العنبر، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "جذاب"] },
+            { name: "Arabian Tobacco", price: 850, img: "https://i.postimg.cc/hGZJkWz8/IMG_20260401_170240_182.jpg", intro: "التبغ العربي، العود الخفيف", heart: "الزعفران، البخور", base: "العنبر، المسك الملكي", performance: {long: 95, sill: 92}, tags: ["رسمي", "فخم", "شتاء"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
