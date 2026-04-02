@@ -959,7 +959,7 @@
             object-fit: cover;
             border: 1px solid #eee;
             padding: 3px;
-            border-radius: 5px;
+            border-radius: 50px;
             margin-bottom: 10px;
         }
 
@@ -1026,6 +1026,66 @@
             cursor: pointer;
             font-size: 1.2rem;
         }
+
+        /* تنسيقات سياسة الاستبدال */
+        #policy-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.98);
+            z-index: 7000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .policy-card {
+            background: #fff;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            border: 1px solid #eee;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            animation: modalFadeIn 0.5s ease;
+        }
+
+        .policy-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 1px solid #000;
+            padding-bottom: 15px;
+        }
+
+        .policy-section {
+            margin-bottom: 25px;
+        }
+
+        .policy-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        .policy-section p, .policy-section li {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .policy-tagline {
+            background: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-right: 4px solid #000;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -1062,6 +1122,7 @@
             <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px; font-weight:bold;">جرب حظك 🎡</a></li>
             <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('men')" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
             <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('women')" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">WOMEN</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openPolicy()" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:1px;">سياسة الاستبدال</a></li>
             <li style="margin:25px 0;"><a href="#reviews-section" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الآراء</a></li>
         </ul>
     </nav>
@@ -1419,7 +1480,7 @@
 
                 <div class="card reveal" data-name="خمرة دخان">
                     <div class="card-slider">
-                        <img src="https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg" loading="lazy" onclick="showDetail(24)">
+                        <img src="https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg" onclick="showDetail(24)">
                     </div>
                     <div class="card-content">
                         <h3 onclick="showDetail(24)" style="cursor:pointer;">خمرة دخان</h3>
@@ -1757,6 +1818,58 @@
         <p id="wheel-msg" style="margin-top:20px; color:#000; font-size:0.9rem; text-align:center;"></p>
     </div>
 
+    <div id="policy-modal" onclick="closePolicyOverlay(event)">
+        <div class="policy-card" onclick="event.stopPropagation()">
+            <button onclick="closePolicyManual()" style="position:absolute; top:20px; right:20px; background:none; border:none; font-size:30px; cursor:pointer;">&times;</button>
+            <h2 class="policy-title">سياسة الاستبدال والاسترجاع</h2>
+            
+            <div class="policy-section">
+                <p>أهلاً بك في <strong>أروما عيد</strong>. نحن حريصون على أن تكون تجربتك معنا استثنائية، وبما أن رضاك هو أولويتنا، فقد وضعنا سياسة مرنة تضمن حقك وتمنحك الثقة الكاملة في جودة عطورنا.</p>
+            </div>
+
+            <div class="policy-section">
+                <h3>1. الفترة الزمنية</h3>
+                <p>يمكنك طلب الاستبدال أو الاسترجاع خلال <strong>14 يوماً</strong> من تاريخ استلام الطلب.</p>
+            </div>
+
+            <div class="policy-section">
+                <h3>2. شروط الاستبدال والاسترجاع</h3>
+                <ul>
+                    <li>يجب أن تكون زجاجة العطر في حالتها الأصلية وبتغليفها المصنعي (البرشام) دون أي محاولة لفتحها أو استخدامها.</li>
+                    <li>نظراً لطبيعة المنتجات الصحية، لا يمكن استرجاع أي زجاجة تم فض غلافها البلاستيكي.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h3>3. حق التجربة (العينة المجانية)</h3>
+                <p>لأننا واثقون من جودة زيوتنا، نوفر لك <strong>عينة تجريبية (Sample)</strong> مع كل عطر تطلبه. نرجو منك اختبار الرائحة من خلال العينة أولاً قبل فتح الزجاجة الكبيرة، لضمان أن العطر قد نال إعجابك تماماً.</p>
+            </div>
+
+            <div class="policy-section">
+                <h3>4. من يتحمل تكاليف الشحن؟</h3>
+                <ul>
+                    <li><strong>أروما عيد تتحمل كافة المصاريف:</strong> في حال وجود عيب صناعة في الزجاجة أو البخاخ، أو وصول طلب خاطئ غير الذي تم طلبه.</li>
+                    <li><strong>العميل يتحمل مصاريف الشحن:</strong> في حال الرغبة في الاستبدال أو الاسترجاع بسبب "تغيير الرأي" مع الالتزام بشرط عدم فتح الزجاجة.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h3>5. آلية تقديم الطلب</h3>
+                <p>يمكنك تقديم طلب الاستبدال أو الاسترجاع بسهولة من خلال:</p>
+                <ul>
+                    <li>مراسلتنا عبر <strong>الواتساب</strong> مباشرة.</li>
+                    <li>أو عبر صفحة <strong>اتصل بنا</strong> على الموقع.</li>
+                </ul>
+            </div>
+
+            <div class="policy-tagline">
+                "في أروما عيد، نحن واثقون من جودتنا، لذا نمنحك حق التجربة قبل فتح العبوة.. لأن رضاك عن عطرك هو أولويتنا."
+            </div>
+            
+            <button class="close-modal-btn" onclick="closePolicyManual()" style="width:100%; margin-top:20px;">فهمت ذلك</button>
+        </div>
+    </div>
+
     <div id="quiz-modal" onclick="closeQuizOverlay(event)">
         <div class="quiz-card" onclick="event.stopPropagation()">
             <div class="quiz-progress-container">
@@ -1953,11 +2066,11 @@
             { name: "عطر هوس", price: 600, img: "https://i.postimg.cc/d0VLGG61/FB-IMG-1774894495826.jpg", intro: "التفاح، البرغموت، الليمون، القرفة", heart: "ملاحظات مائية، البرقوق، الهيل", base: "العنبر، المسك، الباتشولي", performance: {long: 85, sill: 90}, tags: ["صيف", "يومي", "شبابي"] },
             { name: "عطر هوس ايس", price: 600, img: "https://i.postimg.cc/90ZMcbm8/FB-IMG-1774894490647.jpg", intro: "الماندرين المجمد، التفاح الأخضر، الليمون", heart: "الخزامى الجليدي، البرقوق، الهيل", base: "العنبر، المسك، الباتشولي", performance: {long: 85, sill: 90}, tags: ["صيف", "منعش جداً", "صباحي"] },
             { name: "عطر هوس بلاك", price: 600, img: "https://i.postimg.cc/pdrLmRXb/FB-IMG-1774894492795.jpg", intro: "البرغموت، الأناناس، الفلفل الوردي", heart: "الياسمين، خشب الأرز، الباتشولي", base: "المسك، العنبر، الأخشاب الداكنة", performance: {long: 90, sill: 85}, tags: ["مسائي", "قوي", "خريف"] },
-            { name: "Louis Vuitton Imagination", price: 1000, img: "https://i.postimg.cc/gcNtDpGL/FB-IMG-1774894599355.jpg", intro: "السيترون، برغموت كالابريا، البرتقال الصقلي", heart: "الزنجبيل النيجيري، القرفة، زهر البرتقال", base: "الأمبروكسان، الشاي الأسود الصيني", performance: {long: 85, sill: 80}, tags: ["صيف", "نظافة", "فخامة"] },
+            { name: "Louis Vuitton Imagination", price: 1000, img: "https://i.postimg.cc/gcNtDpGL/FB-IMG-1774894599355.jpg", intro: "السيترون، برغموت كالابريا، البرتقال الصقلي", heart: "الزنجبيل النيجيري، القرفة", base: "الأمبروكسان، الشاي الأسود الصيني", performance: {long: 85, sill: 80}, tags: ["صيف", "نظافة", "فخامة"] },
             { name: "Xerjoff 40 Knots", price: 850, img: "https://i.postimg.cc/NMr07HCM/IMG-20260330-231127-113.jpg", intro: "الملاحظات الملحية، الأخشاب، مياه البحر", heart: "الأرنب الوردي، الملاحظات الخضراء", base: "الأرز، العنبر", performance: {long: 90, sill: 85}, tags: ["صيف", "فخم", "بحر"] },
             { name: "Xerjoff Alexandria II", price: 850, img: "https://i.postimg.cc/N0KGBXc7/IMG-20260330-231115-598.jpg", intro: "الخزامى، القرفة، الورد، خشب الأرز", heart: "الورد، زنابق الوادي، خشب الصندل", base: "العود، الفانيليا، العنبر، المسك", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "ملكي"] },
             { name: "Dior Homme", price: 850, img: "https://i.postimg.cc/PqVy9PbV/IMG-20260330-232825-829.jpg", intro: "الخزامى، البرغموت، الميرمية", heart: "السوسن، الكاكاو، العنبر", base: "الجلود، الباتشولي، نجيل الهند", performance: {long: 85, sill: 80}, tags: ["رسمي", "خريف", "جذاب"] },
-            { name: "Black Xs", price: 850, img: "https://i.postimg.cc/RZXLJNYv/IMG-20260330-232806-719.jpg", intro: "الليمون، المريمية", heart: "البرالين، القرفة، الهيل الأسود، بلسم تولو", base: "الخشب البرازيلي، الباتشولي، العنبر الأسود", performance: {long: 80, sill: 85}, tags: ["شبابي", "شتاء", "جريء"] },
+            { name: "Black Xs", price: 850, img: "https://i.postimg.cc/RZXLJNYv/IMG-20260330-232806-719.jpg", intro: "الاليمون، المريمية", heart: "البرالين، القرفة، الهيل الأسود، بلسم تولو", base: "الخشب البرازيلي، الباتشولي، العنبر الأسود", performance: {long: 80, sill: 85}, tags: ["شبابي", "شتاء", "جريء"] },
             { name: "Le Male Le Parfum", price: 850, img: "https://i.postimg.cc/s2M7BKST/IMG-20260330-232743-284.jpg", intro: "الهيل", heart: "الخزامى، السوسن", base: "الفانيليا، الملاحظات الشرقية، الأخشاب", performance: {long: 90, sill: 90}, tags: ["شتاء", "فخم", "مسائي"] },
             { name: "Lost Cherry", price: 850, img: "https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg", intro: "الكرز الحامض، اللوز المر، اليكير", heart: "الكرز الحامض، البرقوق، الورد تركيا، ياسمين", base: "التونكا، الفانيليا، بلسم بيرو، القرفة، خشب الصندل", performance: {long: 85, sill: 80}, tags: ["شتاء", "جذاب", "مسائي"] },
             { name: "Baccarat Rouge 540", price: 850, img: "https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg", intro: "الزعفران، الياسمين", heart: "خشب العنبر، العنبر", base: "صمغ الصنوبر، خشب الأرز", performance: {long: 95, sill: 95}, tags: ["فخم", "رسمي", "كل الفصول"] },
@@ -2063,6 +2176,10 @@
         function openCart() { history.pushState({modal: "cart"}, ""); cartModal.classList.add('active'); sidebar.classList.remove('active'); }
         function closeCart() { cartModal.classList.remove('active'); if (window.history.state?.modal === "cart") history.back(); }
 
+        function openPolicy() { history.pushState({modal: "policy"}, ""); document.getElementById('policy-modal').style.display = 'flex'; sidebar.classList.remove('active'); }
+        function closePolicyManual() { document.getElementById('policy-modal').style.display = 'none'; if (window.history.state?.modal === "policy") history.back(); }
+        function closePolicyOverlay(e) { if (e.target.id === 'policy-modal') closePolicyManual(); }
+
         function showDetail(index) {
             const p = productsData[index];
             document.getElementById('detImg').src = p.img;
@@ -2088,6 +2205,7 @@
             sidebar.classList.remove('active');
             document.getElementById('wheel-overlay').style.display = 'none';
             document.getElementById('quiz-modal').style.display = 'none';
+            document.getElementById('policy-modal').style.display = 'none';
         };
 
         document.getElementById('openMenu').onclick = openSidebar;
