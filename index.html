@@ -11,17 +11,19 @@
     
     <style>
         :root {
-            --primary-black: #080808;
-            --deep-black: #000000;
-            --gold-accent: #d4af37;
-            --gold-hover: #f1c40f;
-            --text-gray: #a0a0a0;
-            --white: #ffffff;
+            /* التعديل هنا لتحويل الهوية للون الأبيض الفاخر (Dior Style) */
+            --primary-black: #ffffff; /* الخلفيات أصبحت بيضاء */
+            --deep-black: #fcfcfc;    /* خلفية الجسم */
+            --gold-accent: #111111;   /* تحويل الذهب لأسود ملكي في بعض المواضع أو تركه كإكسسوار */
+            --gold-hover: #d4af37;
+            --text-gray: #666666;
+            --white: #000000;         /* النصوص الأساسية أصبحت سوداء */
             --discount-red: #e74c3c;
-            --card-bg: #111;
-            --glass-bg: rgba(15, 15, 15, 0.95);
+            --card-bg: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.95);
             --error-red: #ff4d4d;
-            --matte-black: #0a0a0a;
+            --matte-black: #ffffff;
+            --border-color: #eeeeee;
         }
 
         * {
@@ -52,8 +54,8 @@
         }
 
         .announcement-bar {
-            background: var(--gold-accent);
-            color: #000;
+            background: #000; /* شريط الإعلانات أسود بنص أبيض للفخامة */
+            color: #fff;
             padding: 8px 0;
             font-weight: 700;
             font-size: 0.8rem;
@@ -75,7 +77,7 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 2000;
             padding: 40px 30px;
-            border-left: 1px solid rgba(212, 175, 55, 0.3);
+            border-left: 1px solid var(--border-color);
             will-change: transform;
             overflow-y: auto;
         }
@@ -95,7 +97,7 @@
             z-index: 2100;
             transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-right: 1px solid var(--gold-accent);
+            border-right: 1px solid #000;
             display: flex;
             flex-direction: column;
             will-change: transform;
@@ -105,7 +107,7 @@
 
         .cart-header {
             padding: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -116,7 +118,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: #0a0a0a;
+            background: #fff;
             overflow-y: auto;
             position: relative;
         }
@@ -131,9 +133,9 @@
         .order-form input, .order-form select, .order-form textarea {
             width: 100%;
             padding: 12px;
-            background: #000;
-            border: 1px solid #333;
-            color: #fff;
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #000;
             margin-bottom: 5px;
             font-size: 0.9rem;
             outline: none;
@@ -141,7 +143,7 @@
         }
 
         .order-form input:focus, .order-form select:focus, .order-form textarea:focus {
-            border-color: var(--gold-accent);
+            border-color: #000;
         }
 
         .error-msg {
@@ -164,7 +166,7 @@
             cursor: pointer;
             font-size: 1rem;
             z-index: 2200;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
             margin-top: auto;
         }
 
@@ -177,30 +179,30 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             z-index: 1000;
         }
 
         .menu-toggle {
             background: transparent;
-            border: 1px solid var(--gold-accent);
+            border: 1px solid #000;
             padding: 8px 18px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
-            color: var(--gold-accent);
+            color: #000;
             transition: 0.3s;
             text-transform: uppercase;
             font-size: 0.8rem;
         }
 
         .menu-toggle:hover {
-            background: var(--gold-accent);
-            color: #000;
+            background: #000;
+            color: #fff;
         }
 
         .header-actions {
@@ -225,12 +227,12 @@
         .fb-svg, .cart-svg {
             width: 24px;
             height: 24px;
-            fill: var(--gold-accent);
+            fill: #000;
         }
 
         .cart-count {
-            background: var(--white);
-            color: var(--deep-black);
+            background: #000;
+            color: #fff;
             font-size: 11px;
             font-weight: 700;
             min-width: 18px;
@@ -241,7 +243,7 @@
             justify-content: center;
             margin-left: 6px;
             padding: 2px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .hero {
@@ -251,22 +253,22 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png');
+            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.5)), url('https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
         .hero h1 { 
-            color: var(--gold-accent); 
+            color: #000; 
             font-size: clamp(2.5rem, 8vw, 4.5rem); 
             letter-spacing: 8px; 
             font-weight: 300;
             margin-bottom: 15px;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 5px 15px rgba(255,255,255,0.5);
         }
 
-        .hero p { font-size: 1.1rem; letter-spacing: 2px; color: var(--text-gray); }
+        .hero p { font-size: 1.1rem; letter-spacing: 2px; color: #333; }
 
         .search-section {
             width: 100%;
@@ -286,9 +288,9 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid #ddd;
             padding: 12px 40px 12px 15px;
-            color: var(--white);
+            color: #000;
             font-size: 1rem;
             outline: none;
             transition: border-bottom 0.4s ease;
@@ -296,7 +298,7 @@
         }
 
         #productSearch:focus {
-            border-bottom: 1px solid var(--gold-accent);
+            border-bottom: 1px solid #000;
         }
 
         .search-icon-svg {
@@ -306,7 +308,7 @@
             transform: translateY(-50%);
             width: 18px;
             height: 18px;
-            fill: var(--gold-accent);
+            fill: #000;
             opacity: 0.6;
         }
 
@@ -320,9 +322,9 @@
 
         .tab-btn {
             padding: 10px 40px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid #ddd;
             background: transparent;
-            color: var(--white);
+            color: #000;
             font-weight: 400;
             cursor: pointer;
             border-radius: 0;
@@ -331,9 +333,9 @@
         }
 
         .tab-btn.active, .tab-btn:hover {
-            border-color: var(--gold-accent);
-            background: var(--gold-accent);
-            color: #000;
+            border-color: #000;
+            background: #000;
+            color: #fff;
         }
 
         .products-container {
@@ -349,19 +351,19 @@
 
         .card {
             background: var(--card-bg);
-            border: none;
+            border: 1px solid #f0f0f0;
             position: relative;
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .card:hover { transform: translateY(-5px); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
         .card-slider {
             display: flex;
             overflow: hidden;
             height: 350px;
             position: relative;
-            background: #111; 
+            background: #fff; 
         }
 
         .card-slider img {
@@ -369,7 +371,7 @@
             min-width: 100%;
             height: 100%; 
             object-fit: cover;
-            filter: grayscale(20%);
+            filter: grayscale(10%);
             transition: 0.5s;
         }
         .card:hover img { filter: grayscale(0%); }
@@ -402,7 +404,7 @@
             bottom: 0;
             left: 50%;
             width: 2px;
-            background: var(--gold-accent);
+            background: #000;
             cursor: ew-resize;
         }
 
@@ -413,40 +415,40 @@
             transform: translate(-50%, -50%);
             width: 40px;
             height: 40px;
-            background: var(--gold-accent);
+            background: #000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
         }
 
         .slider-handle::before {
             content: '◀ ▶';
             font-size: 10px;
-            color: #000;
+            color: #fff;
             font-weight: bold;
         }
 
         .card-content { padding: 20px; text-align: center; }
         .card-content h3 { 
-            color: var(--white); 
+            color: #000; 
             font-size: 0.9rem; 
             letter-spacing: 2px; 
             margin-bottom: 10px; 
             font-weight: 400;
         }
 
-        .new-p { color: var(--gold-accent); font-weight: 700; font-size: 1.1rem; }
-        .old-p { color: #555; text-decoration: line-through; margin-right: 10px; font-size: 0.8rem; }
+        .new-p { color: #000; font-weight: 700; font-size: 1.1rem; }
+        .old-p { color: #aaa; text-decoration: line-through; margin-right: 10px; font-size: 0.8rem; }
 
         .btn-add-cart {
             margin-top: 15px;
             width: 100%;
             background: transparent;
-            border: 1px solid var(--gold-accent);
+            border: 1px solid #000;
             padding: 12px;
-            color: var(--gold-accent);
+            color: #000;
             font-weight: 700;
             cursor: pointer;
             transition: 0.4s;
@@ -454,10 +456,10 @@
             letter-spacing: 1px;
         }
 
-        .btn-add-cart:hover { background: var(--gold-accent); color: #000; }
+        .btn-add-cart:hover { background: #000; color: #fff; }
 
-        .reviews-section { padding: 80px 0; background: #050505; }
-        .reviews-section h2 { text-align: center; color: var(--gold-accent); margin-bottom: 50px; font-weight: 300; letter-spacing: 5px; }
+        .reviews-section { padding: 80px 0; background: #fff; }
+        .reviews-section h2 { text-align: center; color: #000; margin-bottom: 50px; font-weight: 300; letter-spacing: 5px; }
 
         .reviews-slider {
             display: flex;
@@ -470,39 +472,40 @@
 
         .review-card {
             min-width: 280px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid #eee;
             transition: 0.5s;
         }
 
-        .review-card:hover { border-color: var(--gold-accent); }
+        .review-card:hover { border-color: #000; }
 
         /* Estilo para el contenedor del video */
         .video-review-container {
             min-width: 280px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid #eee;
             transition: 0.5s;
         }
-        .video-review-container:hover { border-color: var(--gold-accent); }
+        .video-review-container:hover { border-color: #000; }
 
         .detail-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98);
+            background: rgba(255,255,255,0.98);
             z-index: 3000;
             justify-content: center; align-items: center; padding: 20px;
         }
 
         .detail-content {
-            background: var(--matte-black);
+            background: #fff;
             max-width: 1000px;
             width: 100%;
             display: flex;
             flex-direction: row;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid #eee;
             animation: modalFadeIn 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             max-height: 90vh;
             overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
         @keyframes modalFadeIn {
@@ -510,7 +513,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        .detail-img-container { width: 45%; position: relative; background: #111; }
+        .detail-img-container { width: 45%; position: relative; background: #f9f9f9; }
         .detail-img { width: 100%; height: 100%; object-fit: cover; display: block; }
         
         .detail-text { 
@@ -524,7 +527,7 @@
         .detail-header h2 { 
             font-size: 1.8rem; 
             letter-spacing: 6px; 
-            color: var(--gold-accent); 
+            color: #000; 
             font-weight: 300;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -538,21 +541,22 @@
 
         .note-item {
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid #eee;
         }
 
         .note-label {
             font-size: 0.65rem;
             letter-spacing: 2px;
-            color: var(--gold-accent);
+            color: #333;
             text-transform: uppercase;
             margin-bottom: 5px;
             display: block;
+            font-weight: 700;
         }
 
         .note-value {
             font-size: 0.95rem;
-            color: #eee;
+            color: #555;
             font-weight: 300;
         }
 
@@ -560,7 +564,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            background: rgba(255,255,255,0.02);
+            background: #f9f9f9;
             padding: 20px;
         }
 
@@ -570,13 +574,13 @@
         .progress-container {
             width: 100%;
             height: 2px;
-            background: #222;
+            background: #ddd;
             position: relative;
         }
         .progress-bar {
             position: absolute;
             height: 100%;
-            background: var(--gold-accent);
+            background: #000;
             top: 0; left: 0;
         }
 
@@ -590,15 +594,15 @@
         .tag {
             font-size: 0.7rem;
             padding: 4px 12px;
-            border: 1px solid #333;
-            color: #aaa;
+            border: 1px solid #ddd;
+            color: #666;
             letter-spacing: 1px;
         }
 
         .close-modal-btn {
             background: none;
-            border: 1px solid var(--gold-accent);
-            color: var(--gold-accent);
+            border: 1px solid #000;
+            color: #000;
             padding: 12px 30px;
             cursor: pointer;
             font-size: 0.75rem;
@@ -609,15 +613,15 @@
         }
 
         .close-modal-btn:hover {
-            background: var(--gold-accent);
-            color: #000;
+            background: #000;
+            color: #fff;
         }
 
         .site-footer {
-            background: #080808;
+            background: #fff;
             padding: 40px 5%;
             text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-top: 1px solid #eee;
             margin-top: 50px;
         }
 
@@ -629,13 +633,13 @@
         }
 
         .footer-rights {
-            color: var(--gold-accent);
+            color: #000;
             font-size: 0.9rem;
             letter-spacing: 1px;
         }
 
         .footer-info {
-            color: var(--text-gray);
+            color: #777;
             font-size: 0.8rem;
             font-weight: 300;
         }
@@ -644,7 +648,7 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(255,255,255,0.95);
             z-index: 5000;
             justify-content: center; align-items: center;
             flex-direction: column;
@@ -652,9 +656,9 @@
         .wheel-container {
             position: relative;
             width: 320px; height: 320px;
-            border: 8px solid var(--gold-accent);
+            border: 8px solid #000;
             border-radius: 50%;
-            box-shadow: 0 0 30px var(--gold-accent);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
         }
         #wheel-canvas {
             width: 100%; height: 100%;
@@ -668,13 +672,13 @@
             width: 0; height: 0;
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
-            border-top: 30px solid var(--gold-accent);
+            border-top: 30px solid #000;
             z-index: 5001;
         }
         .spin-btn {
             margin-top: 30px;
-            background: var(--gold-accent);
-            color: #000;
+            background: #000;
+            color: #fff;
             border: none;
             padding: 15px 40px;
             font-weight: bold;
@@ -682,10 +686,10 @@
             border-radius: 50px;
             font-size: 1.1rem;
         }
-        .spin-btn:disabled { background: #444; color: #777; cursor: not-allowed; }
+        .spin-btn:disabled { background: #eee; color: #aaa; cursor: not-allowed; }
         .wheel-close {
             position: absolute; top: 20px; right: 20px;
-            color: #fff; font-size: 30px; cursor: pointer;
+            color: #000; font-size: 30px; cursor: pointer;
         }
         .discount-banner {
             background: var(--discount-red);
@@ -704,17 +708,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 4000;
             transition: all 0.3s ease;
             text-decoration: none;
-            border: 2px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.8);
         }
         
         .fb-float-btn:hover {
             transform: scale(1.1) rotate(5deg);
             background: #1565C0;
-            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.3);
         }
         
         .fb-float-svg {
@@ -724,7 +728,7 @@
         }
 
         @keyframes pulse-fb {
-            0% { box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.7); }
+            0% { box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.5); }
             70% { box-shadow: 0 0 0 15px rgba(24, 119, 242, 0); }
             100% { box-shadow: 0 0 0 0 rgba(24, 119, 242, 0); }
         }
@@ -750,13 +754,13 @@
             left: 100px;
             width: 55px;
             height: 55px;
-            background: var(--matte-black);
-            border: 2px solid var(--gold-accent);
+            background: #fff;
+            border: 2px solid #000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             z-index: 4000;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
@@ -764,24 +768,24 @@
 
         .quiz-float-btn:hover {
             transform: scale(1.1);
-            background: var(--gold-accent);
+            background: #000;
         }
 
         .quiz-float-btn:hover .quiz-svg {
-            fill: #000;
+            fill: #fff;
         }
 
         .quiz-svg {
             width: 28px;
             height: 28px;
-            fill: var(--gold-accent);
+            fill: #000;
             transition: 0.3s;
         }
 
         @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
         }
         .quiz-float-btn { animation: pulse-gold 5s infinite; }
 
@@ -789,7 +793,7 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(15px);
             z-index: 6000;
             justify-content: center;
@@ -797,28 +801,28 @@
         }
 
         .quiz-card {
-            background: var(--matte-black);
+            background: #fff;
             width: 500px;
             max-width: 90%;
             min-height: 520px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid #eee;
             position: relative;
             padding: 40px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
         .quiz-progress-container {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 4px;
-            background: rgba(255,255,255,0.05);
+            background: #f0f0f0;
         }
 
         .quiz-progress-bar {
             height: 100%;
-            background: var(--gold-accent);
+            background: #000;
             width: 0%;
             transition: width 0.6s ease;
         }
@@ -840,7 +844,7 @@
 
         .quiz-title {
             font-size: 1.3rem;
-            color: var(--gold-accent);
+            color: #000;
             font-weight: 300;
             letter-spacing: 1px;
             margin-bottom: 5px;
@@ -848,7 +852,7 @@
 
         .quiz-subtitle {
             font-size: 0.85rem;
-            color: var(--text-gray);
+            color: #777;
             margin-bottom: 10px;
         }
 
@@ -860,9 +864,9 @@
         }
 
         .quiz-opt-btn {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid #222;
-            color: #ccc;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            color: #333;
             padding: 14px;
             cursor: pointer;
             transition: 0.3s;
@@ -872,14 +876,14 @@
         }
 
         .quiz-opt-btn:hover {
-            border-color: var(--gold-accent);
-            color: var(--gold-accent);
-            background: rgba(212, 175, 55, 0.05);
+            border-color: #000;
+            color: #000;
+            background: #f9f9f9;
         }
 
         .skeleton-text {
             height: 20px;
-            background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
+            background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
             background-size: 200% 100%;
             animation: skeleton-pulse 1.5s infinite;
             border-radius: 4px;
@@ -908,9 +912,9 @@
         }
 
         .quiz-result-item {
-            background: rgba(255,255,255,0.03);
+            background: #fff;
             padding: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid #eee;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -921,7 +925,7 @@
             width: 100px;
             height: 100px;
             object-fit: cover;
-            border: 1px solid var(--gold-accent);
+            border: 1px solid #eee;
             padding: 3px;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -936,14 +940,14 @@
             position: fixed;
             bottom: 100px;
             left: 20px;
-            background: var(--matte-black);
-            border: 1px solid var(--gold-accent);
+            background: #fff;
+            border: 1px solid #000;
             padding: 15px 20px;
             z-index: 4500;
             display: none;
             flex-direction: column;
             gap: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-radius: 8px;
             max-width: 250px;
             animation: slideUpPopup 0.5s ease forwards;
@@ -955,20 +959,20 @@
         }
 
         .quiz-popup-title {
-            color: var(--gold-accent);
+            color: #000;
             font-size: 0.9rem;
             font-weight: 700;
         }
 
         .quiz-popup-text {
-            color: #ccc;
+            color: #555;
             font-size: 0.8rem;
             line-height: 1.4;
         }
 
         .quiz-popup-btn {
-            background: var(--gold-accent);
-            color: #000;
+            background: #000;
+            color: #fff;
             border: none;
             padding: 8px;
             font-size: 0.8rem;
@@ -979,14 +983,14 @@
         }
 
         .quiz-popup-btn:hover {
-            background: var(--white);
+            background: #333;
         }
 
         .quiz-popup-close {
             position: absolute;
             top: 5px;
             right: 8px;
-            color: #555;
+            color: #aaa;
             cursor: pointer;
             font-size: 1.2rem;
         }
@@ -1018,21 +1022,21 @@
     </div>
 
     <nav id="sidebar">
-        <button class="close-btn" id="closeMenu" style="color: var(--gold-accent); font-size: 40px; background:none; border:none; cursor:pointer;">&times;</button>
+        <button class="close-btn" id="closeMenu" style="color: #000; font-size: 40px; background:none; border:none; cursor:pointer;">&times;</button>
         <img src="https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png" class="sidebar-logo" loading="lazy" style="width:100px; border-radius:50%; margin: 20px auto; display:block;">
         <ul class="nav-links" style="list-style:none; margin-top:40px; text-align:center;">
-            <li style="margin:25px 0;"><a href="#" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الرئيسية</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:var(--gold-accent); text-decoration:none; font-size:1.4rem; letter-spacing:2px; font-weight:bold;">جرب حظك 🎡</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('men')" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('women')" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">WOMEN</a></li>
-            <li style="margin:25px 0;"><a href="#reviews-section" style="color:white; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الآراء</a></li>
+            <li style="margin:25px 0;"><a href="#" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الرئيسية</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px; font-weight:bold;">جرب حظك 🎡</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('men')" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
+            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('women')" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">WOMEN</a></li>
+            <li style="margin:25px 0;"><a href="#reviews-section" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الآراء</a></li>
         </ul>
     </nav>
 
     <div id="main-wrapper">
         <header>
             <button class="menu-toggle" id="openMenu">Menu</button>
-            <div style="color: var(--gold-accent); font-weight: 300; font-size: 1.5rem; letter-spacing: 5px;">AROMA EID</div>
+            <div style="color: #000; font-weight: 300; font-size: 1.5rem; letter-spacing: 5px;">AROMA EID</div>
             
             <div class="header-actions">
                 <a href="https://www.facebook.com/share/1DqTwP7iPx/" target="_blank" class="fb-icon-btn">
@@ -1667,13 +1671,13 @@
 
     <div id="wheel-overlay" onclick="closeWheel(event)">
         <span class="wheel-close" onclick="closeWheelManual()">&times;</span>
-        <h2 style="color:var(--gold-accent); margin-bottom:20px; font-weight:300;">جرب حظك مع أروما عيد</h2>
+        <h2 style="color:#000; margin-bottom:20px; font-weight:300;">جرب حظك مع أروما عيد</h2>
         <div class="wheel-container">
             <div class="wheel-pointer"></div>
             <canvas id="wheel-canvas" width="320" height="320"></canvas>
         </div>
         <button class="spin-btn" id="spin-button" onclick="spinWheel()">اضغط للفوز!</button>
-        <p id="wheel-msg" style="margin-top:20px; color:#fff; font-size:0.9rem; text-align:center;"></p>
+        <p id="wheel-msg" style="margin-top:20px; color:#000; font-size:0.9rem; text-align:center;"></p>
     </div>
 
     <div id="quiz-modal" onclick="closeQuizOverlay(event)">
@@ -1682,7 +1686,7 @@
                 <div class="quiz-progress-bar" id="quiz-bar"></div>
             </div>
             
-            <button onclick="closeQuizManual()" style="position:absolute; top:15px; right:15px; background:none; border:none; color:#555; font-size:25px; cursor:pointer;">&times;</button>
+            <button onclick="closeQuizManual()" style="position:absolute; top:15px; right:15px; background:none; border:none; color:#aaa; font-size:25px; cursor:pointer;">&times;</button>
 
             <div id="quiz-skeleton" style="display:flex; flex-direction:column; gap:20px;">
                 <div class="skeleton-text" style="width:60%;"></div>
@@ -1734,7 +1738,7 @@
                     <h2 class="quiz-title">لقد اخترنا لك أفضل عطرين!</h2>
                     <div id="quiz-result-area" class="quiz-result-card">
                         </div>
-                    <button onclick="resetQuiz()" style="background:none; border:none; color:var(--text-gray); font-size:0.7rem; cursor:pointer; margin-top:10px;">إعادة البحث ↺</button>
+                    <button onclick="resetQuiz()" style="background:none; border:none; color:#777; font-size:0.7rem; cursor:pointer; margin-top:10px;">إعادة البحث ↺</button>
                 </div>
             </div>
         </div>
@@ -1748,7 +1752,7 @@
             <div class="detail-text">
                 <div class="detail-header">
                     <h2 id="detTitle"></h2>
-                    <p style="color: #555; font-size: 0.75rem; letter-spacing: 2px;">AROMA EID COLLECTION</p>
+                    <p style="color: #999; font-size: 0.75rem; letter-spacing: 2px;">AROMA EID COLLECTION</p>
                 </div>
 
                 <div class="olfactive-pyramid">
@@ -1789,16 +1793,16 @@
 
     <div id="cart-modal">
         <div class="cart-header">
-            <h2 style="color: var(--gold-accent); font-weight: 300;">YOUR SELECTION</h2>
-            <button class="close-btn" id="closeCartBtn" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
+            <h2 style="color: #000; font-weight: 300;">YOUR SELECTION</h2>
+            <button class="close-btn" id="closeCartBtn" style="background:none; border:none; color:#000; font-size:30px; cursor:pointer;">&times;</button>
         </div>
         
         <div id="cart-discount-banner" class="discount-banner"></div>
 
-        <div id="cart-items-list" style="padding:20px; border-bottom:1px solid #222;"></div>
+        <div id="cart-items-list" style="padding:20px; border-bottom:1px solid #eee;"></div>
         
         <div class="cart-footer">
-            <p id="total-price" style="color:var(--gold-accent); font-size:1.3rem; text-align:center; margin:15px 0; font-weight:bold;"></p>
+            <p id="total-price" style="color:#000; font-size:1.3rem; text-align:center; margin:15px 0; font-weight:bold;"></p>
             
             <form class="order-form" id="orderForm">
                 <div class="form-fields-wrapper">
@@ -2028,12 +2032,12 @@
             document.getElementById('cart-count-val').innerText = cart.length;
             const list = document.getElementById('cart-items-list');
             list.innerHTML = cart.map((item, index) => `
-                <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #222;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #eee;">
                     <div>
-                        <p style="font-weight:700; color:white; font-size:0.8rem; letter-spacing:1px;">${item.name.toUpperCase()}</p>
-                        <p style="color:var(--gold-accent); font-size:0.9rem;">${item.price} EGP</p>
+                        <p style="font-weight:700; color:#000; font-size:0.8rem; letter-spacing:1px;">${item.name.toUpperCase()}</p>
+                        <p style="color:#000; font-size:0.9rem;">${item.price} EGP</p>
                     </div>
-                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#555; cursor:pointer; font-size:0.7rem;">REMOVE</button>
+                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#999; cursor:pointer; font-size:0.7rem;">REMOVE</button>
                 </div>`).join('');
             const subtotal = cart.reduce((a, b) => a + b.price, 0);
             const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
@@ -2044,7 +2048,7 @@
                 banner.innerText = `تم تطبيق خصم ${discountValue}% (وفرت ${discountAmount}ج)`;
                 banner.style.display = 'block';
                 document.getElementById('total-price').innerHTML = `
-                    <span style="text-decoration:line-through; font-size:0.9rem; color:#777; margin-right:10px;">${subtotal}ج</span>
+                    <span style="text-decoration:line-through; font-size:0.9rem; color:#aaa; margin-right:10px;">${subtotal}ج</span>
                     الإجمالي: ${finalTotal} EGP`;
             } else {
                 banner.style.display = 'none';
@@ -2078,7 +2082,7 @@
         };
 
         const options = ["خصم 10%", "خصم 20%", "حظ أوفر", "خصم 5%"];
-        const colors = ["#d4af37", "#000", "#d4af37", "#000"];
+        const colors = ["#000000", "#ffffff", "#000000", "#ffffff"];
         let startAngle = 0;
         const arc = Math.PI / (options.length / 2);
         let spinTimeout = null;
@@ -2092,7 +2096,7 @@
             if (canvas.getContext) {
                 ctx = canvas.getContext("2d");
                 ctx.clearRect(0,0,320,320);
-                ctx.strokeStyle = "#d4af37";
+                ctx.strokeStyle = "#000";
                 ctx.lineWidth = 2;
                 ctx.font = 'bold 16px Cairo';
                 for(let i = 0; i < options.length; i++) {
@@ -2104,7 +2108,7 @@
                     ctx.fill();
                     ctx.stroke();
                     ctx.save();
-                    ctx.fillStyle = colors[i] === "#000" ? "#d4af37" : "#000";
+                    ctx.fillStyle = colors[i] === "#ffffff" ? "#000000" : "#ffffff";
                     ctx.translate(160 + Math.cos(angle + arc / 2) * 100, 160 + Math.sin(angle + arc / 2) * 100);
                     ctx.rotate(angle + arc / 2 + Math.PI / 2);
                     ctx.fillText(options[i], -ctx.measureText(options[i]).width / 2, 0);
@@ -2143,7 +2147,7 @@
             let arcd = arc * 180 / Math.PI;
             let index = Math.floor((360 - degrees % 360) / arcd);
             const result = options[index];
-            document.getElementById('wheel-msg').innerHTML = `مبروك! حصلت على: <br><strong style="font-size:1.5rem; color:var(--gold-accent);">${result}</strong>`;
+            document.getElementById('wheel-msg').innerHTML = `مبروك! حصلت على: <br><strong style="font-size:1.5rem; color:#000;">${result}</strong>`;
             if(result.includes("خصم")) {
                 const val = result.replace(/\D/g,'');
                 localStorage.setItem('aroma_discount', val);
@@ -2229,13 +2233,13 @@
                     ${recs.map(rec => `
                         <div class="quiz-result-item">
                             <img src="${rec.img}" class="quiz-result-img" alt="Result">
-                            <h3 style="color:#fff; font-size:0.75rem; letter-spacing:1px; margin-top:5px; height:35px; overflow:hidden;">${rec.name}</h3>
-                            <p style="color:var(--gold-accent); font-weight:bold; font-size:0.8rem;">${rec.price} ج.م</p>
+                            <h3 style="color:#000; font-size:0.75rem; letter-spacing:1px; margin-top:5px; height:35px; overflow:hidden;">${rec.name}</h3>
+                            <p style="color:#000; font-weight:bold; font-size:0.8rem;">${rec.price} ج.م</p>
                             <button class="btn-add-cart" onclick="addToCart('${rec.name}', ${rec.price}); closeQuizManual();" style="margin-top:10px; font-size:0.6rem; padding:8px;">ADD TO CART</button>
                         </div>
                     `).join('')}
                 </div>
-                <p style="color:var(--text-gray); font-size:0.7rem; max-width:90%; line-height:1.4; margin-top:15px; text-align:center;">بناءً على تفضيلاتك، هذه العطور هي الأكثر تطابقاً مع ذوقك الشخصي.</p>
+                <p style="color:#777; font-size:0.7rem; max-width:90%; line-height:1.4; margin-top:15px; text-align:center;">بناءً على تفضيلاتك، هذه العطور هي الأكثر تطابقاً مع ذوقك الشخصي.</p>
             `;
         }
 
