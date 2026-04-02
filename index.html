@@ -274,10 +274,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.5)), url('https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png');
+            /* التعديل: جعل الخلفية سوداء بدلاً من رمادية */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-color: #000; 
         }
 
         /* التعديل: إخفاء العنوان الكبير وتقليص حجم الشعار النصي */
@@ -288,7 +290,7 @@
         .hero p { 
             font-size: clamp(0.8rem, 4vw, 0.85rem); /* حجم مصغر بنسبة تقريبية 75% */
             letter-spacing: 2px; 
-            color: #333; 
+            color: #fff; /* تحويل لون النص للأبيض ليتناسب مع الخلفية السوداء */
             margin-top: 10px;
             font-weight: 400;
             text-transform: uppercase;
@@ -1873,7 +1875,6 @@
             "البحيرة": ["دمنهور", "كفر الدوار", "إيتاي البارود", "أبو حمص", "كوم حمادة", "حوش عيسى", "رشيد", "إدكو", "أبو المطامير", "الدلنجات", "المحمودية", "وادي النطرون"],
             "كفر الشيخ": ["كفر الشيخ", "دسوق", "فوه", "مطوبس", "قلين", "سيدي سالم", "الرياض", "بيلا", "الحامول", "بلطيم", "برج البرلس"],
             "الفيوم": ["الفيوم", "إطسا", "سنورس", "طامية", "يوسف الصديق", "أبشواي"],
-            "بني سويف": ["بني سويف", "الواسطى", "ناصر", "ببا", "الفشن", "إهناسيا", "سمسطا"],
             "المنيا": ["المنيا", "بني مزار", "مغاغة", "سمالوط", "أبو قرقاص", "ملوي", "دير مواس", "مطاي", "العدوة"],
             "أسيوط": ["أسيوط", "ديروط", "القوصية", "أبنوب", "منفلوط", "أبو تيج", "الغنايم", "ساحل سليم", "البداري", "صدفا", "الفتح"],
             "سوهاج": ["سوهاج", "أخميم", "البلينا", "جرجا", "المنشاة", "طهطا", "طما", "جهينة", "ساقلتة", "المراغة", "دار السلام"],
@@ -1927,7 +1928,7 @@
             { name: "Elie Saab Le Parfum", price: 850, img: "https://i.postimg.cc/CMCy260Z/IMG_20260401_131526_398.jpg", intro: "زهر البرتقال الأفريقي", heart: "الياسمين", base: "عسل الأبيض، الباتشولي، الورد، خشب الأرز", performance: {long: 85, sill: 85}, tags: ["رسمي", "عروس", "زهري"] },
             { name: "عطر خمرة", price: 450, img: "https://i.postimg.cc/T2sN2z6B/IMG_20260401_145812_387.jpg", intro: "القرفة، جوزة الطيب، البرغموت", heart: "التمر، البرالين، مسك الروم", base: "الفانيليا، التونكا، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "مسائي"] },
             { name: "Armani Code", price: 850, img: "https://i.postimg.cc/gc7tcCpF/IMG_20260401_145906_711.jpg", intro: "الليمون، البرغموت", heart: "زهر الزيتون، اليانسون النجمي، خشب الغاياك", base: "الجلود، التبغ، التونكا", performance: {long: 85, sill: 80}, tags: ["رسمي", "شتاء", "جذاب"] },
-            { name: "Azzaro Wanted", price: 850, img: "https://i.postimg.cc/fWPqWGNG/IMG_20260401_145917_590.jpg", intro: "الليمون، الزنجبيل، الخزامى، النعناع", heart: "التفاح، الهيل، إبرة الراعي", base: "التونكا، خشب العنبر، نجيل الهند", performance: {long: 88, sill: 85}, tags: ["شبابي", "كل الفصول", "جذاب"] },
+            { name: "Azzaro Wanted", price: 850, img: "https://i.postimg.cc/fWPqWGNG/IMG_20260401_145917_590.jpg", intro: "الليمون، الزنجبيل، الخزامى، النعناع", heart: "التفاف، الهيل، إبرة الراعي", base: "التونكا، خشب العنبر، نجيل الهند", performance: {long: 88, sill: 85}, tags: ["شبابي", "كل الفصول", "جذاب"] },
             { name: "Nishane Ani", price: 850, img: "https://i.postimg.cc/zDQ2DsNm/IMG_20260401_145932_705.jpg", intro: "الزنجبيل، البرغموت، الفلفل الوردي", heart: "الهيل، الورد التركي، الكشمش الأسود", base: "الفانيليا، الجاوي، خشب الصندل، المسك", performance: {long: 95, sill: 95}, tags: ["فخم", "شتاء", "ثابت جداً"] },
             { name: "yEau de Parfum", price: 850, img: "https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg", intro: "التفاح، الزنجبيل، البرغموت", heart: "المريمية، التوت، إبرة الراعي", base: "العنبر، التونكا، الأرز، اللبان", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "عصري", "قوي"] },
             { name: "Dominican Tobacco", price: 850, img: "https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg", intro: "أوراق التبغ الفاخرة، التوابل", heart: "الكاكاو، زهر الفانيليا", base: "الأخشاب، الفواكه المجففة", performance: {long: 92, sill: 88}, tags: ["شتاء", "فخم", "مسائي"] },
