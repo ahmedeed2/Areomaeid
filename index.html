@@ -56,13 +56,28 @@
         .announcement-bar {
             background: #000; /* شريط الإعلانات أسود بنص أبيض للفخامة */
             color: #fff;
-            padding: 8px 0;
-            font-weight: 700;
-            font-size: 0.8rem;
+            padding: 10px 0;
             position: relative; z-index: 1100;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-align: center;
             text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .announcement-main {
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+        
+        .announcement-sub {
+            font-weight: 300;
+            font-size: 0.65rem;
+            margin-top: 2px;
+            opacity: 0.9;
         }
 
         /* Optimized Sidebar using TranslateX */
@@ -190,19 +205,25 @@
         .menu-toggle {
             background: transparent;
             border: 1px solid #000;
-            padding: 8px 18px;
+            padding: 8px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: 600;
             color: #000;
             transition: 0.3s;
-            text-transform: uppercase;
-            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .menu-toggle:hover {
             background: #000;
             color: #fff;
+        }
+        
+        .menu-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         .header-actions {
@@ -1018,7 +1039,8 @@
     </div>
 
     <div class="announcement-bar">
-        شحن مجاني لأي مكان في مصر لفترة محدودة
+        <span class="announcement-main">Free Shipping On All Egypt</span>
+        <span class="announcement-sub">Limited Time Offer</span>
     </div>
 
     <nav id="sidebar">
@@ -1035,7 +1057,11 @@
 
     <div id="main-wrapper">
         <header>
-            <button class="menu-toggle" id="openMenu">Menu</button>
+            <button class="menu-toggle" id="openMenu">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
             <div style="color: #000; font-weight: 300; font-size: 1.5rem; letter-spacing: 5px;">AROMA EID</div>
             
             <div class="header-actions">
@@ -1081,7 +1107,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(0)" style="cursor:pointer;">STRONGER WITH YOU</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Stronger With You', 850)">ADD TO CART</button>
                     </div>
@@ -1094,7 +1120,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(28)" style="cursor:pointer;">INVICTUS VICTORY</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Invictus Victory', 850)">ADD TO CART</button>
                     </div>
@@ -1107,7 +1133,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(6)" style="cursor:pointer;">SWY FREEZE</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Stronger With You Freeze', 850)">ADD TO CART</button>
                     </div>
@@ -1120,7 +1146,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(7)" style="cursor:pointer;">SWY ABSOLUTELY</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Stronger With You Absolutely', 850)">ADD TO CART</button>
                     </div>
@@ -1133,7 +1159,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(8)" style="cursor:pointer;">BLACK AFGANO</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Black Afgano', 850)">ADD TO CART</button>
                     </div>
@@ -1146,7 +1172,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(9)" style="cursor:pointer;">THE ONE</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('The One', 850)">ADD TO CART</button>
                     </div>
@@ -1159,7 +1185,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(10)" style="cursor:pointer;">CREED ABSOLU AVENTUS</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Creed Absolu Aventus', 850)">ADD TO CART</button>
                     </div>
@@ -1172,7 +1198,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(11)" style="cursor:pointer;">HAWAS</h3>
                         <div class="price-tag">
-                            <span class="old-p">900ج</span><span class="new-p">600ج</span>
+                            <span class="old-p">900 EG</span><span class="new-p">600 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('عطر هوس', 600)">ADD TO CART</button>
                     </div>
@@ -1185,7 +1211,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(12)" style="cursor:pointer;">HAWAS ICE</h3>
                         <div class="price-tag">
-                            <span class="old-p">900ج</span><span class="new-p">600ج</span>
+                            <span class="old-p">900 EG</span><span class="new-p">600 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('عطر هوس ايس', 600)">ADD TO CART</button>
                     </div>
@@ -1198,7 +1224,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(13)" style="cursor:pointer;">HAWAS BLACK</h3>
                         <div class="price-tag">
-                            <span class="old-p">900ج</span><span class="new-p">600ج</span>
+                            <span class="old-p">900 EG</span><span class="new-p">600 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('عطر هوس بلاك', 600)">ADD TO CART</button>
                     </div>
@@ -1211,7 +1237,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(14)" style="cursor:pointer;">LV IMAGINATION</h3>
                         <div class="price-tag">
-                            <span class="old-p">1500ج</span><span class="new-p">1000ج</span>
+                            <span class="old-p">1500 EG</span><span class="new-p">1000 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Louis Vuitton Imagination', 1000)">ADD TO CART</button>
                     </div>
@@ -1224,7 +1250,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(1)" style="cursor:pointer;">SAUVAGE</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Sauvage', 850)">ADD TO CART</button>
                     </div>
@@ -1237,7 +1263,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(2)" style="cursor:pointer;">أسد الكسير</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('أسد الكسير', 850)">ADD TO CART</button>
                     </div>
@@ -1250,7 +1276,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(3)" style="cursor:pointer;">BLUE DE CHANEL</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Blue De Chanel', 850)">ADD TO CART</button>
                     </div>
@@ -1263,7 +1289,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(4)" style="cursor:pointer;">AMOUAGE LYRIC</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Amouage Lyric', 850)">ADD TO CART</button>
                     </div>
@@ -1276,7 +1302,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(5)" style="cursor:pointer;">HACIVAT X</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Hacivat X', 850)">ADD TO CART</button>
                     </div>
@@ -1289,7 +1315,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(15)" style="cursor:pointer;">XERJOFF 40 KNOTS</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Xerjoff 40 Knots', 850)">ADD TO CART</button>
                     </div>
@@ -1302,7 +1328,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(16)" style="cursor:pointer;">XERJOFF ALEXANDRIA II</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Xerjoff Alexandria II', 850)">ADD TO CART</button>
                     </div>
@@ -1315,7 +1341,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(17)" style="cursor:pointer;">DIOR HOMME</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Dior Homme', 850)">ADD TO CART</button>
                     </div>
@@ -1328,7 +1354,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(18)" style="cursor:pointer;">BLACK XS</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Black Xs', 850)">ADD TO CART</button>
                     </div>
@@ -1341,7 +1367,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(19)" style="cursor:pointer;">LE MALE LE PARFUM</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Le Male Le Parfum', 850)">ADD TO CART</button>
                     </div>
@@ -1354,7 +1380,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(23)" style="cursor:pointer;">NOIR EXTREME</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">870ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">870 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Noir Extreme', 870)">ADD TO CART</button>
                     </div>
@@ -1367,7 +1393,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(24)" style="cursor:pointer;">خمرة دخان</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('خمرة دخان', 850)">ADD TO CART</button>
                     </div>
@@ -1380,7 +1406,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(25)" style="cursor:pointer;">BVLGARI MAN IN BLACK</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Bvlgari Men In Black', 850)">ADD TO CART</button>
                     </div>
@@ -1393,7 +1419,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(26)" style="cursor:pointer;">HUGO BOSS</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Hugo Boss', 850)">ADD TO CART</button>
                     </div>
@@ -1406,7 +1432,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(27)" style="cursor:pointer;">CUBAN TOBACCO</h3>
                         <div class="price-tag">
-                            <span class="old-p">1000ج</span><span class="new-p">750ج</span>
+                            <span class="old-p">1000 EG</span><span class="new-p">750 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Cuban Tobacco', 750)">ADD TO CART</button>
                     </div>
@@ -1419,7 +1445,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(34)" style="cursor:pointer;">عطر خمرة</h3>
                         <div class="price-tag">
-                            <span class="old-p">650ج</span><span class="new-p">450ج</span>
+                            <span class="old-p">650 EG</span><span class="new-p">450 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('عطر خمرة', 450)">ADD TO CART</button>
                     </div>
@@ -1432,7 +1458,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(35)" style="cursor:pointer;">ARMANI CODE</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Armani Code', 850)">ADD TO CART</button>
                     </div>
@@ -1445,7 +1471,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(36)" style="cursor:pointer;">AZZARO WANTED</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Azzaro Wanted', 850)">ADD TO CART</button>
                     </div>
@@ -1458,7 +1484,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(37)" style="cursor:pointer;">NISHANE ANI</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Nishane Ani', 850)">ADD TO CART</button>
                     </div>
@@ -1471,7 +1497,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(38)" style="cursor:pointer;">Y EAU DE PARFUM</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('yEau de Parfum', 850)">ADD TO CART</button>
                     </div>
@@ -1484,7 +1510,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(39)" style="cursor:pointer;">DOMINICAN TOBACCO</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Dominican Tobacco', 850)">ADD TO CART</button>
                     </div>
@@ -1497,7 +1523,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(40)" style="cursor:pointer;">MEXICAN TOBACCO</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Mexican Tobacco', 850)">ADD TO CART</button>
                     </div>
@@ -1510,7 +1536,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(41)" style="cursor:pointer;">ARABIAN TOBACCO</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Arabian Tobacco', 850)">ADD TO CART</button>
                     </div>
@@ -1528,7 +1554,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(20)" style="cursor:pointer;">LOST CHERRY</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Lost Cherry', 850)">ADD TO CART</button>
                     </div>
@@ -1541,7 +1567,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(21)" style="cursor:pointer;">BACCARAT ROUGE 540</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Baccarat Rouge 540', 850)">ADD TO CART</button>
                     </div>
@@ -1554,7 +1580,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(22)" style="cursor:pointer;">EILISH</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Eilish', 850)">ADD TO CART</button>
                     </div>
@@ -1567,7 +1593,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(29)" style="cursor:pointer;">VERSACE BRIGHT CRYSTAL</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Versace Bright Crystal', 850)">ADD TO CART</button>
                     </div>
@@ -1580,7 +1606,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(30)" style="cursor:pointer;">COCO MADEMOISELLE CHANEL</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Coco Mademoiselle Chanel', 850)">ADD TO CART</button>
                     </div>
@@ -1593,7 +1619,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(31)" style="cursor:pointer;">NARCISO RODRIGUEZ FOR HER MUSC NUDE</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Narciso Rodriguez For Her Musc Nude', 850)">ADD TO CART</button>
                     </div>
@@ -1606,7 +1632,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(32)" style="cursor:pointer;">PRADA PARADOXE</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Prada Paradoxe', 850)">ADD TO CART</button>
                     </div>
@@ -1619,7 +1645,7 @@
                     <div class="card-content">
                         <h3 onclick="showDetail(33)" style="cursor:pointer;">ELIE SAAB LE PARFUM</h3>
                         <div class="price-tag">
-                            <span class="old-p">1200ج</span><span class="new-p">850ج</span>
+                            <span class="old-p">1200 EG</span><span class="new-p">850 EG</span>
                         </div>
                         <button class="btn-add-cart" onclick="addToCart('Elie Saab Le Parfum', 850)">ADD TO CART</button>
                     </div>
@@ -2035,7 +2061,7 @@
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #eee;">
                     <div>
                         <p style="font-weight:700; color:#000; font-size:0.8rem; letter-spacing:1px;">${item.name.toUpperCase()}</p>
-                        <p style="color:#000; font-size:0.9rem;">${item.price} EGP</p>
+                        <p style="color:#000; font-size:0.9rem;">${item.price} EG</p>
                     </div>
                     <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#999; cursor:pointer; font-size:0.7rem;">REMOVE</button>
                 </div>`).join('');
@@ -2045,14 +2071,14 @@
             const finalTotal = subtotal - discountAmount;
             const banner = document.getElementById('cart-discount-banner');
             if(discountValue > 0) {
-                banner.innerText = `تم تطبيق خصم ${discountValue}% (وفرت ${discountAmount}ج)`;
+                banner.innerText = `تم تطبيق خصم ${discountValue}% (وفرت ${discountAmount} EG)`;
                 banner.style.display = 'block';
                 document.getElementById('total-price').innerHTML = `
-                    <span style="text-decoration:line-through; font-size:0.9rem; color:#aaa; margin-right:10px;">${subtotal}ج</span>
-                    الإجمالي: ${finalTotal} EGP`;
+                    <span style="text-decoration:line-through; font-size:0.9rem; color:#aaa; margin-right:10px;">${subtotal} EG</span>
+                    الإجمالي: ${finalTotal} EG`;
             } else {
                 banner.style.display = 'none';
-                document.getElementById('total-price').innerText = 'الإجمالي: ' + subtotal + ' EGP';
+                document.getElementById('total-price').innerText = 'الإجمالي: ' + subtotal + ' EG';
             }
         }
 
@@ -2077,7 +2103,7 @@
             const discountAmount = Math.round(subtotal * (discountValue / 100));
             const finalTotal = subtotal - discountAmount;
             const itemsTxt = cart.map(i => "- " + i.name).join('%0A');
-            const msg = `طلب جديد من أروما عيد%0A----------------%0Aالمنتجات:%0A${itemsTxt}%0A----------------%0Aقيمة الخصم: ${discountValue}% (${discountAmount}ج)%0Aالإجمالي النهائي: ${finalTotal} ج%0A----------------%0Aالعميل: ${name}%0Aالموبايل: ${phone}%0Aالمحافظة: ${gov}%0Aالمدينة: ${city}%0Aالعنوان: ${address}`;
+            const msg = `طلب جديد من أروما عيد%0A----------------%0Aالمنتجات:%0A${itemsTxt}%0A----------------%0Aقيمة الخصم: ${discountValue}% (${discountAmount} EG)%0Aالإجمالي النهائي: ${finalTotal} EG%0A----------------%0Aالعميل: ${name}%0Aالموبايل: ${phone}%0Aالمحافظة: ${gov}%0Aالمدينة: ${city}%0Aالعنوان: ${address}`;
             window.open(`https://wa.me/201551557931?text=${msg}`, '_blank');
         };
 
@@ -2234,7 +2260,7 @@
                         <div class="quiz-result-item">
                             <img src="${rec.img}" class="quiz-result-img" alt="Result">
                             <h3 style="color:#000; font-size:0.75rem; letter-spacing:1px; margin-top:5px; height:35px; overflow:hidden;">${rec.name}</h3>
-                            <p style="color:#000; font-weight:bold; font-size:0.8rem;">${rec.price} ج.م</p>
+                            <p style="color:#000; font-weight:bold; font-size:0.8rem;">${rec.price} EG</p>
                             <button class="btn-add-cart" onclick="addToCart('${rec.name}', ${rec.price}); closeQuizManual();" style="margin-top:10px; font-size:0.6rem; padding:8px;">ADD TO CART</button>
                         </div>
                     `).join('')}
