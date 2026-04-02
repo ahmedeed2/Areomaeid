@@ -11,6 +11,9 @@
     
     <style>
         :root {
+            /* إجبار المتصفح على استخدام النمط الفاتح ومنع التغيير التلقائي */
+            color-scheme: light;
+            
             /* التعديل هنا لتحويل الهوية للون الأبيض الفاخر (Dior Style) */
             --primary-black: #ffffff; /* الخلفيات أصبحت بيضاء */
             --deep-black: #fcfcfc;    /* خلفية الجسم */
@@ -34,7 +37,7 @@
         }
 
         body {
-            background-color: var(--deep-black);
+            background-color: #ffffff !important; /* تثبيت الخلفية البيضاء */
             color: var(--white);
             overflow-x: hidden;
             scroll-behavior: smooth;
