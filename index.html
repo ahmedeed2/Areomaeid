@@ -280,16 +280,19 @@
             background-attachment: fixed;
         }
 
+        /* التعديل: إخفاء العنوان الكبير وتقليص حجم الشعار النصي */
         .hero h1 { 
-            color: #000; 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            letter-spacing: 8px; 
-            font-weight: 300;
-            margin-bottom: 15px;
-            text-shadow: 0 5px 15px rgba(255,255,255,0.5);
+            display: none;
         }
 
-        .hero p { font-size: 1.1rem; letter-spacing: 2px; color: #333; }
+        .hero p { 
+            font-size: clamp(0.8rem, 4vw, 0.85rem); /* حجم مصغر بنسبة تقريبية 75% */
+            letter-spacing: 2px; 
+            color: #333; 
+            margin-top: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
 
         .search-section {
             width: 100%;
@@ -1080,7 +1083,6 @@
         </header>
 
         <section class="hero reveal">
-            <h1>AROMA EID</h1>
             <p>ELEVATING YOUR SENSES</p>
         </section>
 
