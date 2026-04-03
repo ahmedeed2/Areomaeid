@@ -1170,6 +1170,20 @@
 
         <section id="men-section">
             <div class="products-container" id="men-container">
+                <div class="card reveal" data-name="BLUE DE CHANEL PARFUM">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/XNrLzMNj/tsmym-bdwn-ʿnwan-20260403-153220-0000.jpg" loading="lazy" onclick="showDetail(43)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(43)" style="cursor:pointer;">BLUE DE CHANEL PARFUM</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1300 EGP</span>
+                            <span class="new-p">950 EGP</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Blue De Chanel Parfum', 950)">ADD TO CART</button>
+                    </div>
+                </div>
+
                 <div class="card reveal" data-name="STRONGER WITH YOU">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/sxT0S4TV/FB-IMG-1774883967790.jpg" loading="lazy" onclick="showDetail(0)">
@@ -2108,7 +2122,8 @@
             { name: "Dominican Tobacco", price: 850, img: "https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg", intro: "أوراق التبغ الفاخرة، التوابل", heart: "الكاكاو، زهر الفانيليا", base: "الأخشاب، الفواكه المجففة", performance: {long: 92, sill: 88}, tags: ["شتاء", "فخم", "مسائي"] },
             { name: "Mexican Tobacco", price: 850, img: "https://i.postimg.cc/nLSsybj1/IMG_20260401_170209_633.jpg", intro: "التبغ المكسيكي، القرفة", heart: "البرالين، بلسم تولو", base: "العنبر، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "جذاب"] },
             { name: "Arabian Tobacco", price: 850, img: "https://i.postimg.cc/hGZJkWz8/IMG_20260401_170240_182.jpg", intro: "التبغ العربي، العود الخفيف", heart: "الزعفران، البخور", base: "العنبر، المسك الملكي", performance: {long: 95, sill: 92}, tags: ["رسمي", "فخم", "شتاء"] },
-            { name: "Valentino", price: 850, img: "https://i.postimg.cc/1XV2BLd2/tsmym-bdwn-ʿnwan-20260403-132158-0000.jpg", intro: "البرغموت، الكشمش الأسود", heart: "الياسمين، شاي الياسمين", base: "فانيليا البوربون، كاشميران، أخشاب الغاياك", performance: {long: 85, sill: 80}, tags: ["أنثوي", "جذاب", "كل الفصول"] }
+            { name: "Valentino", price: 850, img: "https://i.postimg.cc/1XV2BLd2/tsmym-bdwn-ʿnwan-20260403-132158-0000.jpg", intro: "البرغموت، الكشمش الأسود", heart: "الياسمين، شاي الياسمين", base: "فانيليا البوربون، كاشميران، أخشاب الغاياك", performance: {long: 85, sill: 80}, tags: ["أنثوي", "جذاب", "كل الفصول"] },
+            { name: "Blue De Chanel Parfum", price: 950, img: "https://i.postimg.cc/XNrLzMNj/tsmym-bdwn-ʿnwan-20260403-153220-0000.jpg", intro: "قشور الليمون، البرغموت، النعناع، الشيح", heart: "الخزامى، الأناناس، إبرة الراعي، الملاحظات الخضراء", base: "خشب الصندل، الأرز، التونكا، خشب العنبر", performance: {long: 95, sill: 85}, tags: ["فخم", "كل الفصول", "رسمي"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
