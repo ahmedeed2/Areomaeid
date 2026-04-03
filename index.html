@@ -1651,6 +1651,20 @@
 
         <section id="women-section">
             <div class="products-container" id="women-container">
+                <div class="card reveal" data-name="VALENTINO">
+                    <div class="card-slider">
+                        <img src="https://i.postimg.cc/1XV2BLd2/tsmym-bdwn-ʿnwan-20260403-132158-0000.jpg" loading="lazy" onclick="showDetail(42)">
+                    </div>
+                    <div class="card-content">
+                        <h3 onclick="showDetail(42)" style="cursor:pointer;">VALENTINO</h3>
+                        <div class="price-tag">
+                            <span class="old-p">1200 EGP</span>
+                            <span class="new-p">850 EGP</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart('Valentino', 850)">ADD TO CART</button>
+                    </div>
+                </div>
+
                 <div class="card reveal" data-name="LOST CHERRY">
                     <div class="card-slider">
                         <img src="https://i.postimg.cc/Pqf7Jp2f/IMG-20260331-110950-917.jpg" loading="lazy" onclick="showDetail(20)">
@@ -2093,7 +2107,8 @@
             { name: "yEau de Parfum", price: 850, img: "https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg", intro: "التفاح، الزنجبيل، البرغموت", heart: "المريمية، التوت، إبرة الراعي", base: "العنبر، التونكا، الأرز، اللبان", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "عصري", "قوي"] },
             { name: "Dominican Tobacco", price: 850, img: "https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg", intro: "أوراق التبغ الفاخرة، التوابل", heart: "الكاكاو، زهر الفانيليا", base: "الأخشاب، الفواكه المجففة", performance: {long: 92, sill: 88}, tags: ["شتاء", "فخم", "مسائي"] },
             { name: "Mexican Tobacco", price: 850, img: "https://i.postimg.cc/nLSsybj1/IMG_20260401_170209_633.jpg", intro: "التبغ المكسيكي، القرفة", heart: "البرالين، بلسم تولو", base: "العنبر، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "جذاب"] },
-            { name: "Arabian Tobacco", price: 850, img: "https://i.postimg.cc/hGZJkWz8/IMG_20260401_170240_182.jpg", intro: "التبغ العربي، العود الخفيف", heart: "الزعفران، البخور", base: "العنبر، المسك الملكي", performance: {long: 95, sill: 92}, tags: ["رسمي", "فخم", "شتاء"] }
+            { name: "Arabian Tobacco", price: 850, img: "https://i.postimg.cc/hGZJkWz8/IMG_20260401_170240_182.jpg", intro: "التبغ العربي، العود الخفيف", heart: "الزعفران، البخور", base: "العنبر، المسك الملكي", performance: {long: 95, sill: 92}, tags: ["رسمي", "فخم", "شتاء"] },
+            { name: "Valentino", price: 850, img: "https://i.postimg.cc/1XV2BLd2/tsmym-bdwn-ʿnwan-20260403-132158-0000.jpg", intro: "البرغموت، الكشمش الأسود", heart: "الياسمين، شاي الياسمين", base: "فانيليا البوربون، كاشميران، أخشاب الغاياك", performance: {long: 85, sill: 80}, tags: ["أنثوي", "جذاب", "كل الفصول"] }
         ];
 
         let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
