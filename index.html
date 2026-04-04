@@ -146,6 +146,7 @@
             overflow-y: auto;
             position: relative;
             padding-bottom: 80px; /* مساحة لزر الواتساب الثابت */
+            min-height: 0; /* إصلاح اختفاء المحتوى */
         }
 
         .order-form {
@@ -179,7 +180,7 @@
         }
 
         .whatsapp-submit-btn {
-            position: absolute;
+            position: sticky;
             bottom: 0;
             left: 0;
             width: 100%;
@@ -192,6 +193,7 @@
             font-size: 1rem;
             z-index: 6100;
             box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            display: block !important; /* ضمان الظهور */
         }
 
         .form-fields-wrapper {
@@ -2265,11 +2267,11 @@
             <button class="close-btn" id="closeCartBtn" style="background:none; border:none; color:#000; font-size:30px; cursor:pointer;">&times;</button>
         </div>
         
-        <div id="cart-discount-banner" class="discount-banner"></div>
-
-        <div id="cart-items-list" style="padding:20px; border-bottom:1px solid #eee;"></div>
-        
         <div class="cart-footer">
+            <div id="cart-discount-banner" class="discount-banner"></div>
+            
+            <div id="cart-items-list" style="padding:10px 20px; border-bottom:1px solid #eee;"></div>
+
             <p id="total-price" style="color:var(--discount-red); font-size:1.3rem; text-align:center; margin:15px 0; font-weight:bold;"></p>
             
             <form class="order-form" id="orderForm">
@@ -2292,7 +2294,7 @@
                     <span class="error-msg" id="addressError">يرجى إدخال العنوان</span>
                 </div>
 
-                <button type="submit" class="whatsapp-submit-btn">
+                <button type="submit" class="whatsapp-submit-btn" style="position: sticky !important; bottom: 0; display: block;">
                     إتمام الطلب عبر واتساب
                 </button>
             </form>
@@ -2331,7 +2333,7 @@
 
         const productsData = [
             { name: "STRONGER WITH YOU", price: 850, img: "https://i.postimg.cc/sxT0S4TV/FB-IMG-1774883967790.jpg", intro: "الهيل، الفلفل الوردي، النعناع", heart: "الأناناس، الميرمية، البطيخ", base: "الفانيليا، الكستناء، خشب الأرز", performance: {long: 85, sill: 80}, tags: ["شتاء", "خريف", "مسائي"] },
-            { name: "SAUVAGE", price: 850, img: "https://i.postimg.cc/kMZHNDhX/FB-IMG-1774883910137.jpg", intro: "برغموت كالابريا، الفلفل", heart: "فلفل سيتشوان، الخزامى، الباتشولي", base: "الأمبروكسان، الأرز، اللابدانوم", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "يومي", "جذاب"] },
+            { name: "SAUVAGE", price: 850, img: "https://i.postimg.cc/kMZHNDhX/FB-IMG-1774890100941.jpg", intro: "برغموت كالابريا، الفلفل", heart: "فلفل سيتشوان، الخزامى، الباتشولي", base: "الأمبروكسان، الأرز، اللابدانوم", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "يومي", "جذاب"] },
             { name: "أسد الكسير", price: 400, img: "https://i.postimg.cc/2SmNvVVg/FB-IMG-1774883985402.jpg", intro: "القرفة، الهيل، جوزة الطيب، الجريب فروت", heart: "عرق السوس، الخزامى", base: "الفانيليا، العنبر، الباتشولي، نجيل الهند", performance: {long: 95, sill: 95}, tags: ["شتاء", "رسمي", "فخم"] },
             { name: "BLUE DE CHANEL", price: 850, img: "https://i.postimg.cc/brb4Sh8y/FB-IMG-1774883989978.jpg", intro: "الجريب فروت، الليمون، النعناع، الفلفل الوردي", heart: "الزنجبيل، الياسمين، جوزة الطيب", base: "البخور، خشب الصندل، المسك، الأرز", performance: {long: 75, sill: 70}, tags: ["صيف", "صباحي", "عمل"] },
             { name: "AMOUAGE LYRIC", price: 1500, img: "https://i.postimg.cc/Hs9Pq3kb/FB-IMG-1774883975224.jpg", intro: "الورد، البرغموت، الليمون، الجير", heart: "الزعفران، جوزة الطيب، الزنجبيل، القرفة", base: "البخور، الصنوبر، خشب الصندل، المسك", performance: {long: 90, sill: 85}, tags: ["كلاسيك", "ربيع", "شتاء"] },
@@ -2369,7 +2371,7 @@
             { name: "Azzaro Wanted", price: 850, img: "https://i.postimg.cc/fWPqWGNG/IMG_20260401_145917_590.jpg", intro: "الليمون، الزنجبيل، الخزامى، النعناع", heart: "التفاف، الهيل، إبرة الراعي", base: "التونكا، خشب العنبر، نجيل الهند", performance: {long: 88, sill: 85}, tags: ["شبابي", "كل الفصول", "جذاب"] },
             { name: "Nishane Ani", price: 1100, img: "https://i.postimg.cc/zDQ2DsNm/IMG_20260401_145932_705.jpg", intro: "الزنجبيل، البرغموت، الفلفل الوردي", heart: "الهيل، الورد التركي، الكشمش الأسود", base: "الفانيليا، الجاوي، خشب الصندل، المسك", performance: {long: 95, sill: 95}, tags: ["فخم", "شتاء", "ثابت جداً"] },
             { name: "yEau de Parfum", price: 850, img: "https://i.postimg.cc/DfNpf9h7/IMG_20260401_150005_013.jpg", intro: "التفاح، الزنجبيل، البرغموت", heart: "المريمية، التوت، إبرة الراعي", base: "العنبر، التونكا، الأرز، اللبان", performance: {long: 90, sill: 90}, tags: ["كل الفصول", "عصري", "قوي"] },
-            { name: "Dominican Tobacco", price: 850, img: "https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg", intro: "أوراق التبغ الفاخرة، التوابل", heart: "الكاكاو، زهر الفانيليا", base: "الأخشاب، الفواكه المجففة", performance: {long: 92, sill: 88}, tags: ["شتاء", "فخم", "مسائي"] },
+            { name: "Dominican Tobacco", price: 850, img: "https://i.postimg.cc/JhYyfVDq/IMG_20260401_170204_275.jpg", intro: "أوراق التبغ الفاخرة، التوابل", heart: "الكااكو، زهر الفانيليا", base: "الأخشاب، الفواكه المجففة", performance: {long: 92, sill: 88}, tags: ["شتاء", "فخم", "مسائي"] },
             { name: "Mexican Tobacco", price: 850, img: "https://i.postimg.cc/nLSsybj1/IMG_20260401_170209_633.jpg", intro: "التبغ المكسيكي، القرفة", heart: "البرالين، بلسم تولو", base: "العنبر، خشب الصندل", performance: {long: 90, sill: 85}, tags: ["شتاء", "دافئ", "جذاب"] },
             { name: "Arabian Tobacco", price: 850, img: "https://i.postimg.cc/hGZJkWz8/IMG_20260401_170240_182.jpg", intro: "التبغ العربي، العود الخفيف", heart: "الزعفران، البخور", base: "العنبر، المسك الملكي", performance: {long: 95, sill: 92}, tags: ["رسمي", "فخم", "شتاء"] },
             { name: "Valentino", price: 850, img: "https://i.postimg.cc/1XV2BLd2/tsmym-bdwn-ʿnwan-20260403-132158-0000.jpg", intro: "البرغموت، الكشمش الأسود", heart: "الياسمين، شاي الياسمين", base: "فانيليا البوربون, كاشميران، أخشاب الغاياك", performance: {long: 85, sill: 80}, tags: ["أنثوي", "جذاب", "كل الفصول"] },
@@ -2504,15 +2506,14 @@
 
         function updateCartUI() {
             document.getElementById('cart-count-val').innerText = cart.length;
-            // تم حذف العداد من القائمة السفلية بناءً على طلبك
             const list = document.getElementById('cart-items-list');
             list.innerHTML = cart.map((item, index) => `
-                <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #eee;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #eee;">
                     <div>
-                        <p style="font-weight:700; color:#000; font-size:0.8rem; letter-spacing:1px;">${item.name.toUpperCase()}</p>
-                        <p style="color:var(--discount-red); font-size:0.9rem;">${item.price} EGP</p>
+                        <p style="font-weight:700; color:#000; font-size:0.75rem; letter-spacing:1px; margin:0;">${item.name.toUpperCase()}</p>
+                        <p style="color:var(--discount-red); font-size:0.8rem; margin:0;">${item.price} EGP</p>
                     </div>
-                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#999; cursor:pointer; font-size:0.7rem;">REMOVE</button>
+                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#999; cursor:pointer; font-size:0.65rem; padding:5px;">REMOVE</button>
                 </div>`).join('');
             const subtotal = cart.reduce((a, b) => a + b.price, 0);
             const discountValue = parseFloat(localStorage.getItem('aroma_discount')) || 0;
