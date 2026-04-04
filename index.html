@@ -300,6 +300,84 @@
             display: none; /* تم حذف Elevating your Senses */
         }
 
+        /* Styles for Best Seller Slider */
+        .best-seller-section {
+            padding: 40px 0;
+            background: #fff;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            color: #000;
+            font-weight: 900; /* خط أكثر سماكة للأكثر مبيعا */
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: #000;
+            margin: 10px auto;
+        }
+        .best-seller-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 20px 5% 40px 5%;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .best-seller-slider::-webkit-scrollbar { display: none; } /* Chrome, Safari */
+        
+        .bs-card {
+            min-width: 240px; /* تكبير الكارت */
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .bs-card img {
+            width: 100%;
+            height: 240px; /* تكبير الصورة داخل الكارت */
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .bs-card h4 {
+            font-size: 0.85rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            height: 35px;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+        .bs-price {
+            font-weight: 700;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .bs-cart-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: 0.3s;
+        }
+        .bs-cart-btn:hover { background: #333; transform: scale(1.1); }
+        .bs-cart-btn svg { width: 20px; height: 20px; fill: #fff; }
+
         .search-section {
             width: 100%;
             display: flex;
@@ -799,6 +877,8 @@
             .card-slider { height: 220px; }
             #cart-modal { width: 100%; }
             .fb-float-btn { bottom: 20px; left: 20px; width: 50px; height: 50px; }
+            .bs-card { min-width: 190px; } /* تعديل للهواتف */
+            .bs-card img { height: 190px; }
         }
 
         .quiz-float-btn {
@@ -1140,12 +1220,13 @@
         <button class="close-btn" id="closeMenu" style="color: #000; font-size: 40px; background:none; border:none; cursor:pointer;">&times;</button>
         <img src="https://i.postimg.cc/jjkZjPVc/file_000000007e08720ab97a19a6541b191b.png" class="sidebar-logo" loading="lazy" style="width:100px; border-radius:50%; margin: 20px auto; display:block;">
         <ul class="nav-links" style="list-style:none; margin-top:40px; text-align:center;">
-            <li style="margin:25px 0;"><a href="#" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الرئيسية</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px; font-weight:bold;">جرب حظك 🎡</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('men')" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">MEN</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="switchTab('women')" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">WOMEN</a></li>
-            <li style="margin:25px 0;"><a href="javascript:void(0)" onclick="openPolicy()" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:1px;">سياسة الاستبدال</a></li>
-            <li style="margin:25px 0;"><a href="#reviews-section" style="color:#000; text-decoration:none; font-size:1.4rem; letter-spacing:2px;">الآراء</a></li>
+            <li style="margin:20px 0;"><a href="#" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">HOME</a></li>
+            <li style="margin:20px 0;"><a href="javascript:void(0)" onclick="openWheel()" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">LUCKY WHEEL 🎡</a></li>
+            <li style="margin:20px 0;"><a href="javascript:void(0)" onclick="switchTab('men')" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">MEN</a></li>
+            <li style="margin:20px 0;"><a href="javascript:void(0)" onclick="switchTab('women')" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">WOMEN</a></li>
+            <li style="margin:20px 0;"><a href="https://wa.me/201551557931" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">CONTACT US</a></li>
+            <li style="margin:20px 0;"><a href="javascript:void(0)" onclick="openPolicy()" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">RETURN POLICY</a></li>
+            <li style="margin:20px 0;"><a href="#" style="color:#000; text-decoration:none; font-size:1.2rem; letter-spacing:2px; font-weight:700;">ABOUT US</a></li>
         </ul>
     </nav>
 
@@ -1174,6 +1255,52 @@
         </header>
 
         <section class="hero reveal">
+        </section>
+
+        <section class="best-seller-section reveal">
+            <h2 class="section-title">BEST SELLER</h2>
+            <div class="best-seller-slider">
+                <div class="bs-card">
+                    <img src="https://i.postimg.cc/MG64hvLf/1775324352203.png" onclick="showDetail(43)">
+                    <h4>BLUE DE CHANEL PARFUM</h4>
+                    <span class="bs-price">950 EGP</span>
+                    <button class="bs-cart-btn" onclick="addToCart('Blue De Chanel Parfum', 950)">
+                        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    </button>
+                </div>
+                <div class="bs-card">
+                    <img src="https://i.postimg.cc/25kJPVtG/1775324167975.png" onclick="showDetail(0)">
+                    <h4>STRONGER WITH YOU</h4>
+                    <span class="bs-price">850 EGP</span>
+                    <button class="bs-cart-btn" onclick="addToCart('Stronger With You', 850)">
+                        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    </button>
+                </div>
+                <div class="bs-card">
+                    <img src="https://i.postimg.cc/7ZMdsgKM/1775324290493.png" onclick="showDetail(1)">
+                    <h4>SAUVAGE</h4>
+                    <span class="bs-price">850 EGP</span>
+                    <button class="bs-cart-btn" onclick="addToCart('Sauvage', 850)">
+                        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    </button>
+                </div>
+                <div class="bs-card">
+                    <img src="https://i.postimg.cc/MG64hvLf/1775324352203.png" onclick="showDetail(3)">
+                    <h4>BLUE DE CHANEL</h4>
+                    <span class="bs-price">850 EGP</span>
+                    <button class="bs-cart-btn" onclick="addToCart('Blue De Chanel', 850)">
+                        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    </button>
+                </div>
+                <div class="bs-card">
+                    <img src="https://i.postimg.cc/CKhtWz2H/1775324440098.png" onclick="showDetail(34)">
+                    <h4>عطر خمرة</h4>
+                    <span class="bs-price">550 EGP</span>
+                    <button class="bs-cart-btn" onclick="addToCart('عطر خمرة', 550)">
+                        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    </button>
+                </div>
+            </div>
         </section>
 
         <section class="search-section reveal">
@@ -2113,10 +2240,10 @@
             { name: "Baccarat Rouge 540", price: 850, img: "https://i.postimg.cc/0yyGJYRH/IMG-20260331-111030-213.jpg", intro: "الزعفران، الياسمين", heart: "خشب العنبر، العنبر", base: "صمغ الصنوبر، خشب الأرز", performance: {long: 95, sill: 95}, tags: ["فخم", "رسمي", "كل الفصول"] },
             { name: "Eilish", price: 850, img: "https://i.postimg.cc/Df52BVDb/IMG-20260331-111141-315.jpg", intro: "السكر، التوت الأحمر، الماندرين", heart: "الفانيليا، الكاكاو، الورد، التوابل", base: "العنبر، المسك، الأخشاب، التونكا", performance: {long: 80, sill: 75}, tags: ["دافئ", "يومي", "شتاء"] },
             { name: "NOIR EXTREME", price: 900, img: "https://i.postimg.cc/dVRK3j4Z/FB-IMG-1774986843148.jpg", intro: "الزعفران، الحبهان، جوزة الطيب، البرتقال المر", heart: "الكلفي، المصطكي، زهر البرتقال، الياسمين، الورد", base: "الفانيليا، العنبر، خشب الصندل، الأخشاب", performance: {long: 88, sill: 82}, tags: ["فخم", "شتاء", "مسائي"] },
-            { name: "خمرة دخان", price: 800, img: "https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg", intro: "القرفة، البرغموت، المريمية", heart: "التمر، البرالين، مسك الروم", base: "الفانيليا، التونكا، العنبر، البنزوين، المر، خشب الصندل", performance: {long: 95, sill: 90}, tags: ["فخم", "شتاء", "دافئ"] },
+            { name: "خمرة دخان", price: 800, img: "https://i.postimg.cc/J7fR6ngW/FB-IMG-1774988429557.jpg", intro: "القمرفة، البرغموت، المريمية", heart: "التمر، البرالين، مسك الروم", base: "الفانيليا، التونكا، العنبر، البنزوين، المر، خشب الصندل", performance: {long: 95, sill: 90}, tags: ["فخم", "شتاء", "دافئ"] },
             { name: "Bvlgari Men In Black", price: 780, img: "https://i.postimg.cc/W3VMwTv5/FB-IMG-1774988721408.jpg", intro: "التبغ، الرم، التوابل", heart: "الجلود، مسك الروم، السوسن", base: "خشب الجاياك، البنزوين، التونكا", performance: {long: 85, sill: 80}, tags: ["فخم", "شتاء", "رسمي"] },
             { name: "Hugo Boss", price: 1000, img: "https://i.postimg.cc/tRw4KD1G/FB-IMG-1774988659152.jpg", intro: "التفاف، البرقوق، الليمون، البرغموت", heart: "القرفة، الماهوجني، القرنفل", base: "الفانيليا، خشب الصندل، الأرز، الزيتون", performance: {long: 80, sill: 75}, tags: ["عمل", "صباحي", "كلاسيك"] },
-            { name: "CUBAN TOBACCO", price: 750, img: "https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg", intro: "أوراق التبغ، التوابل الحارة", heart: "الفانيليا، الكاكاو، زهر التبغ", base: "الأخشاب، الفواكه المجففة", performance: {long: 90, sill: 85}, tags: ["شتاء", "فخم", "ثقيل"] },
+            { name: "CUBAN TOBACCO", price: 750, img: "https://i.postimg.cc/BbBPgV3b/FB-IMG-1774988669222.jpg", intro: "أوراق التبغ، التوابل الحارة", heart: "الفانيليا، الكاكاو، زهر التبغ", base: "أخشاب، الفواكه المجففة", performance: {long: 90, sill: 85}, tags: ["شتاء", "فخم", "ثقيل"] },
             { name: "Invictus Victory", price: 900, img: "https://i.postimg.cc/ZRq3hNNd/IMG-20260401-125756-213.jpg", intro: "الفلفل الوردي، الليمون", heart: "الخزامى، اللبان", base: "الفانيليا، التونكا، العنبر", performance: {long: 90, sill: 85}, tags: ["مسائي", "شتاء", "جذاب"] },
             { name: "Versace Bright Crystal", price: 850, img: "https://i.postimg.cc/sx4tZ1Kz/IMG_20260401_131513_249.jpg", intro: "اليوزو، الرمان، الملاحظات المائية", heart: "الفاوانيا، اللوتس، الماغنوليا", base: "المسك، الماهوجني، العنبر", performance: {long: 75, sill: 70}, tags: ["صيف", "صباحي", "ناعم"] },
             { name: "Coco Mademoiselle Chanel", price: 850, img: "https://i.postimg.cc/cCBV86TG/IMG_20260401_131507_607.jpg", intro: "البرتقال، الماندرين، زهر البرتقال، البرغموت", heart: "الميموزا، الياسمين، الورد التركي، الإيلنغ", base: "التونكا، الباتشولي، الجاوي، الفانيليا، نجيل الهند، المسك", performance: {long: 90, sill: 85}, tags: ["كلاسيك", "فخم", "كل الفصول"] },
