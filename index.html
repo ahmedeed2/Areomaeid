@@ -340,6 +340,7 @@
             text-align: center;
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
         }
         .bs-card img {
             width: 100%;
@@ -360,6 +361,7 @@
             font-size: 1rem;
             display: block;
             margin-bottom: 15px;
+            color: var(--discount-red); /* السعر باللون الأحمر */
         }
         .bs-cart-btn {
             background: #000;
@@ -377,6 +379,18 @@
         }
         .bs-cart-btn:hover { background: #333; transform: scale(1.1); }
         .bs-cart-btn svg { width: 20px; height: 20px; fill: #fff; }
+
+        .bs-badge-percent {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--discount-red);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            border-radius: 3px;
+        }
 
         .search-section {
             width: 100%;
@@ -570,7 +584,7 @@
             gap: 2px;
         }
 
-        .new-p { color: #000; font-weight: 700; font-size: 1.1rem; }
+        .new-p { color: var(--discount-red); font-weight: 700; font-size: 1.1rem; } /* السعر باللون الأحمر */
         .old-p { color: #aaa; text-decoration: line-through; font-size: 0.8rem; }
 
         .btn-add-cart {
@@ -1261,40 +1275,50 @@
             <h2 class="section-title">BEST SELLER</h2>
             <div class="best-seller-slider">
                 <div class="bs-card">
+                    <div class="bs-badge-percent">-27% OFF</div>
                     <img src="https://i.postimg.cc/MG64hvLf/1775324352203.png" onclick="showDetail(43)">
                     <h4>BLUE DE CHANEL PARFUM</h4>
+                    <span style="text-decoration:line-through; color:#aaa; font-size:0.8rem; display:block;">1300 EGP</span>
                     <span class="bs-price">950 EGP</span>
                     <button class="bs-cart-btn" onclick="addToCart('Blue De Chanel Parfum', 950)">
                         <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                     </button>
                 </div>
                 <div class="bs-card">
+                    <div class="bs-badge-percent">-29% OFF</div>
                     <img src="https://i.postimg.cc/25kJPVtG/1775324167975.png" onclick="showDetail(0)">
                     <h4>STRONGER WITH YOU</h4>
+                    <span style="text-decoration:line-through; color:#aaa; font-size:0.8rem; display:block;">1200 EGP</span>
                     <span class="bs-price">850 EGP</span>
                     <button class="bs-cart-btn" onclick="addToCart('Stronger With You', 850)">
                         <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                     </button>
                 </div>
                 <div class="bs-card">
+                    <div class="bs-badge-percent">-29% OFF</div>
                     <img src="https://i.postimg.cc/7ZMdsgKM/1775324290493.png" onclick="showDetail(1)">
                     <h4>SAUVAGE</h4>
+                    <span style="text-decoration:line-through; color:#aaa; font-size:0.8rem; display:block;">1200 EGP</span>
                     <span class="bs-price">850 EGP</span>
                     <button class="bs-cart-btn" onclick="addToCart('Sauvage', 850)">
                         <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                     </button>
                 </div>
                 <div class="bs-card">
+                    <div class="bs-badge-percent">-29% OFF</div>
                     <img src="https://i.postimg.cc/MG64hvLf/1775324352203.png" onclick="showDetail(3)">
                     <h4>BLUE DE CHANEL</h4>
+                    <span style="text-decoration:line-through; color:#aaa; font-size:0.8rem; display:block;">1200 EGP</span>
                     <span class="bs-price">850 EGP</span>
                     <button class="bs-cart-btn" onclick="addToCart('Blue De Chanel', 850)">
                         <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                     </button>
                 </div>
                 <div class="bs-card">
+                    <div class="bs-badge-percent">-21% OFF</div>
                     <img src="https://i.postimg.cc/CKhtWz2H/1775324440098.png" onclick="showDetail(34)">
                     <h4>عطر خمرة</h4>
+                    <span style="text-decoration:line-through; color:#aaa; font-size:0.8rem; display:block;">700 EGP</span>
                     <span class="bs-price">550 EGP</span>
                     <button class="bs-cart-btn" onclick="addToCart('عطر خمرة', 550)">
                         <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
@@ -2156,7 +2180,7 @@
         <div id="cart-items-list" style="padding:20px; border-bottom:1px solid #eee;"></div>
         
         <div class="cart-footer">
-            <p id="total-price" style="color:#000; font-size:1.3rem; text-align:center; margin:15px 0; font-weight:bold;"></p>
+            <p id="total-price" style="color:var(--discount-red); font-size:1.3rem; text-align:center; margin:15px 0; font-weight:bold;"></p>
             
             <form class="order-form" id="orderForm">
                 <div class="form-fields-wrapper">
@@ -2194,7 +2218,7 @@
             "الدقهلية": ["المنصورة", "طلخا", "ميت غمر", "السنبلاوين", "جمصة", "دكرنس", "منية النصر", "شربين", "تمي الأمديد", "بني عبيد", "أجا", "نبروه", "الجمالية", "المطرية", "بلقاس"],
             "القليوبية": ["بنها", "شبرا الخيمة", "قليوب", "القناطر الخيرية", "الخانكة", "كفر شكر", "طوخ", "شبين القناطر", "العبور", "قليوب المحطة"],
             "الشرقية": ["الزقازيق", "العاشر من رمضان", "بلبيس", "منيا القمح", "فاقوس", "أبو حماد", "أبو كبير", "الحسينية", "كفر صقر", "أولاد صقر", "ديرب نجم", "مشتول السوق"],
-            "المنوفية": ["شبين الكوم", "قويسنا", "أشمون", "باجور", "منوف", "مدينة السادات", "تلا", "بركة السبع", "الشهداء"],
+            " المنوفية": ["شبين الكوم", "قويسنا", "أشمون", "باجور", "منوف", "مدينة السادات", "تلا", "بركة السبع", "الشهداء"],
             "الغربية": ["طنطا", "المحلة الكبرى", "كفر الزيات", "زفتى", "السنطة", "بسيون", "قطور", "سمنود"],
             "البحيرة": ["دمنهور", "كفر الدوار", "إيتاي البارود", "أبو حمص", "كوم حمادة", "حوش عيسى", "رشيد", "إدكو", "أبو المطامير", "الدلنجات", "المحمودية", "وادي النطرون"],
             "كفر الشيخ": ["كفر الشيخ", "دسوق", "فوه", "مطوبس", "قلين", "سيدي سالم", "الرياض", "بيلا", "الحامول", "بلطيم", "برج البرلس"],
@@ -2395,7 +2419,7 @@
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #eee;">
                     <div>
                         <p style="font-weight:700; color:#000; font-size:0.8rem; letter-spacing:1px;">${item.name.toUpperCase()}</p>
-                        <p style="color:#000; font-size:0.9rem;">${item.price} EGP</p>
+                        <p style="color:var(--discount-red); font-size:0.9rem;">${item.price} EGP</p>
                     </div>
                     <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#999; cursor:pointer; font-size:0.7rem;">REMOVE</button>
                 </div>`).join('');
@@ -2594,7 +2618,7 @@
                         <div class="quiz-result-item">
                             <img src="${rec.img}" class="quiz-result-img" alt="Result">
                             <h3 style="color:#000; font-size:0.75rem; letter-spacing:1px; margin-top:5px; height:35px; overflow:hidden;">${rec.name}</h3>
-                            <p style="color:#000; font-weight:bold; font-size:0.8rem;">${rec.price} EGP</p>
+                            <p style="color:var(--discount-red); font-weight:bold; font-size:0.8rem;">${rec.price} EGP</p>
                             <button class="btn-add-cart" onclick="addToCart('${rec.name}', ${rec.price}); closeQuizManual();" style="margin-top:10px; font-size:0.6rem; padding:8px;">ADD TO CART</button>
                         </div>
                     `).join('')}
